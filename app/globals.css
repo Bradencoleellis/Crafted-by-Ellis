@@ -1,26 +1,202 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ── Crafted by Ellis brand palette ── */
+  --rust:           #9A4A2A;
+  --rust-hover:     #B05830;
+  --rust-pressed:   #7D3B20;
+  --rust-glow:      rgba(154, 74, 42, 0.28);
+  --rust-subtle:    rgba(154, 74, 42, 0.1);
+  --rust-border:    rgba(154, 74, 42, 0.32);
+
+  --ink:            #0F0D0A;
+  --ink-2:          #181410;
+  --ink-3:          #201A12;
+  --ink-4:          #2A2218;
+  --paper:          #F6F2EA;
+  --paper-dim:      rgba(246, 242, 234, 0.55);
+  --paper-faint:    rgba(246, 242, 234, 0.07);
+  --paper-border:   rgba(246, 242, 234, 0.09);
+
+  /* ── Semantic aliases ── */
+  --color-accent:             var(--rust);
+  --color-accent-hover:       var(--rust-hover);
+  --color-accent-pressed:     var(--rust-pressed);
+  --color-accent-glow:        var(--rust-glow);
+
+  --color-background:           var(--ink);
+  --color-background-secondary: var(--ink-2);
+  --color-background-tertiary:  var(--ink-3);
+  --color-surface:              rgba(246, 242, 234, 0.03);
+  --color-surface-hover:        rgba(246, 242, 234, 0.06);
+
+  --color-text-primary:   var(--paper);
+  --color-text-secondary: #A8A09A;
+  --color-text-tertiary:  #5A5248;
+  --color-text-inverse:   var(--ink);
+
+  --color-border:         var(--paper-border);
+  --color-border-strong:  rgba(246, 242, 234, 0.16);
+  --color-border-accent:  var(--rust-border);
+
+  /* ── Spacing ── */
+  --space-xs: 4px;   --space-sm: 8px;  --space-md: 12px;
+  --space-lg: 16px;  --space-xl: 24px; --space-2xl: 32px;
+  --space-3xl: 48px; --space-4xl: 64px; --space-5xl: 96px;
+
+  /* ── Radius ── */
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 14px;
+  --radius-xl: 20px; --radius-full: 9999px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-text-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--rust);
+  color: var(--paper);
+  padding: 11px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  min-height: 42px;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 0 0 var(--rust-glow);
+}
+.btn-primary:hover {
+  background: var(--rust-hover);
+  box-shadow: 0 0 20px var(--rust-glow);
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  background: var(--rust-pressed);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  padding: 11px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid var(--color-border);
+  min-height: 42px;
+  backdrop-filter: blur(8px);
+}
+.btn-secondary:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
+}
+
+/* ── Layout ── */
+.container-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (max-width: 768px) {
+  .container-page { padding: 0 16px; }
+}
+
+/* ── Glass card ── */
+.glass-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.glass-card:hover {
+  border-color: var(--rust-border);
+  box-shadow: 0 0 28px rgba(154, 74, 42, 0.1), inset 0 1px 0 rgba(246,242,234,0.05);
+  background: var(--color-surface-hover);
+}
+
+/* ── Label chip ── */
+.label-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: var(--rust-subtle);
+  border: 1px solid var(--rust-border);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--rust);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+/* ── Warm dot grid ── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(246,242,234,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(246,242,234,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ── Orb animations ── */
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(60px, -40px) scale(1.05); }
+  66% { transform: translate(-30px, 30px) scale(0.96); }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40% { transform: translate(-80px, 50px) scale(1.08); }
+  70% { transform: translate(40px, -20px) scale(0.94); }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 60px) scale(1.03); }
+}
+
+/* ── Fraunces display headings ── */
+.display {
+  font-family: var(--font-fraunces), 'Fraunces', serif;
+  font-weight: 320;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+.display em {
+  font-style: italic;
+  color: var(--rust);
+  font-weight: 360;
 }

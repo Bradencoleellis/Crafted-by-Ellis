@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&display=swap');
+      .e   { font-family: 'Fraunces', serif; font-weight: 400; font-size: 56px; letter-spacing: -2px; font-variation-settings: "opsz" 144, "SOFT" 60; fill: #1b1612; }
+      .dot { fill: #9a4a2a; }
+    </style>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#f6f2ea"/>
+  <text class="e" x="14" y="48">e<tspan class="dot">.</tspan></text>
+</svg>
