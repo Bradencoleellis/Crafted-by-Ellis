@@ -145,20 +145,55 @@ export default function RenewPlusPage() {
               tier="Silver"
               price="Free"
               description="Get started with the essentials"
-              features={["Basic goal tracking", "Daily journaling", "Limited recipes", "Basic finance tools"]}
+              features={[
+                "2 active goals",
+                "20 recipes",
+                "1 week meal planning",
+                "2 piggy banks",
+                "Unlimited journaling",
+                "Unlimited finance tracking",
+                "Unlimited shopping lists & pantry",
+              ]}
             />
             <PricingCard
               tier="Gold"
-              price="Premium"
+              price="$4.99"
+              period="/ month"
+              trial="1 month free trial"
               description="Unlock more power"
               featured
-              features={["Unlimited goals", "AI goal planning", "Full recipe library", "Receipt scanning", "Advanced finance", "Partner sharing"]}
+              features={[
+                "10 active goals",
+                "100 recipes",
+                "4 weeks meal planning",
+                "5 piggy banks",
+                "2 household members",
+                "30 AI goal generations / month",
+                "30 AI recipe scans / month",
+                "20 receipt scans / month",
+                "Finance partner linking",
+                "Everything in Silver",
+              ]}
             />
             <PricingCard
               tier="Platinum"
-              price="Pro"
+              price="$10.99"
+              period="/ month"
+              trial="1 month free trial"
               description="The complete experience"
-              features={["Everything in Gold", "Unlimited AI generations", "Family group features", "Priority support", "Early access", "All future updates"]}
+              features={[
+                "Unlimited active goals",
+                "Unlimited recipes",
+                "Unlimited meal planning",
+                "Unlimited piggy banks",
+                "5 household members",
+                "100 AI goal generations / month",
+                "100 AI recipe scans / month",
+                "60 receipt scans / month",
+                "Priority support",
+                "Beta features & early access",
+                "Everything in Gold",
+              ]}
             />
           </div>
         </div>
@@ -258,8 +293,8 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode; titl
   );
 }
 
-function PricingCard({ tier, price, description, features, featured = false }: {
-  tier: string; price: string; description: string; features: string[]; featured?: boolean;
+function PricingCard({ tier, price, period, trial, description, features, featured = false }: {
+  tier: string; price: string; period?: string; trial?: string; description: string; features: string[]; featured?: boolean;
 }) {
   return (
     <div className={featured ? "" : "glass-card"} style={{
@@ -292,7 +327,11 @@ function PricingCard({ tier, price, description, features, featured = false }: {
         </div>
       )}
       <h3 style={{ fontSize: "18px", fontWeight: 700, marginBottom: "4px" }}>{tier}</h3>
-      <p style={{ fontSize: "28px", fontWeight: 800, color: "var(--color-accent)", marginBottom: "6px", letterSpacing: "-0.02em" }}>{price}</p>
+      <div style={{ display: "flex", alignItems: "baseline", gap: "4px", marginBottom: "4px" }}>
+        <p style={{ fontSize: "28px", fontWeight: 800, color: "var(--color-accent)", letterSpacing: "-0.02em", margin: 0 }}>{price}</p>
+        {period && <span style={{ fontSize: "13px", color: "var(--color-text-secondary)", fontWeight: 500 }}>{period}</span>}
+      </div>
+      {trial && <p style={{ fontSize: "11px", color: "var(--rust)", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", fontFamily: "var(--font-jetbrains-mono), monospace", marginBottom: "6px" }}>{trial}</p>}
       <p style={{ fontSize: "13px", color: "var(--color-text-secondary)", marginBottom: "24px" }}>{description}</p>
       <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
         {features.map((f, i) => (
