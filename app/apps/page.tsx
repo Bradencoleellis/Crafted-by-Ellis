@@ -31,7 +31,7 @@ export default function AppsPage() {
       <section style={{ padding: "80px 0", background: "var(--ink-2)" }}>
         <div className="container-page">
           {/* Renew+ */}
-          <div className="glass-card" style={{ padding: "0", overflow: "hidden", marginBottom: "20px" }}>
+          <Link href="/renewplus" className="glass-card" style={{ padding: "0", overflow: "hidden", marginBottom: "20px", display: "block", cursor: "pointer" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "32px", padding: "40px", alignItems: "start" }}>
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "20px" }}>
@@ -85,7 +85,7 @@ export default function AppsPage() {
                 </span>
               ))}
             </div>
-          </div>
+          </Link>
 
           {/* More coming */}
           <div className="glass-card" style={{ padding: "40px", opacity: 0.5 }}>
