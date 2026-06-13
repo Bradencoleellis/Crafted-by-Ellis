@@ -18,7 +18,7 @@ export default function RenewPlusPrivacyPage() {
             Privacy Policy
           </h1>
           <p style={{ fontSize: "15px", color: "var(--color-text-tertiary)" }}>
-            Version date: 19 May 2025 · Effective: 19 May 2025
+            Version date: 13 June 2026 · Effective: 13 June 2026
           </p>
         </div>
       </section>
@@ -32,7 +32,7 @@ export default function RenewPlusPrivacyPage() {
             </p>
 
             <div style={calloutStyle}>
-              <strong>What Renew+ is not:</strong> We do not connect to bank accounts, process payments, or transfer funds. Bank account numbers you enter are stored solely to help you identify your own accounts in the App. We do not sell your personal data. Ever.
+              <strong>Our global standard:</strong> We apply GDPR-grade protections to <strong>every</strong> user, wherever you live. That means a defined legal basis for each use of your data, the full set of data subject rights, clear retention limits, and transparency about every party we share data with. Some countries also give you specific local rights, listed in Section 9. We do not connect to bank accounts, process payments, or transfer funds. We do not sell your personal data. Ever.
             </div>
 
             <h2 style={h2Style}>1. Information We Collect</h2>
@@ -46,6 +46,9 @@ export default function RenewPlusPrivacyPage() {
               <li><strong>Social data:</strong> Community posts, friend connections, family group membership</li>
               <li><strong>Preferences:</strong> Home region, currency, theme, notification settings, food allergies and preferences</li>
             </ul>
+            <p>
+              Some of this information — for example, food allergies, mood entries, and journal content — may reveal health or other sensitive details about you. We process it only to provide the features you choose to use, on the basis of your consent (which you give by entering it), and never to infer health conditions or for any unrelated purpose.
+            </p>
 
             <h3 style={h3Style}>Information Collected Automatically</h3>
             <p>
@@ -66,47 +69,94 @@ export default function RenewPlusPrivacyPage() {
               <li>Create and manage your account and provide all App features</li>
               <li>Sync your data across your devices via Firebase</li>
               <li>Perform tax and financial calculations based on data you enter</li>
+              <li>Provide AI features (goal planning, recipe scanning) when you choose to use them</li>
               <li>Send push notifications you have enabled</li>
               <li>Respond to support requests</li>
               <li>Improve the App using aggregated, anonymised usage data</li>
               <li>Comply with legal obligations</li>
             </ul>
-            <p>We do <strong>not</strong> use your data for targeted advertising, credit scoring, automated decision-making with legal effects, or sale to third parties.</p>
+            <p>We do <strong>not</strong> use your data for targeted advertising, credit scoring, automated decision-making that produces legal or similarly significant effects, or sale to third parties.</p>
 
-            <h2 style={h2Style}>3. Legal Basis for Processing (UK / EU Users)</h2>
+            <h2 style={h2Style}>3. Legal Bases for Processing</h2>
+            <p>
+              We rely on the following legal bases under the UK and EU GDPR. We apply the same purpose-by-purpose discipline to all users globally, and — where a local law such as the EU/UK GDPR requires a defined basis — the basis below applies.
+            </p>
             <ul style={listStyle}>
-              <li><strong>Contractual necessity</strong> (Art. 6(1)(b) UK/EU GDPR) — account creation, App features, data sync</li>
-              <li><strong>Consent</strong> (Art. 6(1)(a)) — calendar access, Face ID, push notifications</li>
-              <li><strong>Legitimate interests</strong> (Art. 6(1)(f)) — anonymised analytics to improve the App</li>
-              <li><strong>Legal obligation</strong> (Art. 6(1)(c)) — compliance with applicable law</li>
+              <li><strong>Account creation, core App features, and data sync</strong> — performance of our contract with you (Art. 6(1)(b)).</li>
+              <li><strong>Tax and financial calculations</strong> — performance of our contract with you (Art. 6(1)(b)).</li>
+              <li><strong>AI features (goal planning, recipe scanning)</strong> — your consent, given by choosing to use the feature (Art. 6(1)(a)); you can simply not use these features.</li>
+              <li><strong>Sensitive data (allergies, mood, journal content)</strong> — your explicit consent (Art. 9(2)(a)), given by entering the information.</li>
+              <li><strong>Device permissions (calendar, Face ID, push, camera/photos)</strong> — your consent (Art. 6(1)(a)), revocable in iOS Settings.</li>
+              <li><strong>Aggregated, anonymised analytics to improve the App</strong> — our legitimate interests (Art. 6(1)(f)), balanced against your rights.</li>
+              <li><strong>Security, fraud prevention, and responding to support requests</strong> — our legitimate interests (Art. 6(1)(f)).</li>
+              <li><strong>Compliance with legal obligations</strong> — legal obligation (Art. 6(1)(c)).</li>
             </ul>
+            <p>Where we rely on consent, you may withdraw it at any time without affecting processing carried out before withdrawal.</p>
 
-            <h2 style={h2Style}>4. Data Sharing</h2>
-            <p>We do not sell, rent, or trade your personal information. We share data only with:</p>
+            <h2 style={h2Style}>4. Who We Share Data With (Sub-processors)</h2>
+            <p>We do not sell, rent, or trade your personal information. We share data only with the following service providers, who process it on our instructions:</p>
             <ul style={listStyle}>
-              <li><strong>Google Firebase</strong> (Firestore, Auth, Storage) — database, authentication, file storage. Operates under Google&apos;s data processing terms and is certified under the EU–US Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
-              <li><strong>Apple</strong> (StoreKit, App Store) — subscription management and payments. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
-              <li><strong>Anthropic</strong> — AI features (goal planning, recipe scanning). <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
+              <li><strong>Google Firebase</strong> (Firestore, Authentication, Storage), operated by Google LLC, United States — database, authentication, and file storage. Certified under the EU–US Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
+              <li><strong>Anthropic, PBC</strong>, United States — powers AI features (goal planning, recipe scanning). Data you submit to an AI feature is sent to Anthropic only to generate your result. Anthropic processes it as our service provider and does not use it to train its models. <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
+              <li><strong>Apple Inc.</strong> (StoreKit, App Store), United States — subscription management and payments. Apple processes your payment data as an independent controller under its own terms. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
             </ul>
             <p>We may also disclose information where required by law, court order, or to protect the rights, property, or safety of our users or others.</p>
 
-            <h2 style={h2Style}>5. Data Storage, Security, and Retention</h2>
+            <h2 style={h2Style}>5. International Data Transfers</h2>
             <p>
-              Your data is stored in Google Firebase&apos;s Cloud Firestore and Firebase Storage. All data is encrypted in transit (TLS) and at rest. We retain your data for as long as your account is active.
+              We are based in New Zealand, and our service providers are located in the United States. This means your personal data is transferred to and processed in the United States and potentially other countries. The named transfers are:
             </p>
+            <ul style={listStyle}>
+              <li><strong>Google LLC (Firebase) — United States.</strong> Safeguard: EU–US Data Privacy Framework certification and the European Commission&apos;s Standard Contractual Clauses.</li>
+              <li><strong>Anthropic, PBC — United States.</strong> Safeguard: Standard Contractual Clauses and a data processing agreement, for AI features only.</li>
+              <li><strong>Apple Inc. — United States.</strong> Safeguard: Apple&apos;s own compliance framework and Standard Contractual Clauses where applicable.</li>
+            </ul>
             <p>
-              When you delete your account (Settings → Delete Account), we permanently delete all records associated with your account, including: financial records, bank account numbers, CSV imports, goals, journals, meal plans, recipes, shopping lists, pantry items, mood entries, social data, and profile photos. <strong>Deletion is irreversible.</strong>
+              For UK/EU users, these Standard Contractual Clauses (and, where applicable, the UK Addendum) provide an approved transfer mechanism. For Australian users, we comply with the Australian Privacy Principles on cross-border disclosure. You may request a copy of the relevant safeguards by emailing <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a>.
             </p>
 
-            <h2 style={h2Style}>6. International Data Transfers</h2>
+            <h2 style={h2Style}>6. Data Retention</h2>
+            <p>We keep personal data only as long as we need it for the purpose it was collected, then delete or anonymise it. Our retention schedule:</p>
+            <ul style={listStyle}>
+              <li><strong>Account and all in-app content</strong> (financial records, goals, journals, meal plans, recipes, social data, etc.) — kept while your account is active.</li>
+              <li><strong>After you delete your account</strong> — erased from our live systems promptly, and within <strong>30 days</strong> at the latest.</li>
+              <li><strong>Encrypted backups</strong> — automatically overwritten on a rolling cycle and fully purged within <strong>90 days</strong> of deletion.</li>
+              <li><strong>Crash and aggregated usage data</strong> — retained in anonymised or aggregated form that no longer identifies you.</li>
+              <li><strong>Records we must keep by law</strong> (e.g. limited transaction or correspondence records) — kept only for the period the law requires, then deleted.</li>
+            </ul>
+
+            <h2 style={h2Style}>7. Account Deletion</h2>
             <p>
-              Your data is processed on Firebase infrastructure operated by Google LLC, and may be stored on servers in the United States or other countries. For UK/EU users, we rely on Standard Contractual Clauses approved by the European Commission. For Australian users, we comply with the Australian Privacy Principles regarding cross-border disclosure. By using the App, you consent to this transfer.
+              You can delete your account and all associated data at any time from <strong>Settings → Delete Account</strong> inside the App. This permanently erases your records, including: financial records, bank account numbers, CSV imports, goals, journals, meal plans, recipes, shopping lists, pantry items, mood entries, social data, and profile photos.
+            </p>
+            <ul style={listStyle}>
+              <li>Live data is removed promptly; backups are purged within 90 days (see Section 6).</li>
+              <li><strong>Deletion is irreversible</strong> — we cannot recover deleted data.</li>
+              <li>If you cannot access the App, email <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a> from your account email and we will delete your data on request.</li>
+              <li>Deleting your account does not cancel an Apple subscription — manage that in your Apple Account settings.</li>
+            </ul>
+
+            <h2 style={h2Style}>8. Data Storage and Security</h2>
+            <p>
+              Your data is stored in Google Firebase&apos;s Cloud Firestore and Firebase Storage. All data is encrypted in transit (TLS) and at rest. We restrict access to your data, use authentication controls, and review our security practices. No system is perfectly secure, but we take reasonable steps to protect your information.
             </p>
 
-            <h2 style={h2Style}>7. Your Rights</h2>
+            <h2 style={h2Style}>9. Your Privacy Rights</h2>
 
-            <h3 style={h3Style}>All Users</h3>
-            <p>You may access, correct, or delete your data directly within the App at any time, or contact us at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a>.</p>
+            <h3 style={h3Style}>Everyone — our global baseline</h3>
+            <p>Regardless of where you live, you can ask us to:</p>
+            <ul style={listStyle}>
+              <li><strong>Access</strong> the personal data we hold about you</li>
+              <li><strong>Correct</strong> inaccurate or incomplete data</li>
+              <li><strong>Delete</strong> your data (&ldquo;erasure&rdquo;)</li>
+              <li><strong>Export</strong> your data in a structured, machine-readable format (portability)</li>
+              <li><strong>Restrict</strong> or <strong>object</strong> to certain processing</li>
+              <li><strong>Withdraw consent</strong> at any time where we rely on it</li>
+              <li><strong>Complain</strong> to us, and to your local privacy regulator</li>
+            </ul>
+            <p>
+              Most of these you can do yourself in the App (edit or delete data, export where available, toggle permissions). Otherwise email <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a>. We respond within <strong>30 days</strong> (sooner where local law requires) and never charge for a reasonable request. We will not discriminate against you for exercising these rights.
+            </p>
 
             <h3 style={h3Style}>New Zealand — Privacy Act 2020</h3>
             <p>
@@ -119,18 +169,12 @@ export default function RenewPlusPrivacyPage() {
             </p>
 
             <h3 style={h3Style}>United Kingdom / European Union — UK GDPR / EU GDPR</h3>
-            <p>In addition to access and correction, you have the right to:</p>
-            <ul style={listStyle}>
-              <li><strong>Erasure</strong> — request deletion of your personal data</li>
-              <li><strong>Restriction</strong> — request we limit processing in certain circumstances</li>
-              <li><strong>Data portability</strong> — receive your data in a structured, machine-readable format</li>
-              <li><strong>Object</strong> — object to processing based on legitimate interests</li>
-              <li><strong>Complain</strong> — to the UK <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" style={linkStyle}>Information Commissioner&apos;s Office (ICO)</a> or relevant EU supervisory authority</li>
-            </ul>
-            <p>We respond to GDPR requests within one calendar month.</p>
+            <p>
+              You have all the rights listed in the global baseline above, exercisable as data subject rights under the GDPR. You also have the right to lodge a complaint with the UK <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" style={linkStyle}>Information Commissioner&apos;s Office (ICO)</a> or your local EU supervisory authority. We respond to GDPR requests within one calendar month.
+            </p>
 
-            <h3 style={h3Style}>United States — California (CCPA)</h3>
-            <p>California residents have the right to know what personal information we collect, request deletion, and opt out of the &ldquo;sale&rdquo; of personal information — <strong>we do not sell personal information</strong>. Categories collected include: identifiers (email, display name), financial information (income, bills, bank account numbers), commercial information (subscription tier), internet/network activity (app usage), and inferences (preferences, settings).</p>
+            <h3 style={h3Style}>United States — California (CCPA/CPRA)</h3>
+            <p>California residents have the right to know what personal information we collect, request deletion and correction, and opt out of the &ldquo;sale&rdquo; or &ldquo;sharing&rdquo; of personal information — <strong>we do not sell or share personal information</strong>. Categories collected include: identifiers (email, display name), financial information (income, bills, bank account numbers), commercial information (subscription tier), internet/network activity (app usage), and inferences (preferences, settings).</p>
 
             <h3 style={h3Style}>Canada — PIPEDA / Quebec Law 25</h3>
             <p>
@@ -147,7 +191,7 @@ export default function RenewPlusPrivacyPage() {
               You have the right to access and correct personal data we hold, and to withdraw consent for its collection and use. Contact <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a>.
             </p>
 
-            <h2 style={h2Style}>8. Data Breach Notification</h2>
+            <h2 style={h2Style}>10. Data Breach Notification</h2>
             <p>In the event of a data breach likely to cause harm, we will notify affected users and regulators:</p>
             <ul style={listStyle}>
               <li><strong>New Zealand:</strong> As soon as practicable (Privacy Act 2020)</li>
@@ -156,33 +200,33 @@ export default function RenewPlusPrivacyPage() {
               <li><strong>Canada:</strong> As soon as feasible where real risk of significant harm exists (PIPEDA)</li>
             </ul>
 
-            <h2 style={h2Style}>9. Children&apos;s Privacy</h2>
+            <h2 style={h2Style}>11. Children&apos;s Privacy</h2>
             <p>
-              Renew+ is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has created an account, contact us at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a> and we will delete the account promptly.
+              Renew+ is not directed at children under 13. We do not knowingly collect personal information from children under 13. In some regions (for example, parts of the EU), a higher digital age of consent applies (up to 16); where it does, users below that age need verifiable parental consent. If you believe a child has created an account, contact us at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a> and we will delete the account promptly.
             </p>
 
-            <h2 style={h2Style}>10. Cookies and Tracking</h2>
+            <h2 style={h2Style}>12. Cookies and Tracking</h2>
             <p>
               Renew+ is a native iOS application and does not use cookies. Firebase may use device identifiers for session management and crash reporting — these are not used for advertising.
             </p>
 
-            <h2 style={h2Style}>11. Changes to This Policy</h2>
+            <h2 style={h2Style}>13. Changes to This Policy</h2>
             <p>
               When we make material changes, we will update the version date at the top of this page and prompt you to review and re-accept within the App before continuing. Previous versions are available on request.
             </p>
 
-            <h2 style={h2Style}>12. Contact</h2>
+            <h2 style={h2Style}>14. Contact and Complaints</h2>
             <p style={{ marginTop: "12px" }}>
               <strong>Crafted by Ellis</strong><br />
               Privacy enquiries: <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a><br />
               General support: <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a><br />
               Location: New Zealand
             </p>
-            <p>We take privacy complaints seriously and will respond within 10 business days. If we cannot resolve your complaint, you have the right to escalate to the relevant regulator in your jurisdiction (listed in Section 7 above).</p>
+            <p>We take privacy complaints seriously and will respond within 10 business days. If we cannot resolve your complaint, you have the right to escalate to the relevant regulator in your jurisdiction (listed in Section 9 above).</p>
 
             <div style={{ marginTop: "48px", padding: "24px", background: "var(--color-background-secondary)", borderRadius: "var(--radius-lg)", border: "1px solid var(--color-border)" }}>
               <p style={{ margin: 0, fontSize: "14px", color: "var(--color-text-secondary)" }}>
-                <strong>Plain English:</strong> We collect what we need to make the app work, keep it secure on Firebase, don&apos;t sell it, and you can delete everything anytime. Bank account numbers you enter are just labels — we never touch your actual accounts.
+                <strong>Plain English:</strong> We collect what we need to make the app work, keep it secure on Firebase, never sell it, and give everyone the same strong rights — access, correction, export, and deletion — no matter where you live. AI features send your input to Anthropic in the US only to generate your result, and it&apos;s not used to train their models. Delete your account anytime and it&apos;s gone within 30 days (90 for backups).
               </p>
             </div>
 
