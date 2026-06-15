@@ -28,12 +28,12 @@ export default function RenewPlusTermsPage() {
           <div style={contentStyle}>
 
             <p style={{ marginBottom: "32px" }}>
-              These Terms of Service (&ldquo;Terms&rdquo;) govern your use of Renew+ (&ldquo;the App&rdquo;), developed and operated by Crafted by Ellis, a sole trader based in New Zealand (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). By downloading, installing, or using the App, or by tapping &ldquo;Continue&rdquo; on the in-app consent screen, you agree to be bound by these Terms.
+              These Terms of Service (&ldquo;Terms&rdquo;) govern your use of Renew+ (&ldquo;the App&rdquo;), developed and operated by Braden Cole Ellis, a sole trader based in New Zealand (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). Renew+ is published under the &ldquo;Crafted by Ellis&rdquo; brand. By downloading, installing, or using the App, or by tapping &ldquo;Continue&rdquo; on the in-app consent screen, you agree to be bound by these Terms.
             </p>
 
             <h2 style={h2Style}>1. Introduction and Acceptance</h2>
             <p>
-              These Terms constitute a legally binding agreement between you and Crafted by Ellis. If you do not agree, do not use the App. We recommend you save a copy for your records.
+              These Terms constitute a legally binding agreement between you and Braden Cole Ellis. If you do not agree, do not use the App. We recommend you save a copy for your records.
             </p>
             <p>
               The App is a &ldquo;Licensed Application&rdquo; provided through the Apple App Store. These Terms are the end user licence agreement (EULA) for the App. Where these Terms are less restrictive than, or conflict with, Apple&apos;s applicable Media Services Terms and Conditions, Apple&apos;s terms govern to the extent of the conflict. Section 13 sets out additional terms required by Apple.
@@ -158,7 +158,7 @@ export default function RenewPlusTermsPage() {
 
             <h2 style={h2Style}>12. Intellectual Property</h2>
             <p>
-              All rights to Renew+ — including the App software, design, branding, and original content — belong to Crafted by Ellis or its licensors. The App uses the following third-party components:
+              All rights to Renew+ — including the App software, design, branding, and original content — belong to Braden Cole Ellis or his licensors. The App uses the following third-party components:
             </p>
             <ul style={listStyle}>
               <li><strong>Firebase</strong> (Google LLC) — authentication, database, and cloud storage</li>
@@ -175,21 +175,21 @@ export default function RenewPlusTermsPage() {
               The following terms apply because you obtained the App from the Apple App Store. They supplement, and where required prevail over, the rest of these Terms.
             </p>
             <ul style={listStyle}>
-              <li><strong>Acknowledgement.</strong> These Terms are concluded between you and Crafted by Ellis only, and not with Apple. Crafted by Ellis, not Apple, is solely responsible for the App and its content.</li>
+              <li><strong>Acknowledgement.</strong> These Terms are concluded between you and Braden Cole Ellis only, and not with Apple. Braden Cole Ellis, not Apple, is solely responsible for the App and its content.</li>
               <li><strong>Scope of licence.</strong> The licence granted to you for the App is a non-transferable licence to use the App on any Apple-branded products that you own or control, as permitted by the Usage Rules in Apple&apos;s Media Services Terms and Conditions.</li>
-              <li><strong>Maintenance and support.</strong> Crafted by Ellis is solely responsible for providing any maintenance and support services for the App. Apple has no obligation to furnish any maintenance and support services with respect to the App.</li>
-              <li><strong>Warranty.</strong> Crafted by Ellis is solely responsible for any product warranties, whether express or implied by law, to the extent not effectively disclaimed. If the App fails to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price (if any) for the App to you; to the maximum extent permitted by applicable law, Apple has no other warranty obligation whatsoever with respect to the App.</li>
-              <li><strong>Product claims.</strong> Crafted by Ellis, not Apple, is responsible for addressing any claims by you or any third party relating to the App or your possession and/or use of the App, including: (i) product liability claims; (ii) any claim that the App fails to conform to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.</li>
-              <li><strong>Intellectual property.</strong> In the event of any third-party claim that the App or your possession and use of the App infringes that third party&apos;s intellectual property rights, Crafted by Ellis, not Apple, will be solely responsible for the investigation, defence, settlement, and discharge of any such intellectual property infringement claim.</li>
+              <li><strong>Maintenance and support.</strong> Braden Cole Ellis is solely responsible for providing any maintenance and support services for the App. Apple has no obligation to furnish any maintenance and support services with respect to the App.</li>
+              <li><strong>Warranty.</strong> Braden Cole Ellis is solely responsible for any product warranties, whether express or implied by law, to the extent not effectively disclaimed. If the App fails to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price (if any) for the App to you; to the maximum extent permitted by applicable law, Apple has no other warranty obligation whatsoever with respect to the App.</li>
+              <li><strong>Product claims.</strong> Braden Cole Ellis, not Apple, is responsible for addressing any claims by you or any third party relating to the App or your possession and/or use of the App, including: (i) product liability claims; (ii) any claim that the App fails to conform to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.</li>
+              <li><strong>Intellectual property.</strong> In the event of any third-party claim that the App or your possession and use of the App infringes that third party&apos;s intellectual property rights, Braden Cole Ellis, not Apple, will be solely responsible for the investigation, defence, settlement, and discharge of any such intellectual property infringement claim.</li>
               <li><strong>Legal compliance.</strong> You represent and warrant that you are not located in a country subject to a U.S. Government embargo, or designated by the U.S. Government as a &ldquo;terrorist supporting&rdquo; country, and that you are not listed on any U.S. Government list of prohibited or restricted parties.</li>
-              <li><strong>Developer contact.</strong> Questions, complaints, or claims about the App should be directed to Crafted by Ellis at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a>, New Zealand.</li>
+              <li><strong>Developer contact.</strong> Questions, complaints, or claims about the App should be directed to Braden Cole Ellis at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a>, New Zealand.</li>
               <li><strong>Third-party terms.</strong> You must comply with applicable third-party terms of agreement when using the App.</li>
               <li><strong>Third-party beneficiary.</strong> You acknowledge and agree that Apple, and Apple&apos;s subsidiaries, are third-party beneficiaries of these Terms, and that, upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary.</li>
             </ul>
 
             <h2 style={h2Style}>14. Disclaimers and Limitation of Liability</h2>
             <p>
-              Renew+ is provided &ldquo;as is&rdquo; without warranties of any kind, except those that cannot be excluded by law. To the maximum extent permitted by law, Crafted by Ellis is not liable for indirect, incidental, or consequential damages arising from your use of Renew+. Subject to Section 15, our total aggregate liability is limited to the greater of the amount you paid us (or Apple for the App on our behalf) in the 12 months before the claim, or NZ$50.
+              Renew+ is provided &ldquo;as is&rdquo; without warranties of any kind, except those that cannot be excluded by law. To the maximum extent permitted by law, Braden Cole Ellis is not liable for indirect, incidental, or consequential damages arising from your use of Renew+. Subject to Section 15, our total aggregate liability is limited to the greater of the amount you paid us (or Apple for the App on our behalf) in the 12 months before the claim, or NZ$50.
             </p>
 
             <h2 style={h2Style}>15. Consumer Guarantees and Mandatory Rights</h2>
@@ -234,7 +234,7 @@ export default function RenewPlusTermsPage() {
 
             <h2 style={h2Style}>20. Contact</h2>
             <p style={{ marginTop: "12px" }}>
-              <strong>Crafted by Ellis</strong><br />
+              <strong>Braden Cole Ellis (Crafted by Ellis)</strong><br />
               General: <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a><br />
               Privacy: <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a><br />
               Location: New Zealand

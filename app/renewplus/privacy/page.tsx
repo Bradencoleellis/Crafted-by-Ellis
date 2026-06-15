@@ -18,7 +18,7 @@ export default function RenewPlusPrivacyPage() {
             Privacy Policy
           </h1>
           <p style={{ fontSize: "15px", color: "var(--color-text-tertiary)" }}>
-            Version date: 13 June 2026 · Effective: 13 June 2026
+            Version date: 15 June 2026 · Effective: 15 June 2026
           </p>
         </div>
       </section>
@@ -28,7 +28,7 @@ export default function RenewPlusPrivacyPage() {
           <div style={contentStyle}>
 
             <p style={{ marginBottom: "32px" }}>
-              Renew+ (&ldquo;the App&rdquo;) is developed and operated by Crafted by Ellis, a sole trader based in New Zealand (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). This Privacy Policy explains what personal information we collect, how we use it, who we share it with, and your rights. We are the data controller for all personal information collected through the App.
+              Renew+ (&ldquo;the App&rdquo;) is developed and operated by Braden Cole Ellis, a sole trader based in New Zealand (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). Renew+ is published under the &ldquo;Crafted by Ellis&rdquo; brand. This Privacy Policy explains what personal information we collect, how we use it, who we share it with, and your rights. We are the data controller for all personal information collected through the App.
             </p>
 
             <div style={calloutStyle}>
@@ -217,7 +217,7 @@ export default function RenewPlusPrivacyPage() {
 
             <h2 style={h2Style}>14. Contact and Complaints</h2>
             <p style={{ marginTop: "12px" }}>
-              <strong>Crafted by Ellis</strong><br />
+              <strong>Braden Cole Ellis (Crafted by Ellis)</strong><br />
               Privacy enquiries: <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a><br />
               General support: <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a><br />
               Location: New Zealand
