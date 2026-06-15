@@ -18,7 +18,7 @@ export default function RenewPlusTermsPage() {
             Terms of Service
           </h1>
           <p style={{ fontSize: "15px", color: "var(--color-text-tertiary)" }}>
-            Version date: 13 June 2026 · Effective: 13 June 2026
+            Version date: 15 June 2026 · Effective: 15 June 2026
           </p>
         </div>
       </section>
@@ -80,9 +80,9 @@ export default function RenewPlusTermsPage() {
             <h2 style={h2Style}>5. Subscriptions and Apple Billing</h2>
             <p>Renew+ offers three tiers:</p>
             <ul style={listStyle}>
-              <li><strong>Silver (Free):</strong> Core features — up to 3 goals, 10 recipes, 30 journal entries, 1 budget</li>
-              <li><strong>Gold:</strong> Expanded features — up to 15 goals, 100 recipes, unlimited journal entries, 5 budgets, AI tools, data export, recipe sharing</li>
-              <li><strong>Premium:</strong> Unlimited access to all features, advanced analytics, priority support</li>
+              <li><strong>Spark (Free):</strong> Core access with limits — for example, up to 2 active goals, 1 savings piggy bank, limited recipe access per category, and no AI features</li>
+              <li><strong>Rise:</strong> Expanded access — for example, up to 10 active goals, 3 savings piggy banks, 2 household members, full recipe access, finance partner linking, and AI tools (goal planning and recipe scanning) subject to monthly limits</li>
+              <li><strong>Thrive:</strong> Our highest tier — for example, up to 25 active goals, 10 savings piggy banks, up to 5 household members, the highest AI usage limits, advanced analytics, and priority support</li>
             </ul>
             <p>
               All paid subscriptions are sold and processed by Apple through the App Store under Apple&apos;s Media Services Terms and Conditions and the Apple Developer Program Paid Applications Agreement. Payment is charged to your Apple Account at confirmation of purchase. Subscriptions automatically renew at the then-current price unless auto-renew is turned off at least 24 hours before the end of the current period; your Apple Account is charged for renewal within 24 hours before the period ends. Current pricing is shown in-app at the time of purchase and may vary by region and over time. We do not collect or store your payment-card details — Apple handles all billing.
