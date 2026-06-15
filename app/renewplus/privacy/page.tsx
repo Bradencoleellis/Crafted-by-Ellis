@@ -28,7 +28,7 @@ export default function RenewPlusPrivacyPage() {
           <div style={contentStyle}>
 
             <p style={{ marginBottom: "32px" }}>
-              Renew+ (&ldquo;the App&rdquo;) is developed and operated by Braden Cole Ellis, a sole trader based in New Zealand (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). Renew+ is published under the &ldquo;Crafted by Ellis&rdquo; brand. This Privacy Policy explains what personal information we collect, how we use it, who we share it with, and your rights. We are the data controller for all personal information collected through the App.
+              Renew+ (&ldquo;the App&rdquo;) is developed and operated by Braden Cole Ellis, a sole trader based in New Zealand (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). This Privacy Policy explains what personal information we collect, how we use it, who we share it with, and your rights. We are the data controller for all personal information collected through the App.
             </p>
 
             <div style={calloutStyle}>

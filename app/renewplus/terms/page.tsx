@@ -28,7 +28,7 @@ export default function RenewPlusTermsPage() {
           <div style={contentStyle}>
 
             <p style={{ marginBottom: "32px" }}>
-              These Terms of Service (&ldquo;Terms&rdquo;) govern your use of Renew+ (&ldquo;the App&rdquo;), developed and operated by Braden Cole Ellis, a sole trader based in New Zealand (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). Renew+ is published under the &ldquo;Crafted by Ellis&rdquo; brand. By downloading, installing, or using the App, or by tapping &ldquo;Continue&rdquo; on the in-app consent screen, you agree to be bound by these Terms.
+              These Terms of Service (&ldquo;Terms&rdquo;) govern your use of Renew+ (&ldquo;the App&rdquo;), developed and operated by Braden Cole Ellis, a sole trader based in New Zealand (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). By downloading, installing, or using the App, or by tapping &ldquo;Continue&rdquo; on the in-app consent screen, you agree to be bound by these Terms.
             </p>
 
             <h2 style={h2Style}>1. Introduction and Acceptance</h2>
