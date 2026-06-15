@@ -32,7 +32,7 @@ export default function RenewPlusPrivacyPage() {
             </p>
 
             <div style={calloutStyle}>
-              <strong>Our global standard:</strong> We apply GDPR-grade protections to <strong>every</strong> user, wherever you live. That means a defined legal basis for each use of your data, the full set of data subject rights, clear retention limits, and transparency about every party we share data with. Some countries also give you specific local rights, listed in Section 9. We do not connect to bank accounts, process payments, or transfer funds. We do not sell your personal data. Ever.
+              <strong>Our standard:</strong> We apply a single, high privacy standard to every user across the countries where Renew+ is available. That means the same strong privacy rights, clear retention limits, and transparency about every party we share data with. Some countries also give you specific local rights, listed in Section 9. We do not connect to bank accounts, process payments, or transfer funds. We do not sell your personal data. Ever.
             </div>
 
             <h2 style={h2Style}>1. Information We Collect</h2>
@@ -77,26 +77,20 @@ export default function RenewPlusPrivacyPage() {
             </ul>
             <p>We do <strong>not</strong> use your data for targeted advertising, credit scoring, automated decision-making that produces legal or similarly significant effects, or sale to third parties.</p>
 
-            <h2 style={h2Style}>3. Legal Bases for Processing</h2>
-            <p>
-              We rely on the following legal bases under the UK and EU GDPR. We apply the same purpose-by-purpose discipline to all users globally, and — where a local law such as the EU/UK GDPR requires a defined basis — the basis below applies.
-            </p>
+            <h2 style={h2Style}>3. Why We Use Your Data</h2>
+            <p>We use your information to provide the App you signed up for and the features you choose to use:</p>
             <ul style={listStyle}>
-              <li><strong>Account creation, core App features, and data sync</strong> — performance of our contract with you (Art. 6(1)(b)).</li>
-              <li><strong>Tax and financial calculations</strong> — performance of our contract with you (Art. 6(1)(b)).</li>
-              <li><strong>AI features (goal planning, recipe scanning)</strong> — your consent, given by choosing to use the feature (Art. 6(1)(a)); you can simply not use these features.</li>
-              <li><strong>Sensitive data (allergies, mood, journal content)</strong> — your explicit consent (Art. 9(2)(a)), given by entering the information.</li>
-              <li><strong>Device permissions (calendar, Face ID, push, camera/photos)</strong> — your consent (Art. 6(1)(a)), revocable in iOS Settings.</li>
-              <li><strong>Aggregated, anonymised analytics to improve the App</strong> — our legitimate interests (Art. 6(1)(f)), balanced against your rights.</li>
-              <li><strong>Security, fraud prevention, and responding to support requests</strong> — our legitimate interests (Art. 6(1)(f)).</li>
-              <li><strong>Compliance with legal obligations</strong> — legal obligation (Art. 6(1)(c)).</li>
+              <li><strong>To run the App</strong> — creating your account, core features, data sync, and tax/financial calculations from the data you enter.</li>
+              <li><strong>With your consent</strong> — optional AI features (goal planning, recipe scanning) and any sensitive details you choose to enter (allergies, mood, journal content). You can simply not use these, and you can withdraw consent at any time.</li>
+              <li><strong>To keep the service running and safe</strong> — security, fraud prevention, responding to support, and improving the App using aggregated, anonymised usage data.</li>
+              <li><strong>To meet our legal obligations.</strong></li>
             </ul>
-            <p>Where we rely on consent, you may withdraw it at any time without affecting processing carried out before withdrawal.</p>
+            <p>Where we rely on your consent, you may withdraw it at any time without affecting anything we did before you withdrew it.</p>
 
             <h2 style={h2Style}>4. Who We Share Data With (Sub-processors)</h2>
             <p>We do not sell, rent, or trade your personal information. We share data only with the following service providers, who process it on our instructions:</p>
             <ul style={listStyle}>
-              <li><strong>Google Firebase</strong> (Firestore, Authentication, Storage), operated by Google LLC, United States — database, authentication, and file storage. Certified under the EU–US Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
+              <li><strong>Google Firebase</strong> (Firestore, Authentication, Storage), operated by Google LLC, United States — database, authentication, and file storage. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
               <li><strong>Anthropic, PBC</strong>, United States — powers AI features (goal planning, recipe scanning). Data you submit to an AI feature is sent to Anthropic only to generate your result. Anthropic processes it as our service provider and does not use it to train its models. <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
               <li><strong>Apple Inc.</strong> (StoreKit, App Store), United States — subscription management and payments. Apple processes your payment data as an independent controller under its own terms. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
             </ul>
@@ -107,12 +101,12 @@ export default function RenewPlusPrivacyPage() {
               We are based in New Zealand, and our service providers are located in the United States. This means your personal data is transferred to and processed in the United States and potentially other countries. The named transfers are:
             </p>
             <ul style={listStyle}>
-              <li><strong>Google LLC (Firebase) — United States.</strong> Safeguard: EU–US Data Privacy Framework certification and the European Commission&apos;s Standard Contractual Clauses.</li>
-              <li><strong>Anthropic, PBC — United States.</strong> Safeguard: Standard Contractual Clauses and a data processing agreement, for AI features only.</li>
-              <li><strong>Apple Inc. — United States.</strong> Safeguard: Apple&apos;s own compliance framework and Standard Contractual Clauses where applicable.</li>
+              <li><strong>Google LLC (Firebase) — United States.</strong> Safeguard: contractual data-protection commitments with Google.</li>
+              <li><strong>Anthropic, PBC — United States.</strong> Safeguard: a data processing agreement, for AI features only.</li>
+              <li><strong>Apple Inc. — United States.</strong> Safeguard: Apple&apos;s own compliance framework.</li>
             </ul>
             <p>
-              For UK/EU users, these Standard Contractual Clauses (and, where applicable, the UK Addendum) provide an approved transfer mechanism. For Australian users, we comply with the Australian Privacy Principles on cross-border disclosure. You may request a copy of the relevant safeguards by emailing <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a>.
+              For Australian users, we comply with the Australian Privacy Principles on cross-border disclosure. You may request more detail on these safeguards by emailing <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a>.
             </p>
 
             <h2 style={h2Style}>6. Data Retention</h2>
@@ -168,11 +162,6 @@ export default function RenewPlusPrivacyPage() {
               You have the right to access and correct your personal information and to complain about breaches of the Australian Privacy Principles. Unresolved complaints may be escalated to the <a href="https://www.oaic.gov.au" target="_blank" rel="noopener noreferrer" style={linkStyle}>Office of the Australian Information Commissioner (OAIC)</a>.
             </p>
 
-            <h3 style={h3Style}>United Kingdom / European Union — UK GDPR / EU GDPR</h3>
-            <p>
-              You have all the rights listed in the global baseline above, exercisable as data subject rights under the GDPR. You also have the right to lodge a complaint with the UK <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" style={linkStyle}>Information Commissioner&apos;s Office (ICO)</a> or your local EU supervisory authority. We respond to GDPR requests within one calendar month.
-            </p>
-
             <h3 style={h3Style}>United States — California (CCPA/CPRA)</h3>
             <p>California residents have the right to know what personal information we collect, request deletion and correction, and opt out of the &ldquo;sale&rdquo; or &ldquo;sharing&rdquo; of personal information — <strong>we do not sell or share personal information</strong>. Categories collected include: identifiers (email, display name), financial information (income, bills, bank account numbers), commercial information (subscription tier), internet/network activity (app usage), and inferences (preferences, settings).</p>
 
@@ -196,13 +185,12 @@ export default function RenewPlusPrivacyPage() {
             <ul style={listStyle}>
               <li><strong>New Zealand:</strong> As soon as practicable (Privacy Act 2020)</li>
               <li><strong>Australia:</strong> Within 30 days (Notifiable Data Breaches scheme)</li>
-              <li><strong>UK / EU:</strong> Within 72 hours (UK/EU GDPR)</li>
               <li><strong>Canada:</strong> As soon as feasible where real risk of significant harm exists (PIPEDA)</li>
             </ul>
 
             <h2 style={h2Style}>11. Children&apos;s Privacy</h2>
             <p>
-              Renew+ is not directed at children under 13. We do not knowingly collect personal information from children under 13. In some regions (for example, parts of the EU), a higher digital age of consent applies (up to 16); where it does, users below that age need verifiable parental consent. If you believe a child has created an account, contact us at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a> and we will delete the account promptly.
+              Renew+ is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has created an account, contact us at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a> and we will delete the account promptly.
             </p>
 
             <h2 style={h2Style}>12. Cookies and Tracking</h2>

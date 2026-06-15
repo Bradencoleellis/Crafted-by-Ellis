@@ -44,7 +44,7 @@ export default function RenewPlusTermsPage() {
               You must be at least <strong>13 years of age</strong> to use Renew+. By using the App, you represent that you meet this requirement. If you are between 13 and 18 (or the age of majority where you live), you represent that a parent or legal guardian has reviewed and agreed to these Terms on your behalf and supervises your use.
             </p>
             <p>
-              In some jurisdictions a higher minimum age applies to consent to the processing of personal data (for example, 16 in parts of the European Union). Where that is the case, you must meet the higher age, or have verifiable parental consent, before using the App. See the <Link href="/renewplus/privacy" style={linkStyle}>Privacy Policy</Link> for details on the digital age of consent.
+              In some jurisdictions a higher minimum age applies to consent to the processing of personal data. Where that is the case, you must meet the higher age, or have verifiable parental consent, before using the App. See the <Link href="/renewplus/privacy" style={linkStyle}>Privacy Policy</Link> for details.
             </p>
             <p>
               We do not knowingly collect personal information from children under 13. If we become aware that a user is under 13, we will delete their account and associated data.
@@ -55,7 +55,7 @@ export default function RenewPlusTermsPage() {
             <ul style={listStyle}>
               <li>Manual entry and tracking of income, bills, expenses, and bank account details</li>
               <li>Import of transaction data via CSV files</li>
-              <li>Tax and take-home pay calculations for New Zealand, Australia, United Kingdom, United States, Canada, India, and Singapore</li>
+              <li>Tax and take-home pay calculations for New Zealand, Australia, United States, Canada, India, and Singapore</li>
               <li>KiwiSaver and superannuation contribution tracking</li>
               <li>Savings goals and piggy bank tracking</li>
               <li>Meal planning, recipe management, and shopping lists</li>
@@ -217,10 +217,6 @@ export default function RenewPlusTermsPage() {
             <h3 style={h3Style}>Australia</h3>
             <p>
               Our services come with guarantees that cannot be excluded under the Australian Consumer Law. You are entitled to a replacement or refund for a major failure and compensation for other reasonably foreseeable loss or damage.
-            </p>
-            <h3 style={h3Style}>United Kingdom / European Union</h3>
-            <p>
-              Nothing in these Terms affects your statutory rights under applicable consumer protection legislation, including, in the UK, the Consumer Rights Act 2015.
             </p>
             <h3 style={h3Style}>United States (California)</h3>
             <p>
