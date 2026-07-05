@@ -166,7 +166,7 @@ export default function PrivacyPage() {
 const labelStyle: React.CSSProperties = {
   fontSize: "13px",
   fontWeight: 600,
-  color: "var(--color-accent)",
+  color: "var(--rust)",
   textTransform: "uppercase",
   letterSpacing: "0.1em",
   marginBottom: "12px",
@@ -199,6 +199,6 @@ const listStyle: React.CSSProperties = {
 };
 
 const linkStyle: React.CSSProperties = {
-  color: "var(--color-accent)",
+  color: "var(--rust)",
   textDecoration: "underline",
 };
