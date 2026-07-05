@@ -122,7 +122,7 @@ export default function Home() {
                 Games are coming.
               </h3>
               <p style={{ fontSize: "15px", color: "var(--color-text-secondary)", lineHeight: 1.65, maxWidth: "400px" }}>
-                Original games built with the same craft as the apps — designed thoughtfully, shipped when they're ready.
+                Original games built with the same craft as the apps — designed thoughtfully, shipped when they&apos;re ready.
               </p>
             </div>
             <Link href="/games" className="btn-secondary">Stay updated</Link>
@@ -138,7 +138,7 @@ export default function Home() {
             One person. Many <em>things</em>.
           </h2>
           <p style={{ fontSize: "17px", color: "var(--color-text-secondary)", lineHeight: 1.75, marginBottom: "36px" }}>
-            Crafted by Ellis is Braden Ellis — a developer and designer based in New Zealand. I build iOS apps and games that I'd actually want to use, and I ship them when they're worth shipping.
+            Crafted by Ellis is Braden Ellis — a developer and designer based in New Zealand. I build iOS apps and games that I&apos;d actually want to use, and I ship them when they&apos;re worth shipping.
           </p>
           <Link href="/about" className="btn-secondary">Read more</Link>
         </div>

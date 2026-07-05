@@ -60,9 +60,9 @@ export default function TermsPage() {
             <h2 style={h2Style}>4. Subscription Plans</h2>
             <p>Renew+ offers three subscription tiers:</p>
             <ul style={listStyle}>
-              <li><strong>Silver:</strong> Free tier with limited features</li>
-              <li><strong>Gold:</strong> Premium tier with expanded features (paid subscription)</li>
-              <li><strong>Platinum:</strong> Top tier with all features (paid subscription)</li>
+              <li><strong>Spark:</strong> Free tier with limited features</li>
+              <li><strong>Rise:</strong> Expanded tier with more features (paid subscription)</li>
+              <li><strong>Thrive:</strong> Top tier with all features (paid subscription)</li>
             </ul>
             <p>
               Subscriptions are processed through the Apple App Store. Pricing is shown in the app and may vary by region. Subscriptions auto-renew unless cancelled.
@@ -167,7 +167,7 @@ export default function TermsPage() {
 const labelStyle: React.CSSProperties = {
   fontSize: "13px",
   fontWeight: 600,
-  color: "var(--color-accent)",
+  color: "var(--rust)",
   textTransform: "uppercase",
   letterSpacing: "0.1em",
   marginBottom: "12px",
@@ -193,6 +193,6 @@ const listStyle: React.CSSProperties = {
 };
 
 const linkStyle: React.CSSProperties = {
-  color: "var(--color-accent)",
+  color: "var(--rust)",
   textDecoration: "underline",
 };

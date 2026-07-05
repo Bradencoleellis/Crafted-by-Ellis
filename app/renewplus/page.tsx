@@ -130,7 +130,7 @@ export default function RenewPlusPage() {
             <div className="label-chip">Pricing</div>
             <h2 style={sectionHeadingStyle}>Choose your plan</h2>
             <p style={sectionSubStyle}>
-              Start free with Silver. Upgrade anytime for more features.
+              Start free with Spark. Upgrade anytime for more features.
             </p>
           </div>
 
@@ -142,21 +142,20 @@ export default function RenewPlusPage() {
             margin: "0 auto",
           }}>
             <PricingCard
-              tier="Silver"
+              tier="Spark"
               price="Free"
               description="Get started with the essentials"
               features={[
                 "2 active goals",
-                "20 recipes",
-                "1 week meal planning",
-                "2 piggy banks",
+                "1 savings piggy bank",
+                "Limited recipe access per category",
                 "Unlimited journaling",
                 "Unlimited finance tracking",
                 "Unlimited shopping lists & pantry",
               ]}
             />
             <PricingCard
-              tier="Gold"
+              tier="Rise"
               price="$4.99"
               period="/ month"
               trial="1 month free trial"
@@ -164,35 +163,28 @@ export default function RenewPlusPage() {
               featured
               features={[
                 "10 active goals",
-                "100 recipes",
-                "4 weeks meal planning",
-                "5 piggy banks",
+                "3 savings piggy banks",
                 "2 household members",
-                "30 AI goal generations / month",
-                "30 AI recipe scans / month",
-                "20 receipt scans / month",
+                "Full recipe access",
+                "AI goal planning & recipe scanning (monthly limits)",
                 "Finance partner linking",
-                "Everything in Silver",
+                "Everything in Spark",
               ]}
             />
             <PricingCard
-              tier="Platinum"
+              tier="Thrive"
               price="$10.99"
               period="/ month"
               trial="1 month free trial"
               description="The complete experience"
               features={[
-                "Unlimited active goals",
-                "Unlimited recipes",
-                "Unlimited meal planning",
-                "Unlimited piggy banks",
+                "25 active goals",
+                "10 savings piggy banks",
                 "5 household members",
-                "100 AI goal generations / month",
-                "100 AI recipe scans / month",
-                "60 receipt scans / month",
+                "Highest AI usage limits",
+                "Advanced analytics",
                 "Priority support",
-                "Beta features & early access",
-                "Everything in Gold",
+                "Everything in Rise",
               ]}
             />
           </div>
@@ -207,7 +199,7 @@ export default function RenewPlusPage() {
             <h2 style={sectionHeadingStyle}>Common questions</h2>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            <FAQItem question="Is Renew+ free to use?" answer="Yes! Renew+ is free to download and use with the Silver tier. Gold and Platinum subscriptions are available for users who want to unlock more features." />
+            <FAQItem question="Is Renew+ free to use?" answer="Yes! Renew+ is free to download and use with the Spark tier. Rise and Thrive subscriptions are available for users who want to unlock more features." />
             <FAQItem question="What devices does Renew+ support?" answer="Renew+ is currently available on iOS (iPhone and iPad). An Android version may come in the future." />
             <FAQItem question="Is my data private and secure?" answer="Absolutely. Your data is encrypted and stored securely with Firebase. We never sell your data to third parties. See our Privacy Policy for full details." />
             <FAQItem question="Can I cancel my subscription anytime?" answer="Yes. You can cancel your subscription anytime through your Apple ID settings. You'll keep premium access until the end of your billing period." />
@@ -283,7 +275,7 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode; titl
         alignItems: "center",
         justifyContent: "center",
         marginBottom: "18px",
-        color: "var(--color-accent)",
+        color: "var(--rust)",
       }}>
         {icon}
       </div>
@@ -313,7 +305,7 @@ function PricingCard({ tier, price, period, trial, description, features, featur
           top: "-12px",
           left: "50%",
           transform: "translateX(-50%)",
-          background: "var(--color-accent)",
+          background: "var(--rust)",
           color: "#09090B",
           padding: "4px 14px",
           borderRadius: "var(--radius-full)",
@@ -328,7 +320,7 @@ function PricingCard({ tier, price, period, trial, description, features, featur
       )}
       <h3 style={{ fontSize: "18px", fontWeight: 700, marginBottom: "4px" }}>{tier}</h3>
       <div style={{ display: "flex", alignItems: "baseline", gap: "4px", marginBottom: "4px" }}>
-        <p style={{ fontSize: "28px", fontWeight: 800, color: "var(--color-accent)", letterSpacing: "-0.02em", margin: 0 }}>{price}</p>
+        <p style={{ fontSize: "28px", fontWeight: 800, color: "var(--rust)", letterSpacing: "-0.02em", margin: 0 }}>{price}</p>
         {period && <span style={{ fontSize: "13px", color: "var(--color-text-secondary)", fontWeight: 500 }}>{period}</span>}
       </div>
       {trial && <p style={{ fontSize: "11px", color: "var(--rust)", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", fontFamily: "var(--font-jetbrains-mono), monospace", marginBottom: "6px" }}>{trial}</p>}
@@ -346,7 +338,7 @@ function PricingCard({ tier, price, period, trial, description, features, featur
               justifyContent: "center",
               flexShrink: 0,
               fontSize: "10px",
-              color: "var(--color-accent)",
+              color: "var(--rust)",
               fontWeight: 700,
             }}>✓</span>
             {f}
@@ -370,7 +362,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         gap: "16px",
       }}>
         {question}
-        <span style={{ fontSize: "18px", color: "var(--color-accent)", flexShrink: 0 }}>+</span>
+        <span style={{ fontSize: "18px", color: "var(--rust)", flexShrink: 0 }}>+</span>
       </summary>
       <p style={{ fontSize: "14px", color: "var(--color-text-secondary)", lineHeight: 1.65, marginTop: "12px" }}>
         {answer}

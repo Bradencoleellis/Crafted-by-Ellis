@@ -66,7 +66,7 @@ export default function ContactPage() {
             {/* Name */}
             <div>
               <label htmlFor="name" style={labelFormStyle}>
-                Name <span style={{ color: "var(--color-accent)" }}>*</span>
+                Name <span style={{ color: "var(--rust)" }}>*</span>
               </label>
               <input
                 id="name"
@@ -82,7 +82,7 @@ export default function ContactPage() {
             {/* Email */}
             <div>
               <label htmlFor="email" style={labelFormStyle}>
-                Email <span style={{ color: "var(--color-accent)" }}>*</span>
+                Email <span style={{ color: "var(--rust)" }}>*</span>
               </label>
               <input
                 id="email"
@@ -118,7 +118,7 @@ export default function ContactPage() {
             {/* Message */}
             <div>
               <label htmlFor="message" style={labelFormStyle}>
-                Message <span style={{ color: "var(--color-accent)" }}>*</span>
+                Message <span style={{ color: "var(--rust)" }}>*</span>
               </label>
               <textarea
                 id="message"
@@ -187,7 +187,7 @@ export default function ContactPage() {
             style={{
               fontSize: "18px",
               fontWeight: 600,
-              color: "var(--color-accent)",
+              color: "var(--rust)",
             }}
           >
             braden@craftedbyellis.com
@@ -208,7 +208,7 @@ export default function ContactPage() {
 const labelStyle: React.CSSProperties = {
   fontSize: "13px",
   fontWeight: 600,
-  color: "var(--color-accent)",
+  color: "var(--rust)",
   textTransform: "uppercase",
   letterSpacing: "0.1em",
   marginBottom: "12px",
