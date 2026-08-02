@@ -73,27 +73,27 @@ export default function RenewPlusTermsPage() {
             <ul style={listStyle}>
               <li>Provide accurate and complete registration information</li>
               <li>Keep your login credentials confidential</li>
-              <li>Notify us immediately at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a> if you suspect unauthorised access</li>
+              <li>Notify us immediately at <a href="mailto:RenewPlus@craftedbyellis.com" style={linkStyle}>RenewPlus@craftedbyellis.com</a> if you suspect unauthorised access</li>
               <li>Accept responsibility for all activity that occurs under your account</li>
             </ul>
 
             <h2 style={h2Style}>5. Subscriptions and Apple Billing</h2>
             <p>Renew+ offers three tiers:</p>
             <ul style={listStyle}>
-              <li><strong>Spark (Free):</strong> Core access with limits — for example, up to 2 active goals, 1 savings piggy bank, limited recipe access per category, and no AI features</li>
-              <li><strong>Rise:</strong> Expanded access — for example, up to 10 active goals, 3 savings piggy banks, 2 household members, full recipe access, finance partner linking, and AI tools (goal planning and recipe scanning) subject to monthly limits</li>
-              <li><strong>Thrive:</strong> Our highest tier — for example, up to 25 active goals, 10 savings piggy banks, up to 5 household members, the highest AI usage limits, advanced analytics, and priority support</li>
+              <li><strong>Spark (Free):</strong> Core access with limits. For example, up to 2 active goals, 1 savings piggy bank, limited recipe access per category, and no AI features</li>
+              <li><strong>Rise:</strong> Expanded access. For example, up to 10 active goals, 3 savings piggy banks, 2 household members, full recipe access, finance partner linking, and AI tools (goal planning and recipe scanning) subject to monthly limits</li>
+              <li><strong>Thrive:</strong> Our highest tier. For example, up to 25 active goals, 10 savings piggy banks, up to 5 household members, the highest AI usage limits, advanced analytics, and priority support</li>
             </ul>
             <p>
-              All paid subscriptions are sold and processed by Apple through the App Store under Apple&apos;s Media Services Terms and Conditions and the Apple Developer Program Paid Applications Agreement. Payment is charged to your Apple Account at confirmation of purchase. Subscriptions automatically renew at the then-current price unless auto-renew is turned off at least 24 hours before the end of the current period; your Apple Account is charged for renewal within 24 hours before the period ends. Current pricing is shown in-app at the time of purchase and may vary by region and over time. We do not collect or store your payment-card details — Apple handles all billing.
+              All paid subscriptions are sold and processed by Apple through the App Store under Apple&apos;s Media Services Terms and Conditions and the Apple Developer Program Paid Applications Agreement. Payment is charged to your Apple Account at confirmation of purchase. Subscriptions automatically renew at the then-current price unless auto-renew is turned off at least 24 hours before the end of the current period. Your Apple Account is charged for renewal within 24 hours before the period ends. Current pricing is shown in-app at the time of purchase and may vary by region and over time. We do not collect or store your payment-card details. Apple handles all billing.
             </p>
 
             <h2 style={h2Style}>6. Billing, Refunds and Cancellation</h2>
             <p>
-              Because billing is handled by Apple, refunds are issued by Apple in accordance with Apple&apos;s Media Services Terms and applicable law — we cannot directly access your payment method or grant refunds. To request a refund, use Apple&apos;s process at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer" style={linkStyle}>reportaproblem.apple.com</a>.
+              Because billing is handled by Apple, refunds are issued by Apple in accordance with Apple&apos;s Media Services Terms and applicable law. We cannot directly access your payment method or grant refunds. To request a refund, use Apple&apos;s process at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer" style={linkStyle}>reportaproblem.apple.com</a>.
             </p>
             <p>
-              You can manage or cancel your subscription at any time in your Apple Account settings (Settings → [your name] → Subscriptions). If you cancel, you retain access to paid features until the end of your current billing period; partial periods are not refunded except where required by law. Deleting the App does not cancel a subscription.
+              You can manage or cancel your subscription at any time in your Apple Account settings (Settings → [your name] → Subscriptions). If you cancel, you retain access to paid features until the end of your current billing period. Partial periods are not refunded except where required by law. Deleting the App does not cancel a subscription.
             </p>
             <p>
               Nothing in this section limits any non-excludable refund or remedy you may have under consumer law (see Section 15).
@@ -113,13 +113,13 @@ export default function RenewPlusTermsPage() {
 
             <h2 style={h2Style}>8. Your Content</h2>
             <p>
-              You retain ownership of all content you create in Renew+ — financial records, goals, journal entries, meal plans, recipes, and all other personal data. By using the App, you grant us a limited, non-exclusive, royalty-free licence to store and process your content solely to provide the service to you. We do not claim ownership of your data and will not use it for advertising or sell it to third parties.
+              You retain ownership of all content you create in Renew+, including financial records, goals, journal entries, meal plans, recipes, and all other personal data. By using the App, you grant us a limited, non-exclusive, royalty-free licence to store and process your content solely to provide the service to you. We do not claim ownership of your data and will not use it for advertising or sell it to third parties.
             </p>
             <p>
-              You are solely responsible for the accuracy of data you enter, including bank account numbers and CSV-imported transactions. Bank account numbers you enter are stored solely to help you identify your own accounts within the App — we do not access, verify, or interact with those accounts in any way.
+              You are solely responsible for the accuracy of data you enter, including bank account numbers and CSV-imported transactions. Bank account numbers you enter are stored solely to help you identify your own accounts within the App. We do not access, verify, or interact with those accounts in any way.
             </p>
 
-            <h2 style={h2Style}>9. Disclaimers — Not Financial, Tax, or Medical Advice</h2>
+            <h2 style={h2Style}>9. Disclaimers: Not Financial, Tax, or Medical Advice</h2>
             <h3 style={h3Style}>Financial, tax, and KiwiSaver calculations</h3>
             <p>
               Tax calculations, KiwiSaver and superannuation projections, and take-home pay estimates are based on publicly available government rate information. These calculations are <strong>estimates only</strong> and:
@@ -131,14 +131,14 @@ export default function RenewPlusTermsPage() {
               <li>May not reflect the most recent legislative changes</li>
             </ul>
             <p>
-              <strong>Renew+ is not a registered financial adviser and does not provide financial advice within the meaning of the Financial Markets Conduct Act 2013 (NZ) or equivalent law in your country.</strong> Nothing in the App constitutes financial, investment, tax, or legal advice. Decisions you make about your money are your own; consult a licensed professional before acting.
+              <strong>Renew+ is not a registered financial adviser and does not provide financial advice within the meaning of the Financial Markets Conduct Act 2013 (NZ) or equivalent law in your country.</strong> Nothing in the App constitutes financial, investment, tax, or legal advice. Decisions you make about your money are your own. Consult a licensed professional before acting.
             </p>
             <h3 style={h3Style}>Health, nutrition, and wellness features</h3>
             <p>
               The meal planning, recipe, shopping list, mood, journal, and goal features are provided for general lifestyle and organisational purposes only. They are <strong>not medical, nutritional, dietetic, psychological, or other professional health advice</strong>, and are not intended to diagnose, treat, cure, or prevent any condition.
             </p>
             <ul style={listStyle}>
-              <li>Allergy and dietary tags are organisational labels you set — they are <strong>not</strong> a safety system. Always read product labels and verify ingredients yourself; do not rely on the App to keep you or others safe from allergens or intolerances.</li>
+              <li>Allergy and dietary tags are organisational labels you set. They are <strong>not</strong> a safety system. Always read product labels and verify ingredients yourself. Do not rely on the App to keep you or others safe from allergens or intolerances.</li>
               <li>Nutritional or calorie figures, where shown, are estimates and may be inaccurate.</li>
               <li>Mood and journal entries are personal records, not a clinical or mental-health service. If you are in distress or crisis, contact a qualified professional or your local emergency service.</li>
             </ul>
@@ -158,19 +158,19 @@ export default function RenewPlusTermsPage() {
 
             <h2 style={h2Style}>12. Intellectual Property</h2>
             <p>
-              All rights to Renew+ — including the App software, design, branding, and original content — belong to Braden Cole Ellis or his licensors. The App uses the following third-party components:
+              All rights to Renew+, including the App software, design, branding, and original content, belong to Braden Cole Ellis or his licensors. The App uses the following third-party components:
             </p>
             <ul style={listStyle}>
-              <li><strong>Firebase</strong> (Google LLC) — authentication, database, and cloud storage</li>
-              <li><strong>Lordicon</strong> — animated icons used under a commercial Pro licence. Lordicon icons are the intellectual property of Lordicon.com</li>
-              <li><strong>Apple StoreKit</strong> — in-app purchase processing</li>
-              <li><strong>Anthropic Claude</strong> — AI features</li>
+              <li><strong>Firebase</strong> (Google LLC): authentication, database, and cloud storage</li>
+              <li><strong>Lordicon</strong>: animated icons used under a commercial Pro licence. Lordicon icons are the intellectual property of Lordicon.com</li>
+              <li><strong>Apple StoreKit</strong>: in-app purchase processing</li>
+              <li><strong>Anthropic Claude</strong>: AI features</li>
             </ul>
             <p>
               You are granted a limited, personal, non-transferable licence to use the App on Apple-branded devices that you own or control, as permitted by the Usage Rules in Apple&apos;s Media Services Terms. You may not copy, modify, or distribute any part of the App without permission.
             </p>
 
-            <h2 style={h2Style}>13. Apple App Store — Licensed Application Terms</h2>
+            <h2 style={h2Style}>13. Apple App Store: Licensed Application Terms</h2>
             <p>
               The following terms apply because you obtained the App from the Apple App Store. They supplement, and where required prevail over, the rest of these Terms.
             </p>
@@ -182,7 +182,7 @@ export default function RenewPlusTermsPage() {
               <li><strong>Product claims.</strong> Braden Cole Ellis, not Apple, is responsible for addressing any claims by you or any third party relating to the App or your possession and/or use of the App, including: (i) product liability claims; (ii) any claim that the App fails to conform to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.</li>
               <li><strong>Intellectual property.</strong> In the event of any third-party claim that the App or your possession and use of the App infringes that third party&apos;s intellectual property rights, Braden Cole Ellis, not Apple, will be solely responsible for the investigation, defence, settlement, and discharge of any such intellectual property infringement claim.</li>
               <li><strong>Legal compliance.</strong> You represent and warrant that you are not located in a country subject to a U.S. Government embargo, or designated by the U.S. Government as a &ldquo;terrorist supporting&rdquo; country, and that you are not listed on any U.S. Government list of prohibited or restricted parties.</li>
-              <li><strong>Developer contact.</strong> Questions, complaints, or claims about the App should be directed to Braden Cole Ellis at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a>, New Zealand.</li>
+              <li><strong>Developer contact.</strong> Questions, complaints, or claims about the App should be directed to Braden Cole Ellis at <a href="mailto:RenewPlus@craftedbyellis.com" style={linkStyle}>RenewPlus@craftedbyellis.com</a>, New Zealand.</li>
               <li><strong>Third-party terms.</strong> You must comply with applicable third-party terms of agreement when using the App.</li>
               <li><strong>Third-party beneficiary.</strong> You acknowledge and agree that Apple, and Apple&apos;s subsidiaries, are third-party beneficiaries of these Terms, and that, upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary.</li>
             </ul>
@@ -225,20 +225,20 @@ export default function RenewPlusTermsPage() {
 
             <h2 style={h2Style}>19. Governing Law and Disputes</h2>
             <p>
-              These Terms are governed by the laws of New Zealand, without regard to conflict-of-laws rules. Any disputes will be subject to the non-exclusive jurisdiction of the New Zealand courts. This choice of law and jurisdiction does not deprive you of the protection of any mandatory consumer law of the country in which you are habitually resident, and does not override Section 15. Please contact us at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a> before commencing any legal proceeding — most issues can be resolved quickly and informally.
+              These Terms are governed by the laws of New Zealand, without regard to conflict-of-laws rules. Any disputes will be subject to the non-exclusive jurisdiction of the New Zealand courts. This choice of law and jurisdiction does not deprive you of the protection of any mandatory consumer law of the country in which you are habitually resident, and does not override Section 15. Please contact us at <a href="mailto:RenewPlus@craftedbyellis.com" style={linkStyle}>RenewPlus@craftedbyellis.com</a> before commencing any legal proceeding. Most issues can be resolved quickly and informally.
             </p>
 
             <h2 style={h2Style}>20. Contact</h2>
             <p style={{ marginTop: "12px" }}>
               <strong>Braden Cole Ellis (Crafted by Ellis)</strong><br />
-              General: <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a><br />
-              Privacy: <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a><br />
+              General: <a href="mailto:RenewPlus@craftedbyellis.com" style={linkStyle}>RenewPlus@craftedbyellis.com</a><br />
+              Privacy: <a href="mailto:RenewPlus@craftedbyellis.com" style={linkStyle}>RenewPlus@craftedbyellis.com</a><br />
               Location: New Zealand
             </p>
 
             <div style={{ marginTop: "48px", padding: "24px", background: "var(--color-background-secondary)", borderRadius: "var(--radius-lg)", border: "1px solid var(--color-border)" }}>
               <p style={{ margin: 0, fontSize: "14px", color: "var(--color-text-secondary)" }}>
-                <strong>Plain English:</strong> Renew+ helps you track your own money — we never touch it. Apple handles billing and refunds. Tax figures and meal/wellness features are estimates and organisational tools, not professional advice — we&apos;re not a financial adviser, accountant, doctor, or dietitian. Your consumer rights under NZ law (and your local law) still apply no matter what these Terms say.
+                <strong>Plain English:</strong> Renew+ helps you track your own money. We never touch it. Apple handles billing and refunds. Tax figures and meal/wellness features are estimates and organisational tools, not professional advice. We&apos;re not a financial adviser, accountant, doctor, or dietitian. Your consumer rights under NZ law (and your local law) still apply no matter what these Terms say.
               </p>
             </div>
 
