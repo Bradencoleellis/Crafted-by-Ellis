@@ -28,7 +28,7 @@ export default function RenewPlusTermsPage() {
           <div style={contentStyle}>
 
             <p style={{ marginBottom: "32px" }}>
-              These Terms of Service (&ldquo;Terms&rdquo;) govern your use of Renew+ (&ldquo;the App&rdquo;), developed and operated by Braden Cole Ellis, a sole trader based in New Zealand (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). By downloading, installing, or using the App, or by tapping &ldquo;Continue&rdquo; on the in-app consent screen, you agree to be bound by these Terms.
+              These Terms of Service (&quot;Terms&quot;) govern your use of Renew+ (&quot;the App&quot;), developed and operated by Braden Cole Ellis, a sole trader based in New Zealand (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;). By downloading, installing, or using the App, or by tapping &quot;Continue&quot; on the in-app consent screen, you agree to be bound by these Terms.
             </p>
 
             <h2 style={h2Style}>1. Introduction and Acceptance</h2>
@@ -36,7 +36,7 @@ export default function RenewPlusTermsPage() {
               These Terms constitute a legally binding agreement between you and Braden Cole Ellis. If you do not agree, do not use the App. We recommend you save a copy for your records.
             </p>
             <p>
-              The App is a &ldquo;Licensed Application&rdquo; provided through the Apple App Store. These Terms are the end user licence agreement (EULA) for the App. Where these Terms are less restrictive than, or conflict with, Apple&apos;s applicable Media Services Terms and Conditions, Apple&apos;s terms govern to the extent of the conflict. Section 13 sets out additional terms required by Apple.
+              The App is a &quot;Licensed Application&quot; provided through the Apple App Store. These Terms are the end user licence agreement (EULA) for the App. Where these Terms are less restrictive than, or conflict with, Apple&apos;s applicable Media Services Terms and Conditions, Apple&apos;s terms govern to the extent of the conflict. Section 13 sets out additional terms required by Apple.
             </p>
 
             <h2 style={h2Style}>2. Eligibility and Minimum Age</h2>
@@ -181,7 +181,7 @@ export default function RenewPlusTermsPage() {
               <li><strong>Warranty.</strong> Braden Cole Ellis is solely responsible for any product warranties, whether express or implied by law, to the extent not effectively disclaimed. If the App fails to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price (if any) for the App to you; to the maximum extent permitted by applicable law, Apple has no other warranty obligation whatsoever with respect to the App.</li>
               <li><strong>Product claims.</strong> Braden Cole Ellis, not Apple, is responsible for addressing any claims by you or any third party relating to the App or your possession and/or use of the App, including: (i) product liability claims; (ii) any claim that the App fails to conform to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.</li>
               <li><strong>Intellectual property.</strong> In the event of any third-party claim that the App or your possession and use of the App infringes that third party&apos;s intellectual property rights, Braden Cole Ellis, not Apple, will be solely responsible for the investigation, defence, settlement, and discharge of any such intellectual property infringement claim.</li>
-              <li><strong>Legal compliance.</strong> You represent and warrant that you are not located in a country subject to a U.S. Government embargo, or designated by the U.S. Government as a &ldquo;terrorist supporting&rdquo; country, and that you are not listed on any U.S. Government list of prohibited or restricted parties.</li>
+              <li><strong>Legal compliance.</strong> You represent and warrant that you are not located in a country subject to a U.S. Government embargo, or designated by the U.S. Government as a &quot;terrorist supporting&quot; country, and that you are not listed on any U.S. Government list of prohibited or restricted parties.</li>
               <li><strong>Developer contact.</strong> Questions, complaints, or claims about the App should be directed to Braden Cole Ellis at <a href="mailto:RenewPlus@craftedbyellis.com" style={linkStyle}>RenewPlus@craftedbyellis.com</a>, New Zealand.</li>
               <li><strong>Third-party terms.</strong> You must comply with applicable third-party terms of agreement when using the App.</li>
               <li><strong>Third-party beneficiary.</strong> You acknowledge and agree that Apple, and Apple&apos;s subsidiaries, are third-party beneficiaries of these Terms, and that, upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary.</li>
@@ -189,12 +189,12 @@ export default function RenewPlusTermsPage() {
 
             <h2 style={h2Style}>14. Disclaimers and Limitation of Liability</h2>
             <p>
-              Renew+ is provided &ldquo;as is&rdquo; without warranties of any kind, except those that cannot be excluded by law. To the maximum extent permitted by law, Braden Cole Ellis is not liable for indirect, incidental, or consequential damages arising from your use of Renew+. Subject to Section 15, our total aggregate liability is limited to the greater of the amount you paid us (or Apple for the App on our behalf) in the 12 months before the claim, or NZ$50.
+              Renew+ is provided &quot;as is&quot; without warranties of any kind, except those that cannot be excluded by law. To the maximum extent permitted by law, Braden Cole Ellis is not liable for indirect, incidental, or consequential damages arising from your use of Renew+. Subject to Section 15, our total aggregate liability is limited to the greater of the amount you paid us (or Apple for the App on our behalf) in the 12 months before the claim, or NZ$50.
             </p>
 
             <h2 style={h2Style}>15. Consumer Guarantees and Mandatory Rights</h2>
             <p>
-              Nothing in these Terms excludes, restricts, or modifies any consumer guarantee, right, or remedy that you have under applicable law and that cannot lawfully be excluded, restricted, or modified (your &ldquo;non-excludable rights&rdquo;). Where any provision of these Terms would otherwise do so, that provision applies only to the extent it does not affect your non-excludable rights.
+              Nothing in these Terms excludes, restricts, or modifies any consumer guarantee, right, or remedy that you have under applicable law and that cannot lawfully be excluded, restricted, or modified (your &quot;non-excludable rights&quot;). Where any provision of these Terms would otherwise do so, that provision applies only to the extent it does not affect your non-excludable rights.
             </p>
             <p>
               For consumers in <strong>New Zealand</strong>, our supply of the App and services comes with guarantees under the <strong>Consumer Guarantees Act 1993</strong>, and you are protected by the <strong>Fair Trading Act 1986</strong>. Where you acquire the App for personal, domestic, or household use, these guarantees cannot be contracted out of, and any limitation of liability in these Terms is subject to them. Where you acquire the App for the purposes of a business, you agree that the Consumer Guarantees Act does not apply to the extent permitted by section 43.

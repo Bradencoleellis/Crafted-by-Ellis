@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Games · Crafted by Ellis",
-  description: "Original games from Crafted by Ellis — coming soon.",
+  description: "Original games from Crafted by Ellis. Coming soon.",
 };
 
 export default function GamesPage() {
@@ -42,7 +42,7 @@ export default function GamesPage() {
               In development
             </h2>
             <p style={{ fontSize: "16px", color: "var(--color-text-secondary)", lineHeight: 1.7, maxWidth: "400px", margin: "0 auto 36px" }}>
-              The first game is being built right now. No launch date yet — it ships when it&apos;s ready.
+              The first game is being built right now. No launch date yet. It ships when it&apos;s ready.
             </p>
             <Link href="/contact" className="btn-primary">Get notified</Link>
           </div>

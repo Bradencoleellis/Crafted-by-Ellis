@@ -44,9 +44,48 @@
   --space-lg: 16px;  --space-xl: 24px; --space-2xl: 32px;
   --space-3xl: 48px; --space-4xl: 64px; --space-5xl: 96px;
 
-  /* ── Radius ── */
-  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 14px;
-  --radius-xl: 20px; --radius-full: 9999px;
+  /* ── Radius ──
+     Tied to element size, per App Surface Standards 2026 §2.2. Nesting rule:
+     inner radius = outer radius minus padding. Reusing a parent's radius on a
+     nested child breaks concentricity and leaves dead space at each corner. */
+  --radius-xs: 6px;    /* chips, badges, tags */
+  --radius-sm: 10px;   /* inputs, small buttons */
+  --radius-md: 16px;   /* cards, list rows */
+  --radius-lg: 26px;   /* sheets, modals, hero panels */
+  --radius-full: 9999px;
+
+  /* ── Elevation (§2.3) ──
+     A hairline border plus a long, very soft, low-opacity shadow. Hard tight
+     shadows were Material 2's depth cue and date a surface instantly. On this
+     dark ground the shadow is nearly invisible, so the hairline is what stops
+     cards dissolving into the background: always ship both together. */
+  --elev-1: 0 1px 2px rgba(0,0,0,.50), 0 8px 24px -12px rgba(0,0,0,.50);
+  --elev-2: 0 2px 4px rgba(0,0,0,.55), 0 16px 40px -16px rgba(0,0,0,.55);
+
+  /* ── Motion (§4.1) ──
+     A spring curve, not an ease. Springs carry velocity through a retarget, so
+     a pointer that enters, leaves and re-enters never shows a discontinuity.
+     Budget: 200-300ms for state changes, 400-500ms for spatial transitions. */
+  --spring: linear(0, .009, .148, .554, 1.106, .994, 1);
+  --dur-state: 260ms;
+  --dur-spatial: 440ms;
+
+  /* ── Type scale (§3) ──
+     Six steps, ~1.25 ratio. The part that does the work is tracking: it
+     tightens as size grows and loosens as it shrinks. Uniform tracking across a
+     scale is what makes type look untouched. */
+  --type-display-size: clamp(40px, 6vw, 64px);
+  --type-display-lh: 1.00;  --type-display-track: -0.025em;  --type-display-weight: 600;
+  --type-title-size: clamp(26px, 4vw, 40px);
+  --type-title-lh: 1.15;    --type-title-track: -0.015em;    --type-title-weight: 620;
+  --type-head-size: 19px;
+  --type-head-lh: 1.35;     --type-head-track: -0.005em;     --type-head-weight: 600;
+  --type-body-size: 16px;
+  --type-body-lh: 1.60;     --type-body-track: 0;            --type-body-weight: 400;
+  --type-label-size: 13px;
+  --type-label-lh: 1.45;    --type-label-track: 0.01em;      --type-label-weight: 400;
+  --type-micro-size: 11px;
+  --type-micro-lh: 1.40;    --type-micro-track: 0.08em;      --type-micro-weight: 500;
 }
 
 @theme inline {
@@ -80,25 +119,35 @@ a { color: inherit; text-decoration: none; }
   background: var(--rust);
   color: var(--paper);
   padding: 11px 22px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  /* Explicit properties, not `all`: transitioning `all` animates layout
+     properties too and makes hover cost a paint it does not need. */
+  transition: background var(--dur-state) var(--spring),
+              box-shadow var(--dur-state) var(--spring),
+              transform var(--dur-state) var(--spring);
   border: none;
   min-height: 42px;
   letter-spacing: 0.01em;
-  box-shadow: 0 0 0 0 var(--rust-glow);
+  box-shadow: var(--elev-1);
 }
 .btn-primary:hover {
   background: var(--rust-hover);
-  box-shadow: 0 0 20px var(--rust-glow);
+  box-shadow: var(--elev-2);
   transform: translateY(-1px);
 }
 .btn-primary:active {
   background: var(--rust-pressed);
-  transform: translateY(0);
-  box-shadow: none;
+  transform: scale(.97);
+  box-shadow: var(--elev-1);
+}
+/* Keyboard focus was invisible on every control. focus-visible only fires for
+   keyboard and assistive input, so pointer users never see the ring. */
+.btn-primary:focus-visible {
+  outline: 2px solid var(--rust-hover);
+  outline-offset: 3px;
 }
 
 .btn-secondary {
@@ -108,11 +157,13 @@ a { color: inherit; text-decoration: none; }
   background: var(--color-surface);
   color: var(--color-text-primary);
   padding: 11px 22px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   font-weight: 500;
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background var(--dur-state) var(--spring),
+              border-color var(--dur-state) var(--spring),
+              transform var(--dur-state) var(--spring);
   border: 1px solid var(--color-border);
   min-height: 42px;
   backdrop-filter: blur(8px);
@@ -120,6 +171,12 @@ a { color: inherit; text-decoration: none; }
 .btn-secondary:hover {
   background: var(--color-surface-hover);
   border-color: var(--color-border-strong);
+}
+/* The secondary button had no pressed state at all, so a tap gave no feedback. */
+.btn-secondary:active { transform: scale(.97); }
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--rust-hover);
+  outline-offset: 3px;
 }
 
 /* ── Layout ── */
@@ -137,12 +194,18 @@ a { color: inherit; text-decoration: none; }
 .glass-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  border-radius: var(--radius-md);
+  /* Shadow at REST, not only on hover. A card with no elevation until you
+     touch it reads as flat, and on this dark ground the shadow is nearly
+     invisible anyway: the hairline is what gives it an edge. */
+  box-shadow: var(--elev-1);
+  transition: border-color var(--dur-state) var(--spring),
+              box-shadow var(--dur-state) var(--spring),
+              background var(--dur-state) var(--spring);
 }
 .glass-card:hover {
   border-color: var(--rust-border);
-  box-shadow: 0 0 28px rgba(154, 74, 42, 0.1), inset 0 1px 0 rgba(246,242,234,0.05);
+  box-shadow: var(--elev-2), inset 0 1px 0 rgba(246,242,234,0.05);
   background: var(--color-surface-hover);
 }
 
@@ -199,4 +262,33 @@ a { color: inherit; text-decoration: none; }
   font-style: italic;
   color: var(--rust);
   font-weight: 360;
+}
+
+/* ── Focus, everywhere else ──
+   Anything focusable that is not one of the button classes above still needs a
+   visible ring. Without this, keyboard navigation is invisible on this site. */
+/* Universal rather than a list of tags: the FAQ accordions are <summary>
+   elements, which an element list misses, and they then fall back to the
+   browser's own ring in a colour that has nothing to do with this palette. */
+:focus-visible {
+  outline: 2px solid var(--rust-hover);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* ── Reduced motion ──
+   The drifting background orbs run continuously. For anyone with a vestibular
+   disorder that is not decoration, it is a symptom trigger, and the site
+   previously offered no way out. Honour the OS setting: hold the orbs still,
+   collapse transitions to a blink, and stop smooth scrolling. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

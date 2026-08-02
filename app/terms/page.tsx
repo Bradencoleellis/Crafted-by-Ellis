@@ -35,7 +35,7 @@ export default function TermsPage() {
         <div className="container-page" style={{ maxWidth: "800px" }}>
           <div style={contentStyle}>
             <p style={{ marginBottom: "32px" }}>
-              Welcome to Crafted by Ellis. These Terms of Service (&ldquo;Terms&rdquo;) govern your use of our website (craftedbyellis.com) and our applications, including Renew+ (collectively, the &ldquo;Service&rdquo;). By using our Service, you agree to these Terms.
+              Welcome to Crafted by Ellis. These Terms of Service (&quot;Terms&quot;) govern your use of our website (craftedbyellis.com) and our applications, including Renew+ (collectively, the &quot;Service&quot;). By using our Service, you agree to these Terms.
             </p>
 
             <h2 style={h2Style}>1. Acceptance of Terms</h2>
@@ -95,7 +95,7 @@ export default function TermsPage() {
 
             <h2 style={h2Style}>8. Intellectual Property</h2>
             <p>
-              All rights, title, and interest in the Service (including software, designs, logos, and the &ldquo;Crafted by Ellis&rdquo; and &ldquo;Renew+&rdquo; brands) are owned by Crafted by Ellis. You may not copy, modify, or distribute our IP without permission.
+              All rights, title, and interest in the Service (including software, designs, logos, and the &quot;Crafted by Ellis&quot; and &quot;Renew+&quot; brands) are owned by Crafted by Ellis. You may not copy, modify, or distribute our IP without permission.
             </p>
 
             <h2 style={h2Style}>9. AI Features</h2>
@@ -110,7 +110,7 @@ export default function TermsPage() {
 
             <h2 style={h2Style}>11. Disclaimers</h2>
             <p>
-              The Service is provided &ldquo;as is&rdquo; without warranties of any kind. We make no guarantees about results from using Renew+ (e.g., achieving goals, financial outcomes).
+              The Service is provided &quot;as is&quot; without warranties of any kind. We make no guarantees about results from using Renew+ (e.g., achieving goals, financial outcomes).
             </p>
             <p>
               <strong>Renew+ is not a substitute for professional advice.</strong> It is a personal tool. Consult a financial advisor for financial decisions, a healthcare professional for health matters, and a tax professional for tax advice. The tax calculations in the app are estimates only.
@@ -154,7 +154,7 @@ export default function TermsPage() {
               border: "1px solid var(--color-border)",
             }}>
               <p style={{ margin: 0, fontSize: "14px", color: "var(--color-text-secondary)" }}>
-                <strong>Plain English:</strong> Be cool, don&apos;t abuse the service, pay for what you subscribe to, and we&apos;ll do our best to provide a great product. We&apos;re not lawyers or financial advisors—use the app as a tool, not a replacement for professional advice.
+                <strong>Plain English:</strong> Be cool, don&apos;t abuse the service, pay for what you subscribe to, and we&apos;ll do our best to provide a great product. We&apos;re not lawyers or financial advisors. Use the app as a tool, not a replacement for professional advice.
               </p>
             </div>
           </div>

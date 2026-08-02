@@ -74,7 +74,7 @@ export default function Home() {
               </div>
               <h3 style={{ fontSize: "20px", fontWeight: 700, marginBottom: "10px", letterSpacing: "-0.02em" }}>Renew+</h3>
               <p style={{ fontSize: "14px", color: "var(--color-text-secondary)", lineHeight: 1.65, marginBottom: "24px" }}>
-                Goal tracking, journaling, meal planning, and finance — your premium lifestyle companion.
+                Goal tracking, journaling, meal planning, and finance. Your premium lifestyle companion.
               </p>
               <span style={{ fontSize: "13px", fontWeight: 600, color: "var(--rust)", display: "inline-flex", alignItems: "center", gap: "5px" }}>
                 Learn more <ArrowRight />
@@ -122,7 +122,7 @@ export default function Home() {
                 Games are coming.
               </h3>
               <p style={{ fontSize: "15px", color: "var(--color-text-secondary)", lineHeight: 1.65, maxWidth: "400px" }}>
-                Original games built with the same craft as the apps — designed thoughtfully, shipped when they're ready.
+                Original games built with the same craft as the apps. Designed thoughtfully, shipped when they're ready.
               </p>
             </div>
             <Link href="/games" className="btn-secondary">Stay updated</Link>
@@ -138,7 +138,7 @@ export default function Home() {
             One person. Many <em>things</em>.
           </h2>
           <p style={{ fontSize: "17px", color: "var(--color-text-secondary)", lineHeight: 1.75, marginBottom: "36px" }}>
-            Crafted by Ellis is Braden Ellis — a developer and designer based in New Zealand. I build iOS apps and games that I'd actually want to use, and I ship them when they're worth shipping.
+            Crafted by Ellis is Braden Ellis, a developer and designer based in New Zealand. I build iOS apps and games that I'd actually want to use, and I ship them when they're worth shipping.
           </p>
           <Link href="/about" className="btn-secondary">Read more</Link>
         </div>

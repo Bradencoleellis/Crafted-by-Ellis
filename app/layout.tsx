@@ -30,7 +30,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
   title: "Crafted by Ellis | Premium Digital Experiences",
-  description: "Thoughtfully designed apps and games. Home of Renew+ — your lifestyle app for goals, journaling, and intentional living.",
+  description: "Thoughtfully designed apps and games. Home of Renew+, your lifestyle app for goals, journaling, and intentional living.",
   keywords: ["Crafted by Ellis", "Renew+", "iOS app", "lifestyle app", "goal tracking", "journaling"],
   authors: [{ name: "Braden Ellis" }],
   openGraph: {

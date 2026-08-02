@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const metadata = {
   title: "Apps · Crafted by Ellis",
-  description: "iOS apps made by Crafted by Ellis — premium, thoughtfully designed, built to last.",
+  description: "iOS apps made by Crafted by Ellis. Premium, thoughtfully designed, built to last.",
 };
 
 export default function AppsPage() {
@@ -22,7 +22,7 @@ export default function AppsPage() {
             Apps we&apos;ve <em>made</em>
           </h1>
           <p style={{ fontSize: "17px", color: "var(--color-text-secondary)", maxWidth: "480px", lineHeight: 1.7 }}>
-            Each app is built slowly and with care. No feature bloat, no dark patterns — just software worth using.
+            Each app is built slowly and with care. No feature bloat, no dark patterns. Just software worth using.
           </p>
         </div>
       </section>
@@ -51,7 +51,7 @@ export default function AppsPage() {
                   </div>
                 </div>
                 <p style={{ fontSize: "15px", color: "var(--color-text-secondary)", lineHeight: 1.7, marginBottom: "28px", maxWidth: "540px" }}>
-                  Your premium lifestyle companion. Track goals, journal daily, plan meals, manage finances, and build the life you want — all in one beautifully designed app.
+                  Your premium lifestyle companion. Track goals, journal daily, plan meals, manage finances, and build the life you want, all in one beautifully designed app.
                 </p>
                 <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                   <Link href="/renewplus" className="btn-primary">View app</Link>
@@ -61,7 +61,7 @@ export default function AppsPage() {
               <div style={{
                 padding: "12px 18px",
                 background: "rgba(154,74,42,0.08)", border: "1px solid rgba(154,74,42,0.18)",
-                borderRadius: "var(--radius-md)",
+                borderRadius: "var(--radius-xs)",
                 fontSize: "13px", color: "var(--rust)", fontWeight: 600,
                 whiteSpace: "nowrap", alignSelf: "start",
               }}>

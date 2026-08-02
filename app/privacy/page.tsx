@@ -35,7 +35,7 @@ export default function PrivacyPage() {
         <div className="container-page" style={{ maxWidth: "800px" }}>
           <div style={contentStyle}>
             <p style={{ marginBottom: "32px" }}>
-              At Crafted by Ellis (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;), we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your information when you use our website (craftedbyellis.com) and our app, Renew+.
+              At Crafted by Ellis (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your information when you use our website (craftedbyellis.com) and our app, Renew+.
             </p>
 
             <h2 style={h2Style}>1. Information We Collect</h2>
@@ -115,9 +115,9 @@ export default function PrivacyPage() {
             <h2 style={h2Style}>7. Third-Party Services</h2>
             <p>Renew+ uses the following third-party services:</p>
             <ul style={listStyle}>
-              <li><strong>Firebase (Google):</strong> Backend, authentication, analytics — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
-              <li><strong>Apple App Store:</strong> App distribution and payments — <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
-              <li><strong>Anthropic Claude:</strong> AI-powered goal planning and recipe scanning — <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
+              <li><strong>Firebase (Google):</strong> Backend, authentication, analytics. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
+              <li><strong>Apple App Store:</strong> App distribution and payments. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
+              <li><strong>Anthropic Claude:</strong> AI-powered goal planning and recipe scanning. <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
             </ul>
 
             <h2 style={h2Style}>8. Cookies and Tracking</h2>

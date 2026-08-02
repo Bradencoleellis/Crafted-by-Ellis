@@ -98,7 +98,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
       fontSize: "14px",
       fontWeight: 500,
       padding: "6px 12px",
-      borderRadius: "var(--radius-sm)",
+      borderRadius: "var(--radius-xs)",
       transition: "color 0.15s ease",
     }}>
       {children}

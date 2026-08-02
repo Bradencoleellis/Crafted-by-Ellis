@@ -55,7 +55,7 @@ export default function RenewPlusPage() {
                 marginBottom: "36px",
                 maxWidth: "440px",
               }}>
-                Your premium lifestyle companion. Track goals, journal daily, plan meals, manage finances, and build the life you want — all in one beautifully designed app.
+                Your premium lifestyle companion. Track goals, journal daily, plan meals, manage finances, and build the life you want, all in one beautifully designed app.
               </p>
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <a href="#" className="btn-primary">
@@ -130,7 +130,7 @@ export default function RenewPlusPage() {
             <div className="label-chip">Pricing</div>
             <h2 style={sectionHeadingStyle}>Choose your plan</h2>
             <p style={sectionSubStyle}>
-              Start free with Silver. Upgrade anytime for more features.
+              Start free with Spark. Upgrade anytime for more features.
             </p>
           </div>
 
@@ -142,57 +142,56 @@ export default function RenewPlusPage() {
             margin: "0 auto",
           }}>
             <PricingCard
-              tier="Silver"
+              tier="Spark"
               price="Free"
               description="Get started with the essentials"
               features={[
                 "2 active goals",
-                "20 recipes",
+                "3 recipes per category (unlimited storage)",
                 "1 week meal planning",
-                "2 piggy banks",
+                "1 piggy bank",
                 "Unlimited journaling",
                 "Unlimited finance tracking",
                 "Unlimited shopping lists & pantry",
               ]}
             />
             <PricingCard
-              tier="Gold"
+              tier="Rise"
               price="$4.99"
               period="/ month"
-              trial="1 month free trial"
               description="Unlock more power"
               featured
               features={[
                 "10 active goals",
-                "100 recipes",
-                "4 weeks meal planning",
-                "5 piggy banks",
+                "Unlimited recipes",
+                "Multi-week meal planning",
+                "3 piggy banks",
                 "2 household members",
-                "30 AI goal generations / month",
-                "30 AI recipe scans / month",
-                "20 receipt scans / month",
+                "5 AI goal generations / month",
+                "15 AI recipe scans / month",
+                "15 receipt scans / month",
                 "Finance partner linking",
-                "Everything in Silver",
+                "Everything in Spark",
               ]}
             />
             <PricingCard
-              tier="Platinum"
+              tier="Thrive"
               price="$10.99"
               period="/ month"
               trial="1 month free trial"
               description="The complete experience"
               features={[
-                "Unlimited active goals",
+                "25 active goals",
                 "Unlimited recipes",
                 "Unlimited meal planning",
-                "Unlimited piggy banks",
+                "10 piggy banks",
                 "5 household members",
-                "100 AI goal generations / month",
-                "100 AI recipe scans / month",
-                "60 receipt scans / month",
+                "15 AI goal generations / month",
+                "30 AI recipe scans / month",
+                "30 receipt scans / month",
                 "Priority support",
                 "Beta features & early access",
-                "Everything in Gold",
+                "Everything in Rise",
               ]}
             />
           </div>
@@ -207,8 +206,8 @@ export default function RenewPlusPage() {
             <h2 style={sectionHeadingStyle}>Common questions</h2>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            <FAQItem question="Is Renew+ free to use?" answer="Yes! Renew+ is free to download and use with the Silver tier. Gold and Platinum subscriptions are available for users who want to unlock more features." />
-            <FAQItem question="What devices does Renew+ support?" answer="Renew+ is currently available on iOS (iPhone and iPad). An Android version may come in the future." />
+            <FAQItem question="Is Renew+ free to use?" answer="Yes! Renew+ is free to download and use with the Spark tier. Rise and Thrive subscriptions are available for users who want to unlock more features." />
+            <FAQItem question="What devices does Renew+ support?" answer="Renew+ launches on iOS (iPhone and iPad). An Android version is in development and will follow." />
             <FAQItem question="Is my data private and secure?" answer="Absolutely. Your data is encrypted and stored securely with Firebase. We never sell your data to third parties. See our Privacy Policy for full details." />
             <FAQItem question="Can I cancel my subscription anytime?" answer="Yes. You can cancel your subscription anytime through your Apple ID settings. You'll keep premium access until the end of your billing period." />
             <FAQItem question="Does Renew+ work offline?" answer="Most features work offline. Your data syncs automatically when you're back online so nothing is ever lost." />
@@ -299,7 +298,7 @@ function PricingCard({ tier, price, period, trial, description, features, featur
   return (
     <div className={featured ? "" : "glass-card"} style={{
       padding: "32px",
-      borderRadius: "var(--radius-lg)",
+      borderRadius: "var(--radius-md)",
       position: "relative",
       ...(featured ? {
         background: "rgba(154,74,42,0.06)",

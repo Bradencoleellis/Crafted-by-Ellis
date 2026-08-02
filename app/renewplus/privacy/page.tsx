@@ -28,7 +28,7 @@ export default function RenewPlusPrivacyPage() {
           <div style={contentStyle}>
 
             <p style={{ marginBottom: "32px" }}>
-              Renew+ (&ldquo;the App&rdquo;) is developed and operated by Braden Cole Ellis, a sole trader based in New Zealand (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;). This Privacy Policy explains what personal information we collect, how we use it, who we share it with, and your rights. We are the data controller for all personal information collected through the App.
+              Renew+ (&quot;the App&quot;) is developed and operated by Braden Cole Ellis, a sole trader based in New Zealand (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;). This Privacy Policy explains what personal information we collect, how we use it, who we share it with, and your rights. We are the data controller for all personal information collected through the App.
             </p>
 
             <div style={calloutStyle}>
@@ -142,7 +142,7 @@ export default function RenewPlusPrivacyPage() {
             <ul style={listStyle}>
               <li><strong>Access</strong> the personal data we hold about you</li>
               <li><strong>Correct</strong> inaccurate or incomplete data</li>
-              <li><strong>Delete</strong> your data (&ldquo;erasure&rdquo;)</li>
+              <li><strong>Delete</strong> your data (&quot;erasure&quot;)</li>
               <li><strong>Export</strong> your data in a structured, machine-readable format (portability)</li>
               <li><strong>Restrict</strong> or <strong>object</strong> to certain processing</li>
               <li><strong>Withdraw consent</strong> at any time where we rely on it</li>
@@ -163,7 +163,7 @@ export default function RenewPlusPrivacyPage() {
             </p>
 
             <h3 style={h3Style}>United States, California (CCPA/CPRA)</h3>
-            <p>California residents have the right to know what personal information we collect, request deletion and correction, and opt out of the &ldquo;sale&rdquo; or &ldquo;sharing&rdquo; of personal information. <strong>We do not sell or share personal information.</strong> Categories collected include: identifiers (email, display name), financial information (income, bills, bank account numbers), commercial information (subscription tier), internet/network activity (app usage), and inferences (preferences, settings).</p>
+            <p>California residents have the right to know what personal information we collect, request deletion and correction, and opt out of the &quot;sale&quot; or &quot;sharing&quot; of personal information. <strong>We do not sell or share personal information.</strong> Categories collected include: identifiers (email, display name), financial information (income, bills, bank account numbers), commercial information (subscription tier), internet/network activity (app usage), and inferences (preferences, settings).</p>
 
             <h3 style={h3Style}>Canada, PIPEDA / Quebec Law 25</h3>
             <p>
@@ -195,7 +195,7 @@ export default function RenewPlusPrivacyPage() {
 
             <h2 style={h2Style}>12. Cookies and Tracking</h2>
             <p>
-              Renew+ is a native iOS application and does not use cookies. Firebase may use device identifiers for session management and crash reporting. These are not used for advertising.
+              Renew+ is a mobile application and does not use cookies. Firebase may use device identifiers for session management and crash reporting. These are not used for advertising.
             </p>
 
             <h2 style={h2Style}>13. Changes to This Policy</h2>

@@ -109,7 +109,7 @@ export default function AboutPage() {
             color: "var(--color-text-secondary)",
             marginBottom: "32px",
           }}>
-            We&apos;re building more than just one app. Crafted by Ellis is becoming a home for premium digital experiences—apps that help you live better, games that bring joy, and tools that respect your time.
+            We&apos;re building more than just one app. Crafted by Ellis is becoming a home for premium digital experiences. Apps that help you live better, games that bring joy, and tools that respect your time.
           </p>
           <Link href="/contact" className="btn-primary">
             Get in Touch
@@ -127,7 +127,7 @@ function ValueCard({ icon, title, description }: { icon: React.ReactNode; title:
       padding: "32px 24px",
       background: "var(--color-background)",
       border: "1px solid var(--color-border)",
-      borderRadius: "var(--radius-lg)",
+      borderRadius: "var(--radius-md)",
     }}>
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>{icon}</div>
       <h3 style={{ fontSize: "18px", fontWeight: 700, marginBottom: "12px" }}>{title}</h3>
