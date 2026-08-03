@@ -105,7 +105,7 @@ export default function PrivacyPage() {
               <li><strong>Portability:</strong> Export your data in a standard format</li>
               <li><strong>Withdraw consent:</strong> Opt out of analytics or marketing</li>
             </ul>
-            <p>To exercise these rights, contact us at <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a>.</p>
+            <p>To exercise these rights, contact us at <a href="mailto:RenewPlusPrivacy@craftedbyellis.com" style={linkStyle}>RenewPlusPrivacy@craftedbyellis.com</a>.</p>
 
             <h2 style={h2Style}>6. Children&apos;s Privacy</h2>
             <p>
@@ -140,7 +140,7 @@ export default function PrivacyPage() {
               If you have questions about this Privacy Policy or how we handle your data, please contact us:
             </p>
             <p style={{ marginTop: "12px" }}>
-              <strong>Email:</strong> <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a><br />
+              <strong>Email:</strong> <a href="mailto:RenewPlusPrivacy@craftedbyellis.com" style={linkStyle}>RenewPlusPrivacy@craftedbyellis.com</a><br />
               <strong>Company:</strong> Crafted by Ellis<br />
               <strong>Location:</strong> New Zealand
             </p>

@@ -183,14 +183,14 @@ export default function ContactPage() {
             Email us at:
           </p>
           <a
-            href="mailto:braden@craftedbyellis.com"
+            href="mailto:RenewPlus@craftedbyellis.com"
             style={{
               fontSize: "18px",
               fontWeight: 600,
               color: "var(--color-accent)",
             }}
           >
-            braden@craftedbyellis.com
+            RenewPlus@craftedbyellis.com
           </a>
           <p style={{
             marginTop: "24px",

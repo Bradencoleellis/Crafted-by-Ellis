@@ -141,7 +141,7 @@ export default function TermsPage() {
               Questions about these Terms? Get in touch:
             </p>
             <p style={{ marginTop: "12px" }}>
-              <strong>Email:</strong> <a href="mailto:braden@craftedbyellis.com" style={linkStyle}>braden@craftedbyellis.com</a><br />
+              <strong>Email:</strong> <a href="mailto:RenewPlus@craftedbyellis.com" style={linkStyle}>RenewPlus@craftedbyellis.com</a><br />
               <strong>Company:</strong> Crafted by Ellis<br />
               <strong>Location:</strong> New Zealand
             </p>
