@@ -1,22 +1,53 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import EllisLogo from "./EllisLogo";
+
+const NAV = [
+  { label: "Home", href: "/" },
+  { label: "Apps", href: "/apps" },
+  { label: "Games", href: "/games" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // The header's edge and scroll-edge fade only exist while there is content
+  // underneath the glass. passive: true keeps this off the scrolling critical
+  // path — the listener must never be the reason a frame is late.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Route change closes the sheet: leaving a page while its menu is still open
+  // strands the user in chrome that belongs to the screen they just left.
+  // Adjusted during render rather than in an effect, so the sheet is already
+  // closed in the same commit as the new route instead of one frame later.
+  const [routeAtRender, setRouteAtRender] = useState(pathname);
+  if (pathname !== routeAtRender) {
+    setRouteAtRender(pathname);
+    setIsOpen(false);
+  }
+
+  // Escape is the exit every overlay owes the keyboard.
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setIsOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
 
   return (
-    <header style={{
-      position: "sticky",
-      top: 0,
-      zIndex: 50,
-      background: "rgba(15, 13, 10, 0.8)",
-      borderBottom: "1px solid rgba(246, 242, 234, 0.07)",
-      backdropFilter: "blur(20px)",
-      WebkitBackdropFilter: "blur(20px)",
-    }}>
+    <header className="site-header" data-scrolled={scrolled}>
       <div className="container-page" style={{
         display: "flex",
         justifyContent: "space-between",
@@ -27,19 +58,26 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="desktop-nav" style={{ display: "flex", gap: "4px", alignItems: "center" }}>
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/apps">Apps</NavLink>
-          <NavLink href="/games">Games</NavLink>
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/contact">Contact</NavLink>
+          {NAV.map(({ label, href }) => (
+            <Link
+              key={href}
+              href={href}
+              className="nav-link"
+              aria-current={isCurrent(pathname, href) ? "page" : undefined}
+            >
+              {label}
+            </Link>
+          ))}
         </nav>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="mobile-menu-btn"
-          style={{ display: "none", background: "none", border: "none", cursor: "pointer", padding: "8px", color: "var(--paper)" }}
+          className="mobile-menu-btn icon-button"
+          style={{ display: "none" }}
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             {isOpen
@@ -54,33 +92,30 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="mobile-menu" style={{
-          display: "none",
-          padding: "12px 24px 24px",
-          borderTop: "1px solid rgba(246,242,234,0.07)",
-          flexDirection: "column",
-          gap: "2px",
-          background: "rgba(15,13,10,0.98)",
-        }}>
-          {["Home:/", "Apps:/apps", "Games:/games", "About:/about", "Contact:/contact"].map(item => {
-            const [label, href] = item.split(":");
-            return (
-              <Link key={href} href={href} onClick={() => setIsOpen(false)} style={{
-                color: "var(--paper-dim)",
-                fontSize: "16px",
-                fontWeight: 500,
-                padding: "12px 0",
-                borderBottom: "1px solid rgba(246,242,234,0.06)",
-                display: "block",
-              }}>{label}</Link>
-            );
-          })}
-        </div>
-      )}
+      {/* Mobile sheet — always mounted, state carried on data-open so the open
+          and close transitions run the same path from wherever the sheet
+          currently is. inert while closed keeps it out of the tab order. */}
+      <div
+        id="mobile-menu"
+        className="mobile-menu"
+        data-open={isOpen}
+        inert={!isOpen}
+      >
+        {NAV.map(({ label, href }) => (
+          <Link
+            key={href}
+            href={href}
+            className="mobile-menu-link"
+            onClick={() => setIsOpen(false)}
+            aria-current={isCurrent(pathname, href) ? "page" : undefined}
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
 
       <style>{`
+        .mobile-menu { display: none; }
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
@@ -91,17 +126,9 @@ export default function Header() {
   );
 }
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link href={href} style={{
-      color: "var(--paper-dim)",
-      fontSize: "14px",
-      fontWeight: 500,
-      padding: "6px 12px",
-      borderRadius: "var(--radius-xs)",
-      transition: "color 0.15s ease",
-    }}>
-      {children}
-    </Link>
-  );
+// Exact match for the root, prefix match elsewhere, so /renewplus/privacy still
+// marks the section it lives in rather than lighting up nothing.
+function isCurrent(pathname: string | null, href: string) {
+  if (!pathname) return false;
+  return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 }

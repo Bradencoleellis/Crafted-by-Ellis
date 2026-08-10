@@ -17,14 +17,12 @@ export default function RenewPlusPage() {
         overflow: "hidden",
       }} className="grid-bg">
         {/* Ambient orb */}
-        <div style={{
-          position: "absolute",
+        <div className="orb" style={{
           top: "-10%",
           right: "-5%",
           width: "600px",
           height: "600px",
           background: "radial-gradient(ellipse, rgba(154,74,42,0.10) 0%, transparent 65%)",
-          pointerEvents: "none",
           animation: "orb-drift-2 20s ease-in-out infinite",
         }} />
 

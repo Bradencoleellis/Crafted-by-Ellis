@@ -32,7 +32,12 @@
 
   --color-text-primary:   var(--paper);
   --color-text-secondary: #A8A09A;
-  --color-text-tertiary:  #5A5248;
+  /* Was #5A5248, which measured 2.6:1 against the footer's #0A0806 — below the
+     4.5:1 floor for the body-size text that actually uses it (footer links,
+     captions, legal metadata). Apple's vibrancy rule is the same idea stated
+     positively: over a dark or shifting ground, secondary text needs real
+     contrast, not a dimmer grey. #8A8078 measures 5.2:1. */
+  --color-text-tertiary:  #8A8078;
   --color-text-inverse:   var(--ink);
 
   --color-border:         var(--paper-border);
@@ -62,13 +67,29 @@
   --elev-1: 0 1px 2px rgba(0,0,0,.50), 0 8px 24px -12px rgba(0,0,0,.50);
   --elev-2: 0 2px 4px rgba(0,0,0,.55), 0 16px 40px -16px rgba(0,0,0,.55);
 
-  /* ── Motion (§4.1) ──
-     A spring curve, not an ease. Springs carry velocity through a retarget, so
-     a pointer that enters, leaves and re-enters never shows a discontinuity.
-     Budget: 200-300ms for state changes, 400-500ms for spatial transitions. */
-  --spring: linear(0, .009, .148, .554, 1.106, .994, 1);
+  /* ── Motion ──
+     Apple describes springs with two numbers, not three: damping ratio (how
+     much it overshoots) and response (how fast it reaches the target). The
+     house default is damping 1.0 — critically damped, no bounce — because
+     overshoot is only honest when the user's own gesture carried momentum into
+     the motion. Nothing on this site is dragged or flicked, so nothing bounces.
+
+     --ease-firm is that critically damped curve. --ease-firm-reverse is its
+     exact inverse (cubic-bezier control points mirrored), used on the return
+     leg of a reversible transition so the outbound and inbound paths match.
+     --spring-bounce is kept for the day a real drag ships here; it is
+     deliberately unused, because a menu that just faded in has no momentum to
+     express. */
+  --ease-firm: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-firm-reverse: cubic-bezier(1, 0, 0.68, 0.28);
+  --spring-bounce: linear(0, .009, .148, .554, 1.106, .994, 1);
+
+  /* Press feedback is not a "state change" — it is the acknowledgement that the
+     pointer landed, and it has to feel instant. Anything above ~120ms reads as
+     the interface thinking about it. */
+  --dur-press: 100ms;
   --dur-state: 260ms;
-  --dur-spatial: 440ms;
+  --dur-spatial: 420ms;
 
   /* ── Type scale (§3) ──
      Six steps, ~1.25 ratio. The part that does the work is tracking: it
@@ -97,16 +118,30 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* Dynamic Type, web edition: 100% inherits whatever text size the reader set
+     in their browser. The old `font-size: 16px` on body silently overrode it,
+     so the setting did nothing on this site. Shared UI below is sized in rem so
+     it scales with that choice instead of ignoring it. */
+  font-size: 100%;
+  /* The sticky bar is 64px tall. Without this, every in-page anchor
+     ("See Features") lands with its heading tucked underneath the chrome. */
+  scroll-padding-top: 80px;
+}
 
 body {
   background: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* iOS does not always resolve :active on a tap, so the CSS press states below
+     can miss. A brand-tinted tap highlight guarantees there is always some
+     acknowledgement on touch-down rather than the default blue-grey flash. */
+  -webkit-tap-highlight-color: rgba(154, 74, 42, 0.18);
 }
 
 a { color: inherit; text-decoration: none; }
@@ -118,18 +153,20 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   background: var(--rust);
   color: var(--paper);
-  padding: 11px 22px;
+  padding: 0.6875rem 1.375rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.875rem;
   cursor: pointer;
   /* Explicit properties, not `all`: transitioning `all` animates layout
-     properties too and makes hover cost a paint it does not need. */
-  transition: background var(--dur-state) var(--spring),
-              box-shadow var(--dur-state) var(--spring),
-              transform var(--dur-state) var(--spring);
+     properties too and makes hover cost a paint it does not need.
+     Transform runs on the press clock, not the state clock — hover colour can
+     take its time, but the scale under the finger cannot. */
+  transition: background var(--dur-state) var(--ease-firm),
+              box-shadow var(--dur-state) var(--ease-firm),
+              transform var(--dur-press) var(--ease-firm);
   border: none;
-  min-height: 42px;
+  min-height: 2.625rem;
   letter-spacing: 0.01em;
   box-shadow: var(--elev-1);
 }
@@ -156,17 +193,17 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   background: var(--color-surface);
   color: var(--color-text-primary);
-  padding: 11px 22px;
+  padding: 0.6875rem 1.375rem;
   border-radius: var(--radius-sm);
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.875rem;
   cursor: pointer;
-  transition: background var(--dur-state) var(--spring),
-              border-color var(--dur-state) var(--spring),
-              transform var(--dur-state) var(--spring);
+  transition: background var(--dur-state) var(--ease-firm),
+              border-color var(--dur-state) var(--ease-firm),
+              transform var(--dur-press) var(--ease-firm);
   border: 1px solid var(--color-border);
-  min-height: 42px;
-  backdrop-filter: blur(8px);
+  min-height: 2.625rem;
+  backdrop-filter: blur(8px) saturate(180%);
 }
 .btn-secondary:hover {
   background: var(--color-surface-hover);
@@ -199,14 +236,29 @@ a { color: inherit; text-decoration: none; }
      touch it reads as flat, and on this dark ground the shadow is nearly
      invisible anyway: the hairline is what gives it an edge. */
   box-shadow: var(--elev-1);
-  transition: border-color var(--dur-state) var(--spring),
-              box-shadow var(--dur-state) var(--spring),
-              background var(--dur-state) var(--spring);
+  /* Named glass but never blurred anything. A material that does not sample
+     what is behind it is just a tinted rectangle; the dot grid now shows
+     through softened rather than sharp. Bigger surfaces read as thicker, so
+     the blur here is heavier than the 8px on a small secondary button. */
+  backdrop-filter: blur(16px) saturate(160%);
+  transition: border-color var(--dur-state) var(--ease-firm),
+              box-shadow var(--dur-state) var(--ease-firm),
+              background var(--dur-state) var(--ease-firm),
+              transform var(--dur-press) var(--ease-firm);
 }
 .glass-card:hover {
   border-color: var(--rust-border);
   box-shadow: var(--elev-2), inset 0 1px 0 rgba(246,242,234,0.05);
   background: var(--color-surface-hover);
+}
+/* Half the cards on this site are links (the Renew+ card, the whole apps grid)
+   and pressing one gave no acknowledgement at all until the next page painted.
+   Scale is gentler than on a button: the surface is large, so the same 0.97
+   would read as the card lurching. Only interactive cards respond. */
+a.glass-card:active,
+button.glass-card:active,
+summary:active {
+  transform: scale(0.99);
 }
 
 /* ── Label chip ── */
@@ -226,6 +278,185 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 24px;
 }
 
+/* ── Site chrome: a floating material, not a bar ──
+   The header is a translucent layer that content passes under, so it should
+   only assert an edge where there is actually something underneath it to
+   separate from. A permanent 1px rule draws a line across the top of the page
+   even when the page is scrolled to zero and nothing is behind the glass. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(15, 13, 10, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  /* The bright inner top edge is the light catching the near edge of the
+     material — it is what stops the glass reading as flat tinted plastic. */
+  box-shadow: inset 0 1px 0 rgba(246, 242, 234, 0.06);
+  border-bottom: 1px solid transparent;
+  transition: background var(--dur-state) var(--ease-firm),
+              border-color var(--dur-state) var(--ease-firm);
+}
+.site-header[data-scrolled="true"] {
+  background: rgba(15, 13, 10, 0.82);
+  border-bottom-color: var(--paper-border);
+}
+/* Scroll edge effect: a short gradient under the bar that fades content out as
+   it slides beneath, rather than guillotining it at a hard border. It only
+   exists once there is content to fade. */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 24px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(15, 13, 10, 0.55), transparent);
+  opacity: 0;
+  transition: opacity var(--dur-state) var(--ease-firm);
+}
+.site-header[data-scrolled="true"]::after { opacity: 1; }
+
+.nav-link {
+  position: relative;
+  color: var(--paper-dim);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-xs);
+  transition: color var(--dur-state) var(--ease-firm),
+              background var(--dur-state) var(--ease-firm),
+              transform var(--dur-press) var(--ease-firm);
+}
+.nav-link:hover { color: var(--paper); background: var(--color-surface); }
+.nav-link:active { transform: scale(0.96); }
+/* Wayfinding: "where am I" was unanswerable — every nav item looked identical
+   on every page. The marker is anchored under the label it belongs to. */
+.nav-link[aria-current="page"] { color: var(--paper); }
+.nav-link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: -0.375rem;
+  height: 2px;
+  border-radius: var(--radius-full);
+  background: var(--rust);
+}
+
+/* Mobile nav sheet.
+   Driven by transitions on a data attribute rather than by mount/unmount or
+   keyframes, and that is the whole point: a transition always animates from
+   the element's *current* on-screen value, so tapping the toggle mid-flight
+   reverses the sheet smoothly from where it actually is instead of restarting
+   from the beginning. Enter and exit run the same path with mirrored easing —
+   it leaves the way it arrived. */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 24px 24px;
+  border-top: 1px solid var(--paper-border);
+  /* Heavier than the bar above it: this surface is the full width of the
+     screen and covers live content, and at 0.86/24px the 88px hero read
+     straight through the menu labels. Bigger surface, thicker material. */
+  background: rgba(15, 13, 10, 0.94);
+  backdrop-filter: blur(32px) saturate(180%);
+  box-shadow: var(--elev-2);
+  /* Anchored to the bar it drops out of, not to its own centre. */
+  transform-origin: top center;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+  visibility: hidden;
+  transition: opacity var(--dur-spatial) var(--ease-firm-reverse),
+              transform var(--dur-spatial) var(--ease-firm-reverse),
+              visibility 0s linear var(--dur-spatial);
+}
+.mobile-menu[data-open="true"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+  transition: opacity var(--dur-spatial) var(--ease-firm),
+              transform var(--dur-spatial) var(--ease-firm),
+              visibility 0s;
+}
+.mobile-menu-link {
+  color: var(--paper-dim);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(246, 242, 234, 0.06);
+  display: block;
+  transition: color var(--dur-state) var(--ease-firm),
+              transform var(--dur-press) var(--ease-firm);
+}
+.mobile-menu-link:hover { color: var(--paper); }
+.mobile-menu-link:active { transform: scale(0.98); }
+.mobile-menu-link[aria-current="page"] { color: var(--rust); }
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--paper);
+  border-radius: var(--radius-xs);
+  transition: background var(--dur-state) var(--ease-firm),
+              transform var(--dur-press) var(--ease-firm);
+}
+.icon-button:hover { background: var(--color-surface); }
+.icon-button:active { transform: scale(0.92); }
+
+/* ── Form fields ──
+   These were styled inline, which meant `outline: none` sat in the element's
+   style attribute and beat the site-wide :focus-visible rule on specificity —
+   keyboard focus was invisible on every field of the contact form. A class can
+   express the states an inline style object cannot.
+
+   :user-invalid is the inline-validation half of it: unlike :invalid it stays
+   quiet until the field has actually been interacted with and left, so an empty
+   form is not red on arrival, and the reader is told about a problem where and
+   when it happened rather than on submit. */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: inherit;
+  transition: border-color var(--dur-state) var(--ease-firm),
+              background var(--dur-state) var(--ease-firm),
+              box-shadow var(--dur-state) var(--ease-firm);
+}
+.input-field::placeholder { color: var(--color-text-tertiary); }
+.input-field:hover { border-color: var(--color-border-strong); }
+.input-field:focus-visible {
+  outline: 2px solid var(--rust-hover);
+  outline-offset: 2px;
+  border-color: var(--rust-border);
+  background: var(--color-surface);
+}
+.input-field:user-invalid {
+  border-color: #C2553A;
+  box-shadow: 0 0 0 1px rgba(194, 85, 58, 0.35);
+}
+
+/* Footer links had a colour transition and nothing else — no press state. */
+.footer-link {
+  color: var(--color-text-tertiary);
+  font-size: 0.875rem;
+  display: inline-block;
+  transition: color var(--dur-state) var(--ease-firm),
+              transform var(--dur-press) var(--ease-firm);
+}
+.footer-link:hover { color: var(--paper); }
+.footer-link:active { transform: scale(0.97); }
+
 /* ── Warm dot grid ── */
 .grid-bg {
   background-image:
@@ -234,7 +465,14 @@ a { color: inherit; text-decoration: none; }
   background-size: 64px 64px;
 }
 
-/* ── Orb animations ── */
+/* ── Orb animations ──
+   Compositor-only properties (transform), and a will-change hint so the layer
+   is promoted before the first frame rather than during it. */
+.orb {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
 @keyframes orb-drift-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33% { transform: translate(60px, -40px) scale(1.05); }
@@ -250,18 +488,71 @@ a { color: inherit; text-decoration: none; }
   50% { transform: translate(30px, 60px) scale(1.03); }
 }
 
-/* ── Fraunces display headings ── */
+/* ── Fraunces display headings ──
+   Fraunces is a variable face with a real optical-size axis, and the old rule
+   pinned it to opsz 144 for every heading on the site. That is the display cut
+   — hairline joins, tight apertures, drawn to be seen at 88px — being used at
+   28px, where it goes brittle. font-optical-sizing: auto hands the axis back to
+   the browser so each heading gets the cut drawn for the size it renders at.
+   SOFT and WONK stay pinned because those are brand choices, not size ones.
+
+   opsz is stepped by hand rather than left to font-optical-sizing: auto. Auto
+   maps the axis to the rendered size in points, which drops the 88px hero to
+   roughly opsz 66 and visibly thickens it — the delicate display cut is the
+   point of the hero, so that step keeps 144. What auto gets right is the small
+   end, and that is where this was broken. */
 .display {
   font-family: var(--font-fraunces), 'Fraunces', serif;
   font-weight: 320;
-  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+  font-variation-settings: "opsz" var(--display-opsz, 72), "SOFT" 50, "WONK" 0;
+  /* Tracking and leading are size-specific, never one value for the scale.
+     These are the mid-scale defaults; the two modifiers below take the ends. */
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+/* Hero scale (48-88px): the display cut, and letters drift apart as they grow,
+   so pull them in harder and set the leading tight. */
+.display-hero {
+  --display-opsz: 144;
+  letter-spacing: -0.038em;
+  line-height: 1.02;
+}
+/* Section scale (28-44px): this is the step the old rule got wrong — the 144
+   display cut and -0.035em hero tracking, both applied to type a third the
+   size. Hairline joins went brittle and "iOS apps" nearly closed up into one
+   word. A text-weight optical cut, looser tracking, more leading. */
+.display-section {
+  --display-opsz: 36;
+  letter-spacing: -0.018em;
+  line-height: 1.15;
 }
 .display em {
   font-style: italic;
   color: var(--rust);
   font-weight: 360;
+}
+
+/* ── FAQ disclosure ──
+   The "+" never changed when a panel opened, so the control gave no status.
+   Rotating it 45° turns it into a close mark along a path it can retrace on the
+   way back — one transition, mirrored for free. */
+details > summary > span {
+  display: inline-block;
+  transition: transform var(--dur-state) var(--ease-firm);
+}
+details[open] > summary > span { transform: rotate(45deg); }
+
+/* Height on <details> is not animatable in every engine yet, so this is opt-in
+   where the platform supports it and an instant open everywhere else. */
+@supports (interpolate-size: allow-keywords) {
+  :root { interpolate-size: allow-keywords; }
+  details.glass-card::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size var(--dur-state) var(--ease-firm),
+                content-visibility var(--dur-state) allow-discrete;
+  }
+  details.glass-card[open]::details-content { block-size: auto; }
 }
 
 /* ── Focus, everywhere else ──
@@ -278,9 +569,13 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Reduced motion ──
    The drifting background orbs run continuously. For anyone with a vestibular
-   disorder that is not decoration, it is a symptom trigger, and the site
-   previously offered no way out. Honour the OS setting: hold the orbs still,
-   collapse transitions to a blink, and stop smooth scrolling. */
+   disorder that is not decoration, it is a symptom trigger.
+
+   But reduced motion does not mean no feedback. The previous rule flattened
+   *every* transition to 0.01ms, which also killed the hover and press colour
+   changes — the parts that carry meaning and cause no vestibular load at all.
+   So: kill the travel, keep the cross-fade. Opacity and colour still animate;
+   transforms and looping animations do not. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *,
@@ -288,7 +583,71 @@ a { color: inherit; text-decoration: none; }
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transition-property: opacity, color, background-color, border-color,
+                         box-shadow, fill, stroke !important;
+    transition-duration: 180ms !important;
   }
+  /* Transforms are no longer transitioned, so neutralise the ones that would
+     otherwise snap to their end state. */
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-secondary:active,
+  .nav-link:active,
+  .icon-button:active,
+  .footer-link:active,
+  a.glass-card:active,
+  button.glass-card:active,
+  summary:active,
+  details[open] > summary > span {
+    transform: none !important;
+  }
+  /* The sheet cross-fades in place instead of dropping out of the bar. */
+  .mobile-menu,
+  .mobile-menu[data-open="true"] { transform: none !important; }
+}
+
+/* ── Reduced transparency ──
+   Translucency is the site's main depth cue, which makes it the main problem
+   for anyone who has asked the OS for less of it. Every material goes solid and
+   the blur comes off; the hairlines already in place carry the separation. */
+@media (prefers-reduced-transparency: reduce) {
+  .site-header,
+  .mobile-menu,
+  .glass-card,
+  .btn-secondary {
+    backdrop-filter: none;
+  }
+  .site-header,
+  .site-header[data-scrolled="true"] { background: var(--ink); }
+  .site-header::after { display: none; }
+  .mobile-menu { background: var(--ink); }
+  .glass-card { background: var(--ink-2); }
+  .btn-secondary { background: var(--ink-3); }
+  .grid-bg { background-image: none; }
+  .orb { display: none; }
+}
+
+/* ── Increased contrast ──
+   Near-solid surfaces with a defined, contrasting border, and secondary text
+   pulled up towards the primary. */
+@media (prefers-contrast: more) {
+  :root {
+    --color-text-secondary: #CFC8C1;
+    --color-text-tertiary:  #B3AAA2;
+    --color-border:         rgba(246, 242, 234, 0.30);
+    --color-border-strong:  rgba(246, 242, 234, 0.45);
+    --paper-dim:            rgba(246, 242, 234, 0.85);
+  }
+  .glass-card {
+    background: var(--ink-2);
+    backdrop-filter: none;
+  }
+  .btn-secondary { background: var(--ink-3); }
+  .site-header,
+  .site-header[data-scrolled="true"] {
+    background: var(--ink);
+    backdrop-filter: none;
+  }
+  .label-chip { border-color: var(--rust); }
 }

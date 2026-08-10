@@ -28,25 +28,25 @@ export default function Footer() {
           <div>
             <h4 style={colHead}>Products</h4>
             <ul style={list}>
-              <li><Link href="/apps" style={lnk}>Apps</Link></li>
-              <li><Link href="/renewplus" style={lnk}>Renew+</Link></li>
-              <li><Link href="/games" style={lnk}>Games</Link></li>
+              <li><Link href="/apps" className="footer-link">Apps</Link></li>
+              <li><Link href="/renewplus" className="footer-link">Renew+</Link></li>
+              <li><Link href="/games" className="footer-link">Games</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 style={colHead}>Studio</h4>
             <ul style={list}>
-              <li><Link href="/about" style={lnk}>About</Link></li>
-              <li><Link href="/contact" style={lnk}>Contact</Link></li>
+              <li><Link href="/about" className="footer-link">About</Link></li>
+              <li><Link href="/contact" className="footer-link">Contact</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 style={colHead}>Legal</h4>
             <ul style={list}>
-              <li><Link href="/privacy" style={lnk}>Privacy Policy</Link></li>
-              <li><Link href="/terms" style={lnk}>Terms of Service</Link></li>
+              <li><Link href="/privacy" className="footer-link">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="footer-link">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
@@ -83,12 +83,9 @@ export default function Footer() {
 
 const colHead: React.CSSProperties = {
   fontSize: "11px", fontWeight: 600, marginBottom: "16px",
-  color: "rgba(246,242,234,0.35)", textTransform: "uppercase", letterSpacing: "0.1em",
+  color: "rgba(246,242,234,0.55)", textTransform: "uppercase", letterSpacing: "0.1em",
 };
 const list: React.CSSProperties = {
   listStyle: "none", padding: 0, margin: 0,
   display: "flex", flexDirection: "column", gap: "10px",
-};
-const lnk: React.CSSProperties = {
-  color: "var(--color-text-tertiary)", fontSize: "14px", transition: "color 0.15s ease",
 };

@@ -19,7 +19,7 @@ Next.js App Router project. Read AGENTS.md first — this version has breaking c
 ## Dev Server
 
 ```bash
-cd /Users/bradenellis/RenewPlus/crafted-by-ellis
+cd "/Users/bradenellis/Vault/Vault/Projects/Crafted by Ellis/crafted-by-ellis"
 npm run dev
 ```
 
@@ -39,6 +39,9 @@ Runs on `http://localhost:3000`. Always start the dev server and verify in brows
   - `var(--radius-lg)`, `var(--radius-md)` — border radius tokens
 - **Reusable style objects** at the bottom of each page file (e.g. `labelStyle`, `h2Style`, `contentStyle`) — follow the existing pattern, don't inline one-off styles for repeated elements
 - **`className="grid-bg"`** — used on hero sections for the dot-grid background
+- **Anything with a `:hover`, `:active`, `:focus-visible` or `:user-invalid` state must be a class in `globals.css`, not an inline style.** Inline styles can't express pseudo-classes, and an inline declaration beats the stylesheet on specificity — `outline: "none"` in a style object silently killed the site-wide focus ring on every contact-form field. Existing shared classes: `.btn-primary`, `.btn-secondary`, `.glass-card`, `.nav-link`, `.mobile-menu-link`, `.icon-button`, `.footer-link`, `.input-field`, `.label-chip`, `.orb`
+- **Motion tokens** — `var(--ease-firm)` is the default curve (critically damped, no overshoot) and `var(--ease-firm-reverse)` is its mirror for the return leg of a reversible transition. Press feedback uses `var(--dur-press)` (100ms); state changes `var(--dur-state)`; spatial moves `var(--dur-spatial)`. `--spring-bounce` overshoots and is intentionally unused — reserve it for genuinely gesture-driven motion
+- **Display headings** — `.display` alone is the mid scale (40–64px). Add `.display-hero` for 48–88px and `.display-section` for 28–44px; each step sets its own Fraunces `opsz` and tracking. Don't apply one tracking value across the scale
 
 ## Page Structure Pattern (legal/content pages)
 
@@ -68,7 +71,7 @@ Every content page follows this exact two-section structure:
 
 ## Common Mistakes to Avoid
 
-- **Do NOT use `var(--color-accent)`** — it doesn't exist, the brand accent is `var(--rust)`
+- **Prefer `var(--rust)` over `var(--color-accent)`** — both work (`--color-accent` is aliased to `--rust` in `globals.css`), but `--rust` is the name used in most of the codebase. Don't "fix" existing `--color-accent` usages; they resolve correctly
 - **Do NOT create new CSS files** for page-level styles — inline `CSSProperties` only
 - **Do NOT use `pages/` directory** — this is App Router, everything is in `app/`
 - **Do NOT skip the dev server check** — always verify pages render before reporting done
@@ -77,18 +80,23 @@ Every content page follows this exact two-section structure:
 
 ## Legal Pages — Important Context
 
-The Renew+ ToS and Privacy Policy were last updated **19 May 2025** (version string `"2025-05-19"`).
+The Renew+ ToS and Privacy Policy were last updated **15 June 2026** (version string `"2026-06-15"`).
 
 This version string is also hardcoded in the iOS app at:
-`/Users/bradenellis/RenewPlus/RenewPlus/Utilities/AppConstants.swift` → `AppConstants.Legal.currentTosVersion`
+`/Users/bradenellis/Vault/Vault/Projects/RenewPlus/RenewPlus/RenewPlus/Utilities/AppConstants.swift` → `AppConstants.Legal.currentTosVersion`
 
 **Whenever the legal pages are updated on this website, also bump `currentTosVersion` in the iOS app** — this forces existing users through the in-app consent gate on next login.
 
 Contact email used on Renew+ legal pages (only one real address):
 - All contact (support, privacy, legal): `braden@craftedbyellis.com`
 
-## iOS App Location
+## Project Locations
 
-The RenewPlus iOS app lives at `/Users/bradenellis/RenewPlus/RenewPlus/`.
-The website (this project) lives at `/Users/bradenellis/RenewPlus/crafted-by-ellis/`.
-Legal source-of-truth markdown files: `/Users/bradenellis/RenewPlus/Legal/`
+Everything lives under the Obsidian vault. The old `/Users/bradenellis/RenewPlus/…` and
+`/Users/bradenellis/crafted-by-ellis` paths do **not** exist — don't reintroduce them.
+
+| What | Where |
+|---|---|
+| This website | `/Users/bradenellis/Vault/Vault/Projects/Crafted by Ellis/crafted-by-ellis/` |
+| RenewPlus iOS app | `/Users/bradenellis/Vault/Vault/Projects/RenewPlus/RenewPlus/` |
+| Legal source-of-truth markdown | `/Users/bradenellis/Vault/Vault/Projects/RenewPlus/RenewPlus/Legal/` |

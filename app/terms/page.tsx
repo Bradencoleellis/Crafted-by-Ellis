@@ -8,7 +8,7 @@ export default function TermsPage() {
     <>
       {/* Hero */}
       <section style={{
-        background: "var(--color-beige)",
+        background: "var(--color-background)",
         padding: "80px 0 40px",
       }}>
         <div className="container-page" style={{ textAlign: "center", maxWidth: "800px" }}>

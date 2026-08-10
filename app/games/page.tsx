@@ -10,10 +10,10 @@ export default function GamesPage() {
     <>
       {/* Header */}
       <section style={{ padding: "80px 0 64px", background: "var(--ink)", position: "relative", overflow: "hidden" }} className="grid-bg">
-        <div style={{
-          position: "absolute", top: "-20%", left: "20%", width: "600px", height: "600px",
+        <div className="orb" style={{
+          top: "-20%", left: "20%", width: "600px", height: "600px",
           background: "radial-gradient(ellipse, rgba(154,74,42,0.09) 0%, transparent 60%)",
-          pointerEvents: "none", animation: "orb-drift-1 24s ease-in-out infinite",
+          animation: "orb-drift-1 24s ease-in-out infinite",
         }} />
         <div className="container-page" style={{ position: "relative", zIndex: 1 }}>
           <p style={monoCap}>Games</p>

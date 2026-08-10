@@ -8,13 +8,13 @@ export default function Home() {
       <section style={{ position: "relative", overflow: "hidden", padding: "120px 0 140px" }} className="grid-bg">
         {/* Orbs */}
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
-          <div style={{
-            position: "absolute", top: "-15%", left: "45%", width: "700px", height: "500px",
+          <div className="orb" style={{
+            top: "-15%", left: "45%", width: "700px", height: "500px",
             background: "radial-gradient(ellipse, rgba(154,74,42,0.13) 0%, transparent 65%)",
             animation: "orb-drift-1 20s ease-in-out infinite",
           }} />
-          <div style={{
-            position: "absolute", bottom: "-10%", right: "-5%", width: "500px", height: "500px",
+          <div className="orb" style={{
+            bottom: "-10%", right: "-5%", width: "500px", height: "500px",
             background: "radial-gradient(ellipse, rgba(154,74,42,0.07) 0%, transparent 60%)",
             animation: "orb-drift-3 28s ease-in-out infinite",
           }} />
@@ -28,7 +28,7 @@ export default function Home() {
           }}>
             A small studio · New Zealand
           </p>
-          <h1 className="display" style={{ fontSize: "clamp(48px, 7vw, 88px)", marginBottom: "28px" }}>
+          <h1 className="display display-hero" style={{ fontSize: "clamp(48px, 7vw, 88px)", marginBottom: "28px" }}>
             Apps and games,<br /><em>crafted</em> with care.
           </h1>
           <p style={{
@@ -50,7 +50,7 @@ export default function Home() {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "48px", flexWrap: "wrap", gap: "16px" }}>
             <div>
               <p style={monoCap}>Apps</p>
-              <h2 className="display" style={{ fontSize: "clamp(28px, 4vw, 40px)" }}>iOS apps</h2>
+              <h2 className="display display-section" style={{ fontSize: "clamp(28px, 4vw, 40px)" }}>iOS apps</h2>
             </div>
             <Link href="/apps" style={{ fontSize: "13px", color: "var(--rust)", fontWeight: 500, letterSpacing: "0.04em" }}>
               View all →
@@ -104,7 +104,7 @@ export default function Home() {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "48px", flexWrap: "wrap", gap: "16px" }}>
             <div>
               <p style={monoCap}>Games</p>
-              <h2 className="display" style={{ fontSize: "clamp(28px, 4vw, 40px)" }}>Original games</h2>
+              <h2 className="display display-section" style={{ fontSize: "clamp(28px, 4vw, 40px)" }}>Original games</h2>
             </div>
             <Link href="/games" style={{ fontSize: "13px", color: "var(--rust)", fontWeight: 500, letterSpacing: "0.04em" }}>
               View all →
@@ -122,7 +122,7 @@ export default function Home() {
                 Games are coming.
               </h3>
               <p style={{ fontSize: "15px", color: "var(--color-text-secondary)", lineHeight: 1.65, maxWidth: "400px" }}>
-                Original games built with the same craft as the apps. Designed thoughtfully, shipped when they're ready.
+                Original games built with the same craft as the apps. Designed thoughtfully, shipped when they&rsquo;re ready.
               </p>
             </div>
             <Link href="/games" className="btn-secondary">Stay updated</Link>
@@ -134,11 +134,11 @@ export default function Home() {
       <section style={{ padding: "96px 0", background: "var(--ink-2)" }}>
         <div className="container-page" style={{ maxWidth: "700px" }}>
           <p style={monoCap}>The studio</p>
-          <h2 className="display" style={{ fontSize: "clamp(28px, 4vw, 44px)", marginBottom: "24px" }}>
+          <h2 className="display display-section" style={{ fontSize: "clamp(28px, 4vw, 44px)", marginBottom: "24px" }}>
             One person. Many <em>things</em>.
           </h2>
           <p style={{ fontSize: "17px", color: "var(--color-text-secondary)", lineHeight: 1.75, marginBottom: "36px" }}>
-            Crafted by Ellis is Braden Ellis, a developer and designer based in New Zealand. I build iOS apps and games that I'd actually want to use, and I ship them when they're worth shipping.
+            Crafted by Ellis is Braden Ellis, a developer and designer based in New Zealand. I build iOS apps and games that I&rsquo;d actually want to use, and I ship them when they&rsquo;re worth shipping.
           </p>
           <Link href="/about" className="btn-secondary">Read more</Link>
         </div>

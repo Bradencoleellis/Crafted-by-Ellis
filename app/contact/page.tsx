@@ -31,7 +31,7 @@ export default function ContactPage() {
     <>
       {/* Hero */}
       <section style={{
-        background: "var(--color-beige)",
+        background: "var(--color-background)",
         padding: "80px 0 60px",
       }}>
         <div className="container-page" style={{ textAlign: "center", maxWidth: "700px" }}>
@@ -74,7 +74,7 @@ export default function ContactPage() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                style={inputStyle}
+                className="input-field"
                 placeholder="Your name"
               />
             </div>
@@ -90,7 +90,7 @@ export default function ContactPage() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                style={inputStyle}
+                className="input-field"
                 placeholder="you@example.com"
               />
             </div>
@@ -104,7 +104,7 @@ export default function ContactPage() {
                 id="subject"
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                style={inputStyle}
+                className="input-field"
               >
                 <option>General Inquiry</option>
                 <option>Bug Report</option>
@@ -126,7 +126,8 @@ export default function ContactPage() {
                 rows={6}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                style={{ ...inputStyle, resize: "vertical", minHeight: "140px" }}
+                className="input-field"
+                style={{ resize: "vertical", minHeight: "140px" }}
                 placeholder="Tell us what's on your mind..."
               />
             </div>
@@ -150,7 +151,7 @@ export default function ContactPage() {
             {status === "sent" && (
               <p style={{
                 textAlign: "center",
-                color: "var(--color-success)",
+                color: "var(--rust)",
                 fontSize: "14px",
                 fontWeight: 500,
               }}>
@@ -222,15 +223,3 @@ const labelFormStyle: React.CSSProperties = {
   marginBottom: "8px",
 };
 
-const inputStyle: React.CSSProperties = {
-  width: "100%",
-  padding: "12px 16px",
-  fontSize: "16px",
-  border: "1px solid var(--color-border)",
-  borderRadius: "var(--radius-sm)",
-  background: "var(--color-background)",
-  color: "var(--color-text-primary)",
-  fontFamily: "inherit",
-  transition: "border-color 0.2s ease",
-  outline: "none",
-};

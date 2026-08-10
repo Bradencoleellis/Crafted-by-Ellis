@@ -10,7 +10,7 @@ export default function AboutPage() {
     <>
       {/* Hero */}
       <section style={{
-        background: "var(--color-beige)",
+        background: "var(--color-background)",
         padding: "96px 0",
       }}>
         <div className="container-page" style={{ textAlign: "center", maxWidth: "800px" }}>
