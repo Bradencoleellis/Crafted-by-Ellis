@@ -1,48 +1,90 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   Crafted by Ellis — studio shell
+
+   This is the light, studio-first system from the 2026 redesign handoff. The
+   shell itself carries no brand colour: warm off-white ground, ink type, and
+   nothing else. Colour belongs to the apps, not to the studio — each app owns a
+   single accent pulled from its own icon, scoped to that app's pages. Renew+ is
+   orange; Crafted Co will bring its own when it ships.
+
+   The old rust-on-near-black ramp, Fraunces, the dot grid and the drifting orbs
+   are gone. They were a different visual language, and half-applying this one
+   over them (a light page with rust buttons) looks broken rather than
+   transitional.
+   ───────────────────────────────────────────────────────────────────────────── */
+
 :root {
-  /* ── Crafted by Ellis brand palette ── */
-  --rust:           #9A4A2A;
-  --rust-hover:     #B05830;
-  --rust-pressed:   #7D3B20;
-  --rust-glow:      rgba(154, 74, 42, 0.28);
-  --rust-subtle:    rgba(154, 74, 42, 0.1);
-  --rust-border:    rgba(154, 74, 42, 0.32);
+  /* ── Ground ──
+     Two off-whites, not one. Studio pages sit on the neutral #f4f3f0; an app
+     page warms it a step (#f6f2ee) so the accent has something to sit against
+     rather than fighting a cold grey. */
+  --paper:          #f4f3f0;
+  --paper-warm:     #f6f2ee;
+  --surface:        #fbfbfa;   /* neutral card */
+  --surface-warm:   #fffdfb;   /* card on an app page */
+  --surface-screen: #f1efec;   /* inner plate of a phone/screenshot frame */
 
-  --ink:            #0F0D0A;
-  --ink-2:          #181410;
-  --ink-3:          #201A12;
-  --ink-4:          #2A2218;
-  --paper:          #F6F2EA;
-  --paper-dim:      rgba(246, 242, 234, 0.55);
-  --paper-faint:    rgba(246, 242, 234, 0.07);
-  --paper-border:   rgba(246, 242, 234, 0.09);
+  /* ── Ink ──
+     A five-step ramp from primary text down to the copyright line. Every step
+     below --ink-body is for type at label size or smaller, where the smaller
+     size and heavier weight buy back the contrast the lighter colour spends. */
+  --ink:         #191817;   /* primary text, dark pills */
+  --ink-body:    #565250;   /* body copy */
+  --ink-muted:   #6f6b67;   /* nav and footer links */
+  --ink-label:   #8a8580;   /* eyebrows, uppercase labels */
+  --ink-faint:   #a49f9a;   /* captions, copyright, "Scroll →" */
+  --ink-inverse: #fff8f2;   /* type on an accent field */
 
-  /* ── Semantic aliases ── */
-  --color-accent:             var(--rust);
-  --color-accent-hover:       var(--rust-hover);
-  --color-accent-pressed:     var(--rust-pressed);
-  --color-accent-glow:        var(--rust-glow);
+  --hairline:        rgba(25, 24, 23, 0.12);
+  --hairline-strong: rgba(25, 24, 23, 0.22);
 
-  --color-background:           var(--ink);
-  --color-background-secondary: var(--ink-2);
-  --color-background-tertiary:  var(--ink-3);
-  --color-surface:              rgba(246, 242, 234, 0.03);
-  --color-surface-hover:        rgba(246, 242, 234, 0.06);
+  /* ── Semantic aliases ──
+     Page code reads these, never the raw ramp above, so an app page can shift
+     its ground by re-pointing one variable instead of rewriting every rule. */
+  --color-background:           var(--paper);
+  --color-background-secondary: var(--surface);
+  --color-surface:              var(--surface);
+  --color-text-primary:         var(--ink);
+  --color-text-secondary:       var(--ink-body);
+  --color-text-tertiary:        var(--ink-faint);
+  --color-text-inverse:         var(--ink-inverse);
+  --color-border:               var(--hairline);
+  --color-border-strong:        var(--hairline-strong);
 
-  --color-text-primary:   var(--paper);
-  --color-text-secondary: #A8A09A;
-  /* Was #5A5248, which measured 2.6:1 against the footer's #0A0806 — below the
-     4.5:1 floor for the body-size text that actually uses it (footer links,
-     captions, legal metadata). Apple's vibrancy rule is the same idea stated
-     positively: over a dark or shifting ground, secondary text needs real
-     contrast, not a dimmer grey. #8A8078 measures 5.2:1. */
-  --color-text-tertiary:  #8A8078;
-  --color-text-inverse:   var(--ink);
+  /* ── Per-app accent ──
+     Declared here so the values live in one place, but only *applied* inside
+     .accent-renew. Nothing on a studio page may reference these directly —
+     that is the whole point of the per-app model. */
+  --renew-accent:      #FF8400;
+  --renew-accent-deep: #E86F00;
+  --renew-accent-tint: rgba(255, 132, 0, 0.22);
+  --renew-accent-glow: rgba(232, 111, 0, 0.45);
 
-  --color-border:         var(--paper-border);
-  --color-border-strong:  rgba(246, 242, 234, 0.16);
-  --color-border-accent:  var(--rust-border);
+  /* The app's own palette, for UI drawn inside a device screen. Taken verbatim
+     from RenewPlus/Design/01_COLOR_SYSTEM.txt, whose header states no other
+     colours are permitted — so a screen rendered here has to match the app
+     rather than approximate it in site ink. Same reasoning as the accent above:
+     declared once, applied only where an app screen is drawn. */
+  --renew-screen-bg:     #F0EBE3;   /* background.primary, Soft Linen */
+  --renew-screen-sunk:   #E8E1D8;   /* background.secondary */
+  --renew-screen-card:   #FFFFFF;   /* background.tertiary */
+  --renew-screen-ink:    #1A1A1A;   /* text.primary */
+  --renew-screen-ink-2:  #6B6B6B;   /* text.secondary */
+  --renew-screen-ink-3:  #9B9B9B;   /* text.tertiary */
+  --renew-screen-border: #E4DDD4;   /* border.default */
+
+  /* Resolved per scope. On the studio shell the "accent" is simply ink, which
+     is what makes focus rings and selection work on both grounds from one rule. */
+  --accent:      var(--ink);
+  --accent-tint: rgba(25, 24, 23, 0.12);
+
+  /* ── Gutter ──
+     One horizontal padding value for the entire site. Every section, rail and
+     footer uses it, which is what keeps a snapped rail card aligned with the
+     heading above it. */
+  --gutter: clamp(20px, 4vw, 56px);
 
   /* ── Spacing ── */
   --space-xs: 4px;   --space-sm: 8px;  --space-md: 12px;
@@ -50,70 +92,87 @@
   --space-3xl: 48px; --space-4xl: 64px; --space-5xl: 96px;
 
   /* ── Radius ──
-     Tied to element size, per App Surface Standards 2026 §2.2. Nesting rule:
-     inner radius = outer radius minus padding. Reusing a parent's radius on a
-     nested child breaks concentricity and leaves dead space at each corner. */
-  --radius-xs: 6px;    /* chips, badges, tags */
-  --radius-sm: 10px;   /* inputs, small buttons */
-  --radius-md: 16px;   /* cards, list rows */
-  --radius-lg: 26px;   /* sheets, modals, hero panels */
+     Tied to element size. Nesting rule: inner radius = outer radius minus
+     padding, which is why a 34px screenshot frame with 10px of padding holds a
+     26px plate and not another 34px one. */
+  --radius-xs:   6px;    /* chips, tags */
+  --radius-sm:  10px;    /* icon slots, small squares */
+  --radius-md:  13px;    /* buttons, App Store badge */
+  --radius-lg:  22px;    /* feature cards */
+  --radius-xl:  26px;    /* shelf cards, banners, app icon */
+  --radius-2xl: 34px;    /* screenshot frames */
   --radius-full: 9999px;
 
-  /* ── Elevation (§2.3) ──
-     A hairline border plus a long, very soft, low-opacity shadow. Hard tight
-     shadows were Material 2's depth cue and date a surface instantly. On this
-     dark ground the shadow is nearly invisible, so the hairline is what stops
-     cards dissolving into the background: always ship both together. */
-  --elev-1: 0 1px 2px rgba(0,0,0,.50), 0 8px 24px -12px rgba(0,0,0,.50);
-  --elev-2: 0 2px 4px rgba(0,0,0,.55), 0 16px 40px -16px rgba(0,0,0,.55);
+  /* ── Elevation ──
+     Every shadow here is long, soft and heavily negative-spread: the light is
+     high and diffuse, so cards cast far without a hard edge. There are no tight
+     drop shadows anywhere in this system — a 2px offset shadow reads as Material
+     and dates a surface instantly. On a light ground the shadow does all the
+     separating work, which is why none of these cards carry a border. */
+  --shadow-card:    0 40px 80px -44px rgba(25, 24, 23, 0.38);
+  --shadow-accent:  0 40px 80px -38px var(--renew-accent-glow);
+  --shadow-feature: 0 28px 60px -40px rgba(25, 24, 23, 0.34);
+  --shadow-phone:   0 34px 70px -26px rgba(25, 24, 23, 0.34);
+  --shadow-rail:    0 34px 70px -30px rgba(25, 24, 23, 0.30);
+  --shadow-icon:    0 18px 40px -16px rgba(255, 132, 0, 0.50);
+  --shadow-riser:   0 -10px 40px -18px rgba(25, 24, 23, 0.40);  /* casts upward */
+
+  /* Hover steps: one notch deeper and one notch nearer, never a different
+     shadow shape. */
+  --shadow-card-hover:    0 52px 96px -44px rgba(25, 24, 23, 0.46);
+  --shadow-accent-hover:  0 52px 96px -38px rgba(232, 111, 0, 0.55);
+  --shadow-feature-hover: 0 36px 72px -40px rgba(25, 24, 23, 0.40);
 
   /* ── Motion ──
-     Apple describes springs with two numbers, not three: damping ratio (how
-     much it overshoots) and response (how fast it reaches the target). The
-     house default is damping 1.0 — critically damped, no bounce — because
-     overshoot is only honest when the user's own gesture carried momentum into
-     the motion. Nothing on this site is dragged or flicked, so nothing bounces.
+     Carried over unchanged from the previous system. Apple describes springs
+     with two numbers: damping ratio and response. The house default is damping
+     1.0 — critically damped, no overshoot — because overshoot is only honest
+     when the user's own gesture carried momentum into the motion. Nothing here
+     is dragged, so nothing bounces.
 
-     --ease-firm is that critically damped curve. --ease-firm-reverse is its
-     exact inverse (cubic-bezier control points mirrored), used on the return
-     leg of a reversible transition so the outbound and inbound paths match.
-     --spring-bounce is kept for the day a real drag ships here; it is
-     deliberately unused, because a menu that just faded in has no momentum to
-     express. */
+     --ease-firm-reverse is the exact mirror, for the return leg of a reversible
+     transition. --spring-bounce stays deliberately unused. */
   --ease-firm: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-firm-reverse: cubic-bezier(1, 0, 0.68, 0.28);
   --spring-bounce: linear(0, .009, .148, .554, 1.106, .994, 1);
 
-  /* Press feedback is not a "state change" — it is the acknowledgement that the
-     pointer landed, and it has to feel instant. Anything above ~120ms reads as
-     the interface thinking about it. */
-  --dur-press: 100ms;
+  --dur-press: 100ms;    /* acknowledgement of the pointer landing */
   --dur-state: 260ms;
   --dur-spatial: 420ms;
 
-  /* ── Type scale (§3) ──
-     Six steps, ~1.25 ratio. The part that does the work is tracking: it
-     tightens as size grows and loosens as it shrinks. Uniform tracking across a
-     scale is what makes type look untouched. */
-  --type-display-size: clamp(40px, 6vw, 64px);
-  --type-display-lh: 1.00;  --type-display-track: -0.025em;  --type-display-weight: 600;
-  --type-title-size: clamp(26px, 4vw, 40px);
-  --type-title-lh: 1.15;    --type-title-track: -0.015em;    --type-title-weight: 620;
-  --type-head-size: 19px;
-  --type-head-lh: 1.35;     --type-head-track: -0.005em;     --type-head-weight: 600;
-  --type-body-size: 16px;
-  --type-body-lh: 1.60;     --type-body-track: 0;            --type-body-weight: 400;
-  --type-label-size: 13px;
-  --type-label-lh: 1.45;    --type-label-track: 0.01em;      --type-label-weight: 400;
-  --type-micro-size: 11px;
-  --type-micro-lh: 1.40;    --type-micro-track: 0.08em;      --type-micro-weight: 500;
+  /* ── Device chrome ──
+     Deliberately outside the paper/ink ramp. A phone is a physical object in
+     the page, not a brand surface, so it keeps its own graphite rather than
+     tinting with whichever app accent it happens to be showing. */
+  --device-body:   linear-gradient(165deg, #55595F 0%, #33363C 46%, #24262B 100%);
+  --device-deck:   linear-gradient(180deg, #43474D 0%, #2E3136 100%);
+  --device-edge:   rgba(255, 255, 255, 0.22);
+  --device-screen: #0E0F12;
+  --device-cutout: #0A0B0D;
+
+  /* The scroll reveal is the one exception to the motion tokens. It is a long,
+     slow entrance rather than a state change, so it runs on its own clock with
+     a decelerating curve that settles rather than arrives. */
+  --dur-reveal: 900ms;
+  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Renew+ scope ──
+   Everything orange on the site lives behind this class. Put it on the page
+   wrapper and the accent, the warmer ground and the orange focus ring all come
+   with it; leave it off and the page is neutral studio. */
+.accent-renew {
+  --accent:      var(--renew-accent);
+  --accent-tint: var(--renew-accent-tint);
+  --color-background:  var(--paper-warm);
+  --color-surface:     var(--surface-warm);
+  --color-background-secondary: var(--surface-warm);
 }
 
 @theme inline {
   --color-background: var(--color-background);
   --color-foreground: var(--color-text-primary);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-archivo);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -121,461 +180,525 @@
 html {
   scroll-behavior: smooth;
   /* Dynamic Type, web edition: 100% inherits whatever text size the reader set
-     in their browser. The old `font-size: 16px` on body silently overrode it,
-     so the setting did nothing on this site. Shared UI below is sized in rem so
-     it scales with that choice instead of ignoring it. */
+     in their browser. A fixed px on body silently overrides that. */
   font-size: 100%;
-  /* The sticky bar is 64px tall. Without this, every in-page anchor
-     ("See Features") lands with its heading tucked underneath the chrome. */
-  scroll-padding-top: 80px;
+  /* In-page targets also carry scroll-margin-top; this is the floor for
+     anything that does not. The header does not stick in this design, so the
+     offset is a breathing gap rather than chrome clearance. */
+  scroll-padding-top: 24px;
 }
 
 body {
   background: var(--color-background);
   color: var(--color-text-primary);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* One family for the entire site. Archivo is a variable face with a real
+     width axis, and the display type leans on it hard (wdth 110–120) — a static
+     cut will not render those font-variation-settings at all. */
+  font-family: var(--font-archivo), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* iOS does not always resolve :active on a tap, so the CSS press states below
-     can miss. A brand-tinted tap highlight guarantees there is always some
-     acknowledgement on touch-down rather than the default blue-grey flash. */
-  -webkit-tap-highlight-color: rgba(154, 74, 42, 0.18);
+  /* iOS does not always resolve :active on a tap, so a warm tap highlight
+     guarantees some acknowledgement on touch-down rather than the default
+     blue-grey flash. */
+  -webkit-tap-highlight-color: rgba(25, 24, 23, 0.10);
 }
 
 a { color: inherit; text-decoration: none; }
 
-/* ── Buttons ── */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--rust);
-  color: var(--paper);
-  padding: 0.6875rem 1.375rem;
-  border-radius: var(--radius-sm);
+/* ── Type ──
+   Tracking tightens as size grows and loosens as it shrinks, and the width axis
+   opens up with it. One tracking value across a scale is what makes type look
+   untouched. These three classes are the display steps; body, caption, eyebrow
+   and label are set at the point of use because they vary per block. */
+.display-hero {
+  font-size: clamp(40px, 6.6vw, 76px);
   font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  /* Explicit properties, not `all`: transitioning `all` animates layout
-     properties too and makes hover cost a paint it does not need.
-     Transform runs on the press clock, not the state clock — hover colour can
-     take its time, but the scale under the finger cannot. */
-  transition: background var(--dur-state) var(--ease-firm),
-              box-shadow var(--dur-state) var(--ease-firm),
-              transform var(--dur-press) var(--ease-firm);
-  border: none;
-  min-height: 2.625rem;
-  letter-spacing: 0.01em;
-  box-shadow: var(--elev-1);
+  font-variation-settings: "wdth" 120;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  text-wrap: pretty;
 }
-.btn-primary:hover {
-  background: var(--rust-hover);
-  box-shadow: var(--elev-2);
-  transform: translateY(-1px);
+.display {
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 600;
+  font-variation-settings: "wdth" 116;
+  letter-spacing: -0.028em;
+  line-height: 1.1;
+  text-wrap: pretty;
 }
-.btn-primary:active {
-  background: var(--rust-pressed);
-  transform: scale(.97);
-  box-shadow: var(--elev-1);
+.display-section {
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 600;
+  font-variation-settings: "wdth" 110;
+  letter-spacing: -0.018em;
+  line-height: 1.25;
+  text-wrap: pretty;
 }
-/* Keyboard focus was invisible on every control. focus-visible only fires for
-   keyboard and assistive input, so pointer users never see the ring. */
-.btn-primary:focus-visible {
-  outline: 2px solid var(--rust-hover);
-  outline-offset: 3px;
+/* The app-title step: a product name, set wide and pulled tight. */
+.display-app {
+  font-size: clamp(34px, 4.4vw, 50px);
+  font-weight: 600;
+  font-variation-settings: "wdth" 114;
+  letter-spacing: -0.028em;
+  line-height: 1;
 }
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-surface);
-  color: var(--color-text-primary);
-  padding: 0.6875rem 1.375rem;
-  border-radius: var(--radius-sm);
-  font-weight: 500;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: background var(--dur-state) var(--ease-firm),
-              border-color var(--dur-state) var(--ease-firm),
-              transform var(--dur-press) var(--ease-firm);
-  border: 1px solid var(--color-border);
-  min-height: 2.625rem;
-  backdrop-filter: blur(8px) saturate(180%);
-}
-.btn-secondary:hover {
-  background: var(--color-surface-hover);
-  border-color: var(--color-border-strong);
-}
-/* The secondary button had no pressed state at all, so a tap gave no feedback. */
-.btn-secondary:active { transform: scale(.97); }
-.btn-secondary:focus-visible {
-  outline: 2px solid var(--rust-hover);
-  outline-offset: 3px;
+/* The old .display em rule tinted italics rust. There is no site-wide accent
+   any more, so emphasis is weight and width, not colour. */
+.display em,
+.display-hero em,
+.display-section em {
+  font-style: normal;
+  font-variation-settings: "wdth" 96;
 }
 
-/* ── Layout ── */
+/* ── Eyebrows and micro labels ──
+   Small type is set at default width and positively tracked — the inverse of
+   the display steps above. */
+.eyebrow {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-label);
+}
+.eyebrow-faint { color: var(--ink-faint); }
+
+.micro-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-label);
+}
+
+/* ── Layout ──
+   .container-page is the width-constrained wrapper for prose pages (legal,
+   about, contact). The full-bleed pages — home and the app pages — do not use
+   it; they run edge to edge and pad by the gutter instead. */
 .container-page {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
-}
-@media (max-width: 768px) {
-  .container-page { padding: 0 16px; }
+  padding: 0 var(--gutter);
 }
 
-/* ── Glass card ── */
-.glass-card {
+/* ── Scroll reveal ──
+   Elements enter once and stay entered. The initial hidden state lives in CSS
+   rather than being written by JS on mount, so there is no frame where the
+   content paints at full opacity and then jumps back down.
+
+   Two escape hatches, and both matter: with scripting off the observer never
+   runs, and with reduced motion the travel is not something to soften but
+   something to remove. In either case the element renders in its final state. */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur-reveal) ease,
+              transform var(--dur-reveal) var(--ease-reveal);
+}
+.reveal[data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+}
+@media (scripting: none) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    transition-delay: 0s !important;
+  }
+}
+
+/* ── Horizontal rails ──
+   Native overflow scroll, no carousel JS. Snap is `proximity`, not `mandatory`:
+   a free flick should be allowed to travel rather than being caught by the next
+   card. scroll-padding-left matches the gutter so a snapped card lines up with
+   the heading above it.
+
+   The scrollbar is hidden because the rail already announces itself with the
+   "Scroll →" label and a card peeking at the edge — but the element keeps
+   tabindex="0" in the markup so a keyboard user can still scroll it, and it
+   gets a real focus ring when they do. */
+.rail {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-left: var(--gutter);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-xl);
+}
+
+/* ── Shelf cards ──
+   The lift is small and the shadow deepens with it, so the card reads as
+   rising rather than growing. Press scales gently: the surface is large, and
+   the 0.97 used on a button would read as a lurch at this size. */
+.shelf-card {
+  transition: transform var(--dur-state) var(--ease-firm),
+              box-shadow var(--dur-state) var(--ease-firm);
+}
+.shelf-card:hover { transform: translateY(-3px); }
+.shelf-card:active { transform: scale(0.99); transition-duration: var(--dur-press); }
+
+.shelf-card--accent { box-shadow: var(--shadow-accent); }
+.shelf-card--accent:hover { box-shadow: var(--shadow-accent-hover); }
+.shelf-card--neutral { box-shadow: var(--shadow-card); }
+.shelf-card--neutral:hover { box-shadow: var(--shadow-card-hover); }
+
+/* ── Surface card ──
+   Replaces the old .glass-card. There is no glass in this system and no
+   borders: on a light ground a hairline plus a shadow double-draws the edge,
+   and the shadow alone is the softer, more expensive-looking of the two. */
+.surface-card {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-feature);
+  transition: transform var(--dur-state) var(--ease-firm),
+              box-shadow var(--dur-state) var(--ease-firm);
+}
+a.surface-card:hover,
+button.surface-card:hover,
+details.surface-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-feature-hover);
+}
+a.surface-card:active,
+button.surface-card:active,
+summary:active {
+  transform: scale(0.99);
+  transition-duration: var(--dur-press);
+}
+
+/* ── Buttons and pills ──
+   Two shapes only. The dark pill is the primary action anywhere on the site,
+   including on an accent field, where it is the one element that does not
+   dissolve into the gradient. The outlined pill is everything secondary. */
+.pill-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
   border-radius: var(--radius-md);
-  /* Shadow at REST, not only on hover. A card with no elevation until you
-     touch it reads as flat, and on this dark ground the shadow is nearly
-     invisible anyway: the hairline is what gives it an edge. */
-  box-shadow: var(--elev-1);
-  /* Named glass but never blurred anything. A material that does not sample
-     what is behind it is just a tinted rectangle; the dot grid now shows
-     through softened rather than sharp. Bigger surfaces read as thicker, so
-     the blur here is heavier than the 8px on a small secondary button. */
-  backdrop-filter: blur(16px) saturate(160%);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background var(--dur-state) var(--ease-firm),
+              transform var(--dur-press) var(--ease-firm);
+}
+.pill-dark:hover { background: #262422; color: var(--paper); }
+.pill-dark:active { transform: scale(0.97); }
+
+.pill-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 18px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--hairline-strong);
+  background: transparent;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
   transition: border-color var(--dur-state) var(--ease-firm),
-              box-shadow var(--dur-state) var(--ease-firm),
               background var(--dur-state) var(--ease-firm),
               transform var(--dur-press) var(--ease-firm);
 }
-.glass-card:hover {
-  border-color: var(--rust-border);
-  box-shadow: var(--elev-2), inset 0 1px 0 rgba(246,242,234,0.05);
-  background: var(--color-surface-hover);
+.pill-outline:hover {
+  border-color: var(--ink);
+  background: rgba(25, 24, 23, 0.04);
+  color: var(--ink);
 }
-/* Half the cards on this site are links (the Renew+ card, the whole apps grid)
-   and pressing one gave no acknowledgement at all until the next page painted.
-   Scale is gentler than on a button: the surface is large, so the same 0.97
-   would read as the card lurching. Only interactive cards respond. */
-a.glass-card:active,
-button.glass-card:active,
-summary:active {
-  transform: scale(0.99);
-}
+.pill-outline:active { transform: scale(0.97); }
 
-/* ── Label chip ── */
+/* Kept as aliases so the pages that still call them keep working; both resolve
+   to the two shapes above rather than to a third style. */
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  min-height: 2.75rem;
+  cursor: pointer;
+  transition: background var(--dur-state) var(--ease-firm),
+              border-color var(--dur-state) var(--ease-firm),
+              transform var(--dur-press) var(--ease-firm);
+}
+.btn-primary {
+  padding: 14px 22px;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+}
+.btn-primary:hover { background: #262422; }
+.btn-primary:active { transform: scale(0.97); }
+.btn-secondary {
+  padding: 13px 18px;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--hairline-strong);
+}
+.btn-secondary:hover { border-color: var(--ink); background: rgba(25, 24, 23, 0.04); }
+.btn-secondary:active { transform: scale(0.97); }
+
+/* ── App Store badge ──
+   A stand-in for Apple's official asset: same footprint, same position, so
+   dropping the real SVG in is a swap and not a reflow. It is a <span> and not
+   an <a> while the app is unreleased — a badge that looks like a link but goes
+   nowhere is worse than one that plainly does not. */
+.appstore-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 20px;
+  border-radius: var(--radius-md);
+  background: var(--ink);
+  color: var(--paper);
+}
+a.appstore-badge {
+  transition: background var(--dur-state) var(--ease-firm),
+              transform var(--dur-press) var(--ease-firm);
+}
+a.appstore-badge:hover { background: #262422; color: var(--paper); }
+a.appstore-badge:active { transform: scale(0.97); }
+
+/* ── Links ──
+   Nav and footer links sit muted and resolve to full ink on hover. This is the
+   whole hover vocabulary for text on the site: no underlines appearing, no
+   colour shifts into an accent. */
+.nav-link {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  transition: color var(--dur-state) var(--ease-firm);
+}
+.nav-link:hover { color: var(--ink); }
+.nav-link[aria-current="page"] { color: var(--ink); }
+
+.footer-link {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  transition: color var(--dur-state) var(--ease-firm);
+}
+.footer-link:hover { color: var(--ink); }
+
+/* Links inside body copy — the one place an underline is right, because the
+   colour difference alone is not enough to mark a link mid-sentence. */
+.link-inline {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--hairline-strong);
+  transition: color var(--dur-state) var(--ease-firm),
+              text-decoration-color var(--dur-state) var(--ease-firm);
+}
+.link-inline:hover { color: var(--ink-muted); text-decoration-color: currentColor; }
+
+/* The big mailto in each footer. Sized at the point of use; this only carries
+   the hover. */
+.contact-link {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  font-variation-settings: "wdth" 114;
+  line-height: 1.1;
+  color: var(--ink);
+  transition: color var(--dur-state) var(--ease-firm);
+}
+.contact-link:hover { color: var(--ink-muted); }
+
+/* ── Label chip ──
+   Used on the prose pages to mark a section ("Legal · Renew+"). Flat tint, no
+   border: on a light ground the tint is already a shape. */
 .label-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 12px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
-  background: var(--rust-subtle);
-  border: 1px solid var(--rust-border);
-  font-size: 11px;
+  background: var(--accent-tint);
+  font-size: 10.5px;
   font-weight: 600;
-  color: var(--rust);
+  color: var(--ink);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 24px;
+  letter-spacing: 0.16em;
 }
 
-/* ── Site chrome: a floating material, not a bar ──
-   The header is a translucent layer that content passes under, so it should
-   only assert an edge where there is actually something underneath it to
-   separate from. A permanent 1px rule draws a line across the top of the page
-   even when the page is scrolled to zero and nothing is behind the glass. */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(15, 13, 10, 0.72);
-  backdrop-filter: blur(20px) saturate(180%);
-  /* The bright inner top edge is the light catching the near edge of the
-     material — it is what stops the glass reading as flat tinted plastic. */
-  box-shadow: inset 0 1px 0 rgba(246, 242, 234, 0.06);
-  border-bottom: 1px solid transparent;
-  transition: background var(--dur-state) var(--ease-firm),
-              border-color var(--dur-state) var(--ease-firm);
-}
-.site-header[data-scrolled="true"] {
-  background: rgba(15, 13, 10, 0.82);
-  border-bottom-color: var(--paper-border);
-}
-/* Scroll edge effect: a short gradient under the bar that fades content out as
-   it slides beneath, rather than guillotining it at a hard border. It only
-   exists once there is content to fade. */
-.site-header::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
-  height: 24px;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(15, 13, 10, 0.55), transparent);
-  opacity: 0;
-  transition: opacity var(--dur-state) var(--ease-firm);
-}
-.site-header[data-scrolled="true"]::after { opacity: 1; }
+/* ── Prose ──
+   The legal and policy pages. The global `* { margin: 0 }` reset means a run of
+   <p> elements has no gap at all unless something puts it back, and putting it
+   back per-element in a style object is how those pages ended up with spacing
+   on some paragraphs and not others. One class, applied to the wrapper, sets
+   the rhythm for everything inside it.
 
-.nav-link {
-  position: relative;
-  color: var(--paper-dim);
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding: 0.375rem 0.75rem;
-  border-radius: var(--radius-xs);
+   Measure is capped at 72ch rather than by a pixel width: the limit that
+   matters for reading is the number of characters on a line, and it should hold
+   whatever text size the reader has chosen. */
+.prose {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink-body);
+  max-width: 72ch;
+}
+.prose > p,
+.prose > ul,
+.prose > ol,
+.prose > div { margin-bottom: 18px; }
+/* The Tailwind preflight this file imports strips list markers globally, which
+   silently turned every clause list in the policy documents into an unindented
+   run of sentences. Put them back here rather than fighting the reset. */
+.prose > ul,
+.prose > ol { padding-left: 22px; }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li { margin-bottom: 8px; }
+.prose li::marker { color: var(--ink-faint); }
+.prose strong { color: var(--ink); font-weight: 600; }
+
+/* Headings pull up hard against the text they introduce and push away from the
+   text above, so the gap itself says which block a heading belongs to. */
+.prose h2 {
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 600;
+  font-variation-settings: "wdth" 110;
+  letter-spacing: -0.018em;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: clamp(38px, 5vw, 56px) 0 14px;
+}
+.prose h3 {
+  font-size: 16.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 28px 0 10px;
+}
+.prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--hairline-strong);
   transition: color var(--dur-state) var(--ease-firm),
-              background var(--dur-state) var(--ease-firm),
-              transform var(--dur-press) var(--ease-firm);
+              text-decoration-color var(--dur-state) var(--ease-firm);
 }
-.nav-link:hover { color: var(--paper); background: var(--color-surface); }
-.nav-link:active { transform: scale(0.96); }
-/* Wayfinding: "where am I" was unanswerable — every nav item looked identical
-   on every page. The marker is anchored under the label it belongs to. */
-.nav-link[aria-current="page"] { color: var(--paper); }
-.nav-link[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  left: 0.75rem;
-  right: 0.75rem;
-  bottom: -0.375rem;
-  height: 2px;
-  border-radius: var(--radius-full);
-  background: var(--rust);
-}
+.prose a:hover { color: var(--ink-muted); text-decoration-color: currentColor; }
 
-/* Mobile nav sheet.
-   Driven by transitions on a data attribute rather than by mount/unmount or
-   keyframes, and that is the whole point: a transition always animates from
-   the element's *current* on-screen value, so tapping the toggle mid-flight
-   reverses the sheet smoothly from where it actually is instead of restarting
-   from the beginning. Enter and exit run the same path with mirrored easing —
-   it leaves the way it arrived. */
-.mobile-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  flex-direction: column;
-  gap: 2px;
-  padding: 12px 24px 24px;
-  border-top: 1px solid var(--paper-border);
-  /* Heavier than the bar above it: this surface is the full width of the
-     screen and covers live content, and at 0.86/24px the 88px hero read
-     straight through the menu labels. Bigger surface, thicker material. */
-  background: rgba(15, 13, 10, 0.94);
-  backdrop-filter: blur(32px) saturate(180%);
-  box-shadow: var(--elev-2);
-  /* Anchored to the bar it drops out of, not to its own centre. */
-  transform-origin: top center;
-  opacity: 0;
-  transform: translateY(-8px) scale(0.98);
-  visibility: hidden;
-  transition: opacity var(--dur-spatial) var(--ease-firm-reverse),
-              transform var(--dur-spatial) var(--ease-firm-reverse),
-              visibility 0s linear var(--dur-spatial);
+/* The callout and the closing "Plain English" box. No left border rule and no
+   hairline — a tint is already a shape on a light ground, and the system has no
+   dividing bars in it. */
+.callout {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 2.4vw, 28px);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-body);
 }
-.mobile-menu[data-open="true"] {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  visibility: visible;
-  transition: opacity var(--dur-spatial) var(--ease-firm),
-              transform var(--dur-spatial) var(--ease-firm),
-              visibility 0s;
+.callout-closing {
+  margin-top: clamp(40px, 5vw, 56px);
+  background: var(--accent-tint);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 2.4vw, 28px);
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-body);
 }
-.mobile-menu-link {
-  color: var(--paper-dim);
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(246, 242, 234, 0.06);
-  display: block;
-  transition: color var(--dur-state) var(--ease-firm),
-              transform var(--dur-press) var(--ease-firm);
-}
-.mobile-menu-link:hover { color: var(--paper); }
-.mobile-menu-link:active { transform: scale(0.98); }
-.mobile-menu-link[aria-current="page"] { color: var(--rust); }
-
-.icon-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  color: var(--paper);
-  border-radius: var(--radius-xs);
-  transition: background var(--dur-state) var(--ease-firm),
-              transform var(--dur-press) var(--ease-firm);
-}
-.icon-button:hover { background: var(--color-surface); }
-.icon-button:active { transform: scale(0.92); }
 
 /* ── Form fields ──
-   These were styled inline, which meant `outline: none` sat in the element's
-   style attribute and beat the site-wide :focus-visible rule on specificity —
-   keyboard focus was invisible on every field of the contact form. A class can
-   express the states an inline style object cannot.
+   These must be a class, not an inline style object: `outline: none` in a style
+   attribute beats the stylesheet on specificity and silently killed the focus
+   ring on every field of the contact form once already.
 
-   :user-invalid is the inline-validation half of it: unlike :invalid it stays
-   quiet until the field has actually been interacted with and left, so an empty
-   form is not red on arrival, and the reader is told about a problem where and
-   when it happened rather than on submit. */
+   :user-invalid rather than :invalid — it stays quiet until the field has been
+   interacted with and left, so an empty form is not red on arrival. */
 .input-field {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.8125rem 1rem;
   font-size: 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: var(--color-background);
-  color: var(--color-text-primary);
   font-family: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1.5px solid var(--hairline);
+  border-radius: var(--radius-md);
   transition: border-color var(--dur-state) var(--ease-firm),
               background var(--dur-state) var(--ease-firm),
               box-shadow var(--dur-state) var(--ease-firm);
 }
-.input-field::placeholder { color: var(--color-text-tertiary); }
-.input-field:hover { border-color: var(--color-border-strong); }
+.input-field::placeholder { color: var(--ink-faint); }
+.input-field:hover { border-color: var(--hairline-strong); }
 .input-field:focus-visible {
-  outline: 2px solid var(--rust-hover);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
-  border-color: var(--rust-border);
-  background: var(--color-surface);
+  border-color: var(--hairline-strong);
+  background: #fff;
 }
 .input-field:user-invalid {
-  border-color: #C2553A;
-  box-shadow: 0 0 0 1px rgba(194, 85, 58, 0.35);
-}
-
-/* Footer links had a colour transition and nothing else — no press state. */
-.footer-link {
-  color: var(--color-text-tertiary);
-  font-size: 0.875rem;
-  display: inline-block;
-  transition: color var(--dur-state) var(--ease-firm),
-              transform var(--dur-press) var(--ease-firm);
-}
-.footer-link:hover { color: var(--paper); }
-.footer-link:active { transform: scale(0.97); }
-
-/* ── Warm dot grid ── */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(246,242,234,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(246,242,234,0.025) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
-
-/* ── Orb animations ──
-   Compositor-only properties (transform), and a will-change hint so the layer
-   is promoted before the first frame rather than during it. */
-.orb {
-  position: absolute;
-  pointer-events: none;
-  will-change: transform;
-}
-@keyframes orb-drift-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(60px, -40px) scale(1.05); }
-  66% { transform: translate(-30px, 30px) scale(0.96); }
-}
-@keyframes orb-drift-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  40% { transform: translate(-80px, 50px) scale(1.08); }
-  70% { transform: translate(40px, -20px) scale(0.94); }
-}
-@keyframes orb-drift-3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, 60px) scale(1.03); }
-}
-
-/* ── Fraunces display headings ──
-   Fraunces is a variable face with a real optical-size axis, and the old rule
-   pinned it to opsz 144 for every heading on the site. That is the display cut
-   — hairline joins, tight apertures, drawn to be seen at 88px — being used at
-   28px, where it goes brittle. font-optical-sizing: auto hands the axis back to
-   the browser so each heading gets the cut drawn for the size it renders at.
-   SOFT and WONK stay pinned because those are brand choices, not size ones.
-
-   opsz is stepped by hand rather than left to font-optical-sizing: auto. Auto
-   maps the axis to the rendered size in points, which drops the 88px hero to
-   roughly opsz 66 and visibly thickens it — the delicate display cut is the
-   point of the hero, so that step keeps 144. What auto gets right is the small
-   end, and that is where this was broken. */
-.display {
-  font-family: var(--font-fraunces), 'Fraunces', serif;
-  font-weight: 320;
-  font-variation-settings: "opsz" var(--display-opsz, 72), "SOFT" 50, "WONK" 0;
-  /* Tracking and leading are size-specific, never one value for the scale.
-     These are the mid-scale defaults; the two modifiers below take the ends. */
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-}
-/* Hero scale (48-88px): the display cut, and letters drift apart as they grow,
-   so pull them in harder and set the leading tight. */
-.display-hero {
-  --display-opsz: 144;
-  letter-spacing: -0.038em;
-  line-height: 1.02;
-}
-/* Section scale (28-44px): this is the step the old rule got wrong — the 144
-   display cut and -0.035em hero tracking, both applied to type a third the
-   size. Hairline joins went brittle and "iOS apps" nearly closed up into one
-   word. A text-weight optical cut, looser tracking, more leading. */
-.display-section {
-  --display-opsz: 36;
-  letter-spacing: -0.018em;
-  line-height: 1.15;
-}
-.display em {
-  font-style: italic;
-  color: var(--rust);
-  font-weight: 360;
+  border-color: #B4472C;
+  box-shadow: 0 0 0 1px rgba(180, 71, 44, 0.28);
 }
 
 /* ── FAQ disclosure ──
-   The "+" never changed when a panel opened, so the control gave no status.
-   Rotating it 45° turns it into a close mark along a path it can retrace on the
-   way back — one transition, mirrored for free. */
-details > summary > span {
+   The "+" rotates 45° into a close mark along a path it can retrace on the way
+   back: one transition, mirrored for free. */
+details > summary > span.disclosure-mark {
   display: inline-block;
   transition: transform var(--dur-state) var(--ease-firm);
 }
-details[open] > summary > span { transform: rotate(45deg); }
+details[open] > summary > span.disclosure-mark { transform: rotate(45deg); }
 
-/* Height on <details> is not animatable in every engine yet, so this is opt-in
-   where the platform supports it and an instant open everywhere else. */
 @supports (interpolate-size: allow-keywords) {
   :root { interpolate-size: allow-keywords; }
-  details.glass-card::details-content {
+  details.surface-card::details-content {
     block-size: 0;
     overflow: hidden;
     transition: block-size var(--dur-state) var(--ease-firm),
                 content-visibility var(--dur-state) allow-discrete;
   }
-  details.glass-card[open]::details-content { block-size: auto; }
+  details.surface-card[open]::details-content { block-size: auto; }
 }
 
-/* ── Focus, everywhere else ──
-   Anything focusable that is not one of the button classes above still needs a
-   visible ring. Without this, keyboard navigation is invisible on this site. */
-/* Universal rather than a list of tags: the FAQ accordions are <summary>
-   elements, which an element list misses, and they then fall back to the
-   browser's own ring in a colour that has nothing to do with this palette. */
+/* ── Focus ──
+   Universal rather than a list of tags: <summary> is focusable and an element
+   list misses it, which drops it back to the browser's own ring in a colour
+   that has nothing to do with this palette. --accent resolves to ink on studio
+   pages and to orange inside .accent-renew, so this one rule covers both. */
 :focus-visible {
-  outline: 2px solid var(--rust-hover);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: var(--radius-xs);
 }
 
-/* ── Reduced motion ──
-   The drifting background orbs run continuously. For anyone with a vestibular
-   disorder that is not decoration, it is a symptom trigger.
+/* ── Selection ── */
+::selection { background: rgba(25, 24, 23, 0.14); }
+.accent-renew ::selection { background: rgba(255, 132, 0, 0.24); }
 
-   But reduced motion does not mean no feedback. The previous rule flattened
-   *every* transition to 0.01ms, which also killed the hover and press colour
-   changes — the parts that carry meaning and cause no vestibular load at all.
-   So: kill the travel, keep the cross-fade. Opacity and colour still animate;
-   transforms and looping animations do not. */
+/* ── Reduced motion ──
+   Reduced motion is not no feedback. Kill the travel, keep the cross-fade:
+   opacity and colour still animate, because they carry meaning and cause no
+   vestibular load. Transforms and looping animations do not. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *,
@@ -590,64 +713,67 @@ details[open] > summary > span { transform: rotate(45deg); }
   }
   /* Transforms are no longer transitioned, so neutralise the ones that would
      otherwise snap to their end state. */
-  .btn-primary:hover,
+  .shelf-card:hover,
+  .shelf-card:active,
+  a.surface-card:hover,
+  a.surface-card:active,
+  button.surface-card:active,
+  summary:active,
+  .pill-dark:active,
+  .pill-outline:active,
   .btn-primary:active,
   .btn-secondary:active,
-  .nav-link:active,
-  .icon-button:active,
-  .footer-link:active,
-  a.glass-card:active,
-  button.glass-card:active,
-  summary:active,
-  details[open] > summary > span {
+  a.appstore-badge:active,
+  details[open] > summary > span.disclosure-mark {
     transform: none !important;
   }
-  /* The sheet cross-fades in place instead of dropping out of the bar. */
-  .mobile-menu,
-  .mobile-menu[data-open="true"] { transform: none !important; }
-}
-
-/* ── Reduced transparency ──
-   Translucency is the site's main depth cue, which makes it the main problem
-   for anyone who has asked the OS for less of it. Every material goes solid and
-   the blur comes off; the hairlines already in place carry the separation. */
-@media (prefers-reduced-transparency: reduce) {
-  .site-header,
-  .mobile-menu,
-  .glass-card,
-  .btn-secondary {
-    backdrop-filter: none;
-  }
-  .site-header,
-  .site-header[data-scrolled="true"] { background: var(--ink); }
-  .site-header::after { display: none; }
-  .mobile-menu { background: var(--ink); }
-  .glass-card { background: var(--ink-2); }
-  .btn-secondary { background: var(--ink-3); }
-  .grid-bg { background-image: none; }
-  .orb { display: none; }
 }
 
 /* ── Increased contrast ──
-   Near-solid surfaces with a defined, contrasting border, and secondary text
-   pulled up towards the primary. */
+   The ramp's lower steps move up towards ink, and the shadow-only card edges
+   gain the hairline they deliberately go without by default. */
 @media (prefers-contrast: more) {
   :root {
-    --color-text-secondary: #CFC8C1;
-    --color-text-tertiary:  #B3AAA2;
-    --color-border:         rgba(246, 242, 234, 0.30);
-    --color-border-strong:  rgba(246, 242, 234, 0.45);
-    --paper-dim:            rgba(246, 242, 234, 0.85);
+    --ink-body:  #3B3836;
+    --ink-muted: #45423F;
+    --ink-label: #55524E;
+    --ink-faint: #625E5A;
+    --hairline:        rgba(25, 24, 23, 0.28);
+    --hairline-strong: rgba(25, 24, 23, 0.48);
   }
-  .glass-card {
-    background: var(--ink-2);
-    backdrop-filter: none;
+  .surface-card { border: 1px solid var(--hairline); }
+  .label-chip { border: 1px solid var(--hairline-strong); }
+}
+
+/* ── Device morph ──
+   A DeviceStage with the same `name` on two pages hands its identity to the
+   browser, which animates size, position and shape between them. Timed on the
+   spatial token because that is exactly what this is: an object moving.
+
+   The blur mid-flight is doing real work. A morph between two differently
+   shaped snapshots interpolates pixels, and the seam is visible at the halfway
+   point; three pixels of blur where the distortion peaks hides it without
+   reading as an effect. */
+::view-transition-group(.device-morph) {
+  animation-duration: var(--dur-spatial);
+  animation-timing-function: var(--ease-firm);
+}
+
+::view-transition-image-pair(.device-morph) {
+  animation-name: device-morph-blur;
+  animation-duration: var(--dur-spatial);
+  animation-timing-function: var(--ease-firm);
+}
+
+@keyframes device-morph-blur {
+  35% { filter: blur(3px); }
+}
+
+/* The global reduced-motion reset uses `*`, which never matches a
+   ::view-transition pseudo-element — so the morph has to opt out by name. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(.device-morph),
+  ::view-transition-image-pair(.device-morph) {
+    animation-duration: 0.01ms;
   }
-  .btn-secondary { background: var(--ink-3); }
-  .site-header,
-  .site-header[data-scrolled="true"] {
-    background: var(--ink);
-    backdrop-filter: none;
-  }
-  .label-chip { border-color: var(--rust); }
 }

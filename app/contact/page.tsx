@@ -1,225 +1,73 @@
-"use client";
+import type { CSSProperties } from "react";
+import ContactForm from "@/components/ContactForm";
+import PageShell, { PageHero } from "@/components/PageShell";
+import Reveal from "@/components/Reveal";
 
-import { useState } from "react";
+export const metadata = {
+  title: "Contact | Crafted by Ellis",
+  description: "Questions, bugs or feedback reach the person who wrote the app. Most replies go out the same day.",
+};
+
+const ADDRESSES = [
+  { label: "Renew+ support", email: "RenewPlus@craftedbyellis.com" },
+  { label: "Crafted Co", email: "CraftedCo@craftedbyellis.com" },
+  { label: "Everything else", email: "braden@craftedbyellis.com" },
+];
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "General Inquiry",
-    message: "",
-  });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("sending");
-    
-    // For now, just simulate sending
-    // Later, we'll connect this to a real email service
-    setTimeout(() => {
-      setStatus("sent");
-      // Reset form
-      setTimeout(() => {
-        setFormData({ name: "", email: "", subject: "General Inquiry", message: "" });
-        setStatus("idle");
-      }, 3000);
-    }, 1000);
-  };
-
   return (
-    <>
-      {/* Hero */}
-      <section style={{
-        background: "var(--color-background)",
-        padding: "80px 0 60px",
-      }}>
-        <div className="container-page" style={{ textAlign: "center", maxWidth: "700px" }}>
-          <p style={labelStyle}>Contact</p>
-          <h1 style={{
-            fontSize: "clamp(36px, 5vw, 56px)",
-            fontWeight: 700,
-            letterSpacing: "-0.03em",
-            lineHeight: 1.1,
-            marginBottom: "20px",
-          }}>
-            Get in touch
-          </h1>
-          <p style={{
-            fontSize: "18px",
-            color: "var(--color-text-secondary)",
-            lineHeight: 1.6,
-          }}>
-            Have a question, feedback, or just want to say hi? We&apos;d love to hear from you.
-          </p>
+    <PageShell>
+      <PageHero
+        eyebrow="Contact"
+        title="It reaches me, not a queue."
+        lead="There is no support team to be routed through. Whatever you send lands with the person who designed and built the app, and most replies go out the same day."
+      />
+
+      <section style={sectionStyle}>
+        <div>
+          <Reveal index={1} className="eyebrow" style={{ marginBottom: "clamp(20px, 2.6vw, 28px)" }}>
+            Send a message
+          </Reveal>
+          <Reveal index={2}>
+            <ContactForm />
+          </Reveal>
+        </div>
+
+        <div>
+          <Reveal index={3} className="eyebrow" style={{ marginBottom: "clamp(20px, 2.6vw, 28px)" }}>
+            Or email directly
+          </Reveal>
+          <Reveal index={4} style={{ display: "grid", gap: "22px" }}>
+            {ADDRESSES.map(({ label, email }) => (
+              <div key={email}>
+                <div className="micro-label" style={{ marginBottom: "6px" }}>
+                  {label}
+                </div>
+                <a href={`mailto:${email}`} className="contact-link" style={{ fontSize: "clamp(16px, 1.8vw, 20px)" }}>
+                  {email}
+                </a>
+              </div>
+            ))}
+            <p style={noteStyle}>Replies usually go out within 48 hours, and always from a person.</p>
+          </Reveal>
         </div>
       </section>
-
-      {/* Contact Form */}
-      <section style={{ padding: "80px 0", background: "var(--color-background)" }}>
-        <div className="container-page" style={{ maxWidth: "600px" }}>
-          <form onSubmit={handleSubmit} style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "24px",
-          }}>
-            {/* Name */}
-            <div>
-              <label htmlFor="name" style={labelFormStyle}>
-                Name <span style={{ color: "var(--color-accent)" }}>*</span>
-              </label>
-              <input
-                id="name"
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="input-field"
-                placeholder="Your name"
-              />
-            </div>
-
-            {/* Email */}
-            <div>
-              <label htmlFor="email" style={labelFormStyle}>
-                Email <span style={{ color: "var(--color-accent)" }}>*</span>
-              </label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="input-field"
-                placeholder="you@example.com"
-              />
-            </div>
-
-            {/* Subject */}
-            <div>
-              <label htmlFor="subject" style={labelFormStyle}>
-                Subject
-              </label>
-              <select
-                id="subject"
-                value={formData.subject}
-                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                className="input-field"
-              >
-                <option>General Inquiry</option>
-                <option>Bug Report</option>
-                <option>Feature Request</option>
-                <option>Partnership</option>
-                <option>Support</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            {/* Message */}
-            <div>
-              <label htmlFor="message" style={labelFormStyle}>
-                Message <span style={{ color: "var(--color-accent)" }}>*</span>
-              </label>
-              <textarea
-                id="message"
-                required
-                rows={6}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="input-field"
-                style={{ resize: "vertical", minHeight: "140px" }}
-                placeholder="Tell us what's on your mind..."
-              />
-            </div>
-
-            {/* Submit */}
-            <button
-              type="submit"
-              disabled={status === "sending" || status === "sent"}
-              className="btn-primary"
-              style={{
-                width: "100%",
-                opacity: status === "sending" || status === "sent" ? 0.7 : 1,
-              }}
-            >
-              {status === "idle" && "Send Message"}
-              {status === "sending" && "Sending..."}
-              {status === "sent" && "✓ Message Sent"}
-              {status === "error" && "Try Again"}
-            </button>
-
-            {status === "sent" && (
-              <p style={{
-                textAlign: "center",
-                color: "var(--rust)",
-                fontSize: "14px",
-                fontWeight: 500,
-              }}>
-                Thanks! We&apos;ll get back to you within 48 hours.
-              </p>
-            )}
-          </form>
-        </div>
-      </section>
-
-      {/* Direct Contact */}
-      <section style={{
-        padding: "60px 0 96px",
-        background: "var(--color-background-secondary)",
-        textAlign: "center",
-      }}>
-        <div className="container-page">
-          <h2 style={{
-            fontSize: "24px",
-            fontWeight: 700,
-            marginBottom: "16px",
-          }}>
-            Or reach us directly
-          </h2>
-          <p style={{
-            fontSize: "18px",
-            color: "var(--color-text-secondary)",
-            marginBottom: "8px",
-          }}>
-            Email us at:
-          </p>
-          <a
-            href="mailto:RenewPlus@craftedbyellis.com"
-            style={{
-              fontSize: "18px",
-              fontWeight: 600,
-              color: "var(--color-accent)",
-            }}
-          >
-            RenewPlus@craftedbyellis.com
-          </a>
-          <p style={{
-            marginTop: "24px",
-            fontSize: "14px",
-            color: "var(--color-text-tertiary)",
-          }}>
-            We typically respond within 48 hours.
-          </p>
-        </div>
-      </section>
-    </>
+    </PageShell>
   );
 }
 
-const labelStyle: React.CSSProperties = {
-  fontSize: "13px",
-  fontWeight: 600,
-  color: "var(--color-accent)",
-  textTransform: "uppercase",
-  letterSpacing: "0.1em",
-  marginBottom: "12px",
+const sectionStyle: CSSProperties = {
+  padding: "0 var(--gutter) clamp(60px, 8vw, 96px)",
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+  gap: "clamp(32px, 5vw, 70px)",
+  alignItems: "start",
+  maxWidth: "1080px",
 };
 
-const labelFormStyle: React.CSSProperties = {
-  display: "block",
-  fontSize: "14px",
-  fontWeight: 600,
-  color: "var(--color-text-primary)",
-  marginBottom: "8px",
+const noteStyle: CSSProperties = {
+  fontSize: "13.5px",
+  lineHeight: 1.55,
+  color: "var(--ink-faint)",
+  maxWidth: "280px",
 };
-
