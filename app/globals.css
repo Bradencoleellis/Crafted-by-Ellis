@@ -75,6 +75,29 @@
   --renew-screen-ink-3:  #9B9B9B;   /* text.tertiary */
   --renew-screen-border: #E4DDD4;   /* border.default */
 
+  /* Crafted Co — the second app on the shelf, and the reason the per-app model
+     above exists. Earth set (green/ochre) per DESIGN_STANDARDS_2026 §1.1: the
+     construction product reads wrong in SaaS blue, and it must not borrow the
+     Renew+ orange or the two products stop being distinguishable on one shelf.
+     Ochre is a second status colour for "needs attention", never a surface. */
+  --co-accent:      #3F6B4C;
+  --co-accent-deep: #2F5239;
+  --co-accent-tint: rgba(63, 107, 76, 0.14);
+  --co-accent-glow: rgba(47, 82, 57, 0.38);
+  --co-ochre:       #C08A2E;
+
+  /* Crafted Co UI drawn inside a laptop screen. Same role split as the Renew+
+     block above — surfaces, three ink steps, one border. */
+  --co-screen-bg:      #F5F3EE;
+  --co-screen-rail:    #EFEBE3;
+  --co-screen-sunk:    #E6E1D7;
+  --co-screen-card:    #FFFFFF;
+  --co-screen-ink:     #1C1F1B;
+  --co-screen-ink-2:   #636A62;
+  --co-screen-ink-3:   #A6A9A2;
+  --co-screen-border:  #E2DDD3;
+  --co-screen-inverse: #F7F5F0;
+
   /* Resolved per scope. On the studio shell the "accent" is simply ink, which
      is what makes focus rings and selection work on both grounds from one rule. */
   --accent:      var(--ink);
@@ -776,4 +799,32 @@ details[open] > summary > span.disclosure-mark { transform: rotate(45deg); }
   ::view-transition-image-pair(.device-morph) {
     animation-duration: 0.01ms;
   }
+}
+
+/* ── Device fit ───────────────────────────────────────────────────────────
+   A Device is drawn at a fixed intrinsic pixel width so its internal
+   proportions stay honest — every value inside it is a fraction of that
+   number. That makes it the one thing on the site that cannot be fluid: CSS
+   will not divide a length by a length to produce the unitless factor a fluid
+   `zoom` would need, so a narrow viewport has to be met with steps.
+
+   `zoom` rather than `transform: scale()` on purpose — zoom shrinks the layout
+   box too, so the page flows around the smaller object. A transform would
+   leave the original 560px hole behind and keep pushing the page sideways,
+   which is exactly the bug this fixes.
+
+   Steps are tuned for the 560px hero laptop, the widest device on the site.
+   The phone heroes (244px) already fit and never reach these rules. */
+@media (max-width: 700px) { .device-fit { zoom: 0.78; } }
+@media (max-width: 560px) { .device-fit { zoom: 0.62; } }
+@media (max-width: 420px) { .device-fit { zoom: 0.52; } }
+
+/* The device glow is a wide, heavily-blurred, absolutely-positioned ellipse
+   that deliberately bleeds past the machine it lights. Decorative bleed must
+   never create a horizontal scrollbar, so the sections that host a device clip
+   on the inline axis. `clip` and not `hidden`: hidden would make the section a
+   scroll container and break `position: sticky` and scroll-margin anchoring
+   inside it. */
+.device-section {
+  overflow-x: clip;
 }

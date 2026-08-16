@@ -5,11 +5,16 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import DeviceStage from "@/components/devices/DeviceStage";
 import RenewScreen from "@/components/devices/RenewScreen";
+import CraftedCoScreen from "@/components/devices/CraftedCoScreen";
 import { displayWidth } from "@/components/devices/Device";
 
 // Body width of the shelf-card phone. The hero on /renewplus is larger; the
 // morph between the two is the whole point, so they are deliberately different.
 const PHONE_W = 168;
+
+// The laptop is wider than the phone at the same apparent "size" because it is
+// a wider object — matching their widths would make the laptop read as a toy.
+const LAPTOP_W = 210;
 
 // The home nav points into this page's own sections rather than at other
 // routes: the shelf below *is* the apps list, and "Studio" and "Contact" are
@@ -126,7 +131,13 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <Reveal index={3} className="shelf-card shelf-card--neutral" style={{ ...shelfCardStyle, ...craftedCoCardStyle }}>
+          <Reveal
+            as="a"
+            href="/craftedco"
+            index={3}
+            className="shelf-card shelf-card--neutral"
+            style={{ ...shelfCardStyle, ...craftedCoCardStyle }}
+          >
             <div style={cardTopRowStyle}>
               <span style={{ ...cardTagStyle, color: "var(--ink-label)" }}>In build</span>
               <span style={{ ...cardTagStyle, color: "var(--ink-faint)" }}>02</span>
@@ -135,30 +146,24 @@ export default function Home() {
             <p style={{ ...cardBodyStyle, color: "var(--ink-body)" }}>
               A quieter way to run a small trade business — quotes, jobs and invoices without the clutter.
             </p>
-            {/* Not a link yet: there is no page behind it. It reads as a label
-                for what is coming, which is what the card is. */}
             <span className="pill-outline" style={{ alignSelf: "flex-start" }}>
               Follow the build
             </span>
 
-            {/* Placeholder mark — swap for the real Crafted Co icon when that
-                page is built, and take this card's accent from it then. */}
-            <div style={markRowStyle}>
-              <div style={markStyle} aria-hidden="true">
-                <div style={markRow}>
-                  <div style={{ flex: 1, background: "var(--ink)" }} />
-                  <div style={{ flex: 1, background: "var(--ink)" }} />
-                </div>
-                <div style={markRow}>
-                  <div style={{ flex: 1, background: "var(--ink)" }} />
-                  <div style={{ flex: 2, background: "var(--ink)" }} />
-                  <div style={{ flex: 1, background: "var(--ink)" }} />
-                </div>
-                <div style={markRow}>
-                  <div style={{ flex: 1, background: "var(--ink)" }} />
-                  <div style={{ flex: 1, background: "var(--ink)" }} />
-                </div>
-              </div>
+            {/* The laptop rises out of the card's bottom edge the way the Renew+
+                phone does. Same DeviceStage mechanism, so following this card
+                opens the machine up into the hero on /craftedco rather than
+                cutting to a larger picture of one. */}
+            <div style={plateRowStyle}>
+              <DeviceStage
+                name="device-craftedco"
+                variant="laptop"
+                width={LAPTOP_W}
+                glow="var(--co-accent-glow)"
+                style={{ marginBottom: `-${Math.round(LAPTOP_W * 0.1)}px` }}
+              >
+                <CraftedCoScreen w={displayWidth("laptop", LAPTOP_W)} />
+              </DeviceStage>
             </div>
           </Reveal>
 
