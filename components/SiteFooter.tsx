@@ -8,12 +8,17 @@ export type FooterLink = { label: string; href: string };
 // Crafted Co will bring CraftedCo@craftedbyellis.com when its page is built.
 export const STUDIO_EMAIL = "braden@craftedbyellis.com";
 
+// "Website privacy" and "Website terms", not "Privacy" and "Terms": under the
+// catalogue model these two documents cover craftedbyellis.com only, and each
+// app carries its own pair on its own pages. Labelling them generically implied
+// they governed the apps as well, which is exactly the overlap being removed.
 export const STUDIO_FOOTER_LINKS: FooterLink[] = [
   { label: "Renew+", href: "/renewplus" },
+  { label: "Crafted Co", href: "/craftedco" },
   { label: "Studio", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
+  { label: "Website privacy", href: "/privacy" },
+  { label: "Website terms", href: "/terms" },
 ];
 
 type SiteFooterProps = {
