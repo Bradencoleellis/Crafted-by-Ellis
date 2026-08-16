@@ -83,7 +83,7 @@ export default function PhoneMockup() {
           }}>
             {/* Clock */}
             <div style={{ textAlign: "center", marginBottom: "36px" }}>
-              <div style={{ fontSize: "52px", fontWeight: 300, color: "#FFFFFF", letterSpacing: "-0.02em", lineHeight: 1 }}>
+              <div style={{ fontSize: "52px", fontWeight: 300, color: "#FFFFFF", letterSpacing: "-0.022em", lineHeight: 1 }}>
                 9:41
               </div>
               <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", marginTop: "6px" }}>

@@ -89,8 +89,9 @@ export default function SiteFooter({
       <div
         style={{
           marginTop: compact ? "clamp(28px, 4vw, 52px)" : "clamp(30px, 5vw, 60px)",
-          fontSize: "10.5px",
-          letterSpacing: "0.14em",
+          fontSize: "var(--type-micro-size)",
+          letterSpacing: "var(--type-micro-track)",
+  lineHeight: "var(--type-micro-lh)",
           textTransform: "uppercase",
           color: "var(--ink-faint)",
         }}

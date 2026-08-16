@@ -43,7 +43,7 @@ export default function ContactPage() {
                 <div className="micro-label" style={{ marginBottom: "6px" }}>
                   {label}
                 </div>
-                <a href={`mailto:${email}`} className="contact-link" style={{ fontSize: "clamp(16px, 1.8vw, 20px)" }}>
+                <a href={`mailto:${email}`} className="contact-link" style={{ fontSize: "16px" }}>
                   {email}
                 </a>
               </div>
@@ -66,8 +66,8 @@ const sectionStyle: CSSProperties = {
 };
 
 const noteStyle: CSSProperties = {
-  fontSize: "13.5px",
-  lineHeight: 1.55,
+  fontSize: "var(--type-label-size)",
+  lineHeight: 1.6,
   color: "var(--ink-faint)",
   maxWidth: "280px",
 };

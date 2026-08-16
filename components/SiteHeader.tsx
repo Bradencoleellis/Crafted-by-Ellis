@@ -45,7 +45,7 @@ export default function SiteHeader({
   return (
     <header style={headerStyle}>
       <Link href={back ? backHref : "/"} style={wordmarkStyle}>
-        {back && <span style={{ fontSize: "15px", lineHeight: 1, color: "var(--ink-label)" }}>←</span>}
+        {back && <span style={{ fontSize: "16px", lineHeight: 1, color: "var(--ink-label)" }}>←</span>}
         Crafted by Ellis
       </Link>
 
@@ -88,7 +88,7 @@ const wordmarkStyle: CSSProperties = {
   display: "flex",
   alignItems: "center",
   gap: "10px",
-  fontSize: "13px",
+  fontSize: "var(--type-label-size)",
   fontWeight: 600,
   letterSpacing: "0.01em",
   color: "var(--ink)",

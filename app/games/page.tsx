@@ -85,7 +85,7 @@ const gridStyle: CSSProperties = {
 };
 
 const itemBodyStyle: CSSProperties = {
-  fontSize: "15px",
-  lineHeight: 1.66,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
 };

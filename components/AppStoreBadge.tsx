@@ -27,7 +27,8 @@ export default function AppStoreBadge({ size = "lg", href, style }: AppStoreBadg
 
   const content = (
     <span style={{ display: "grid" }}>
-      <span style={{ fontSize: "8px", letterSpacing: "0.14em", textTransform: "uppercase", opacity: 0.75 }}>
+      <span style={{ fontSize: "var(--type-micro-size)", letterSpacing: "var(--type-micro-track)",
+  lineHeight: "var(--type-micro-lh)", textTransform: "uppercase", opacity: 0.75 }}>
         {href ? "Download on the" : "Coming soon to the"}
       </span>
       <span style={{ fontSize: large ? "16px" : "15px", fontWeight: 600, letterSpacing: "-0.01em" }}>

@@ -121,7 +121,7 @@ export default function CraftedCoPage() {
           <Reveal index={1} className="eyebrow" style={{ marginBottom: "clamp(20px, 2.4vw, 28px)" }}>
             Legal
           </Reveal>
-          <Reveal as="p" index={2} style={{ ...buildBodyStyle, fontSize: "15px", marginBottom: "20px" }}>
+          <Reveal as="p" index={2} style={{ ...buildBodyStyle, fontSize: "16px", marginBottom: "20px" }}>
             Crafted Co has its own terms and privacy policy, separate from the other apps and from
             this website. Both are drafts while the product is in build.
           </Reveal>
@@ -156,15 +156,16 @@ const heroInnerStyle: CSSProperties = {
 const heroCopyStyle: CSSProperties = { minWidth: 0 };
 
 const statusStyle: CSSProperties = {
-  fontSize: "13px",
-  letterSpacing: "0.08em",
+  fontSize: "var(--type-label-size)",
+  letterSpacing: "var(--type-micro-track)",
+  lineHeight: "var(--type-micro-lh)",
   textTransform: "uppercase",
   color: "var(--ink-label)",
   marginTop: "8px",
 };
 
 const heroBodyStyle: CSSProperties = {
-  fontSize: "clamp(16px, 1.5vw, 18px)",
+  fontSize: "16px",
   lineHeight: 1.6,
   color: "var(--ink-body)",
   maxWidth: "48ch",
@@ -172,7 +173,7 @@ const heroBodyStyle: CSSProperties = {
 };
 
 const metaStyle: CSSProperties = {
-  fontSize: "13px",
+  fontSize: "var(--type-label-size)",
   lineHeight: 1.6,
   color: "var(--ink-faint)",
 };
@@ -206,8 +207,8 @@ const pillarTitleStyle: CSSProperties = {
 };
 
 const pillarBodyStyle: CSSProperties = {
-  fontSize: "15px",
-  lineHeight: 1.65,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
 };
 
@@ -218,8 +219,8 @@ const legalLinkRowStyle: CSSProperties = {
 };
 
 const buildBodyStyle: CSSProperties = {
-  fontSize: "clamp(16px, 1.6vw, 19px)",
-  lineHeight: 1.65,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
   maxWidth: "62ch",
 };

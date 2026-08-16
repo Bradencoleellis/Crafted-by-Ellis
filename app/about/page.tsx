@@ -91,8 +91,8 @@ const storySectionStyle: CSSProperties = {
 };
 
 const storyParagraphStyle: CSSProperties = {
-  fontSize: "clamp(15px, 1.4vw, 16.5px)",
-  lineHeight: 1.68,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
 };
 
@@ -108,8 +108,8 @@ const valuesGridStyle: CSSProperties = {
 };
 
 const valueBodyStyle: CSSProperties = {
-  fontSize: "15px",
-  lineHeight: 1.66,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
 };
 
@@ -121,7 +121,7 @@ const ctaSectionStyle: CSSProperties = {
 const ctaBodyStyle: CSSProperties = {
   fontSize: "clamp(18px, 2.2vw, 26px)",
   lineHeight: 1.35,
-  letterSpacing: "-0.02em",
+  letterSpacing: "-0.022em",
   fontWeight: 600,
   fontVariationSettings: "'wdth' 112",
   maxWidth: "520px",

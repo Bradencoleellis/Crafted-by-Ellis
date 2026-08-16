@@ -231,8 +231,8 @@ const heroStyle: CSSProperties = {
 };
 
 const heroBodyStyle: CSSProperties = {
-  fontSize: "clamp(15px, 1.4vw, 16.5px)",
-  lineHeight: 1.68,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
   maxWidth: "480px",
 };
@@ -245,10 +245,10 @@ const statColumnStyle: CSSProperties = {
 };
 
 const statFigureStyle: CSSProperties = {
-  fontSize: "clamp(30px, 3.4vw, 38px)",
+  fontSize: "clamp(28px, 3.6vw, 42px)",
   fontWeight: 600,
   fontVariationSettings: "'wdth' 112",
-  letterSpacing: "-0.02em",
+  letterSpacing: "-0.022em",
   lineHeight: 1,
 };
 
@@ -295,16 +295,17 @@ const cardTopRowStyle: CSSProperties = {
 };
 
 const cardTagStyle: CSSProperties = {
-  fontSize: "10px",
+  fontSize: "var(--type-micro-size)",
   fontWeight: 600,
-  letterSpacing: "0.24em",
+  letterSpacing: "var(--type-micro-track)",
+  lineHeight: "var(--type-micro-lh)",
   textTransform: "uppercase",
 };
 
 const cardTitleStyle: CSSProperties = {
   fontSize: "clamp(38px, 4.6vw, 52px)",
   fontWeight: 600,
-  letterSpacing: "-0.028em",
+  letterSpacing: "-0.026em",
   fontVariationSettings: "'wdth' 114",
   lineHeight: 1,
   marginBottom: "14px",
@@ -312,7 +313,7 @@ const cardTitleStyle: CSSProperties = {
 
 const cardBodyStyle: CSSProperties = {
   margin: "0 0 clamp(20px, 2.6vw, 26px)",
-  fontSize: "clamp(14.5px, 1.3vw, 15.5px)",
+  fontSize: "16px",
   lineHeight: 1.6,
   maxWidth: "360px",
 };
@@ -337,13 +338,13 @@ const nextTileStyle: CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
   padding: "20px",
-  fontSize: "10.5px",
+  fontSize: "var(--type-micro-size)",
   fontWeight: 600,
-  letterSpacing: "0.22em",
+  letterSpacing: "var(--type-micro-track)",
+  lineHeight: "var(--type-micro-lh)",
   textTransform: "uppercase",
   color: "var(--ink-faint)",
   textAlign: "center",
-  lineHeight: 1.8,
 };
 
 const studioSectionStyle: CSSProperties = {
@@ -360,7 +361,7 @@ const studioGridStyle: CSSProperties = {
 };
 
 const studioBodyStyle: CSSProperties = {
-  fontSize: "15px",
-  lineHeight: 1.66,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
 };

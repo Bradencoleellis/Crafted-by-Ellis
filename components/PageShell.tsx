@@ -113,8 +113,8 @@ const heroStyle: CSSProperties = {
 
 const leadStyle: CSSProperties = {
   marginTop: "clamp(22px, 3vw, 32px)",
-  fontSize: "clamp(15px, 1.4vw, 16.5px)",
-  lineHeight: 1.68,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
   maxWidth: "560px",
 };

@@ -99,7 +99,7 @@ export default function LegalPage({ eyebrow, title, version, app, children }: Le
         <Reveal as="h1" index={2} className="display" style={{ marginBottom: "16px" }}>
           {title}
         </Reveal>
-        <Reveal as="p" index={3} style={{ fontSize: "13.5px", lineHeight: 1.55, color: "var(--ink-faint)" }}>
+        <Reveal as="p" index={3} style={{ fontSize: "var(--type-label-size)", lineHeight: 1.6, color: "var(--ink-faint)" }}>
           {version}
         </Reveal>
       </section>

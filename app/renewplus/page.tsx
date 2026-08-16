@@ -249,9 +249,9 @@ const iconStyle: CSSProperties = {
 };
 
 const comingSoonStyle: CSSProperties = {
-  fontSize: "11px",
+  fontSize: "var(--type-micro-size)",
   fontWeight: 600,
-  letterSpacing: "0.2em",
+  letterSpacing: "var(--type-micro-track)",
   textTransform: "uppercase",
   color: "var(--accent)",
   marginTop: "8px",
@@ -259,8 +259,8 @@ const comingSoonStyle: CSSProperties = {
 
 const heroBodyStyle: CSSProperties = {
   margin: "0 0 clamp(26px, 3.4vw, 34px)",
-  fontSize: "clamp(15px, 1.4vw, 17px)",
-  lineHeight: 1.66,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
   maxWidth: "470px",
 };
@@ -273,12 +273,12 @@ const ctaRowStyle: CSSProperties = {
 };
 
 const metaStyle: CSSProperties = {
-  fontSize: "10.5px",
+  fontSize: "var(--type-micro-size)",
   fontWeight: 600,
-  letterSpacing: "0.18em",
+  letterSpacing: "var(--type-micro-track)",
+  lineHeight: "var(--type-micro-lh)",
   textTransform: "uppercase",
   color: "var(--ink-label)",
-  lineHeight: 1.7,
 };
 
 const phonePairStyle: CSSProperties = {
@@ -305,7 +305,7 @@ const phoneScreenStyle: CSSProperties = {
   justifyContent: "center",
   fontSize: "9.5px",
   fontWeight: 600,
-  letterSpacing: "0.2em",
+  letterSpacing: "var(--type-micro-track)",
   textTransform: "uppercase",
   color: "var(--ink-faint)",
 };
@@ -344,17 +344,17 @@ const shotScreenStyle: CSSProperties = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  fontSize: "10px",
+  fontSize: "var(--type-micro-size)",
   fontWeight: 600,
-  letterSpacing: "0.2em",
+  letterSpacing: "var(--type-micro-track)",
   textTransform: "uppercase",
   color: "var(--ink-faint)",
 };
 
 const shotCaptionStyle: CSSProperties = {
   marginTop: "16px",
-  fontSize: "13.5px",
-  lineHeight: 1.55,
+  fontSize: "var(--type-label-size)",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
   maxWidth: "270px",
 };
@@ -387,8 +387,8 @@ const iconSlotStyle: CSSProperties = {
 };
 
 const featureBodyStyle: CSSProperties = {
-  fontSize: "14.5px",
-  lineHeight: 1.65,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
 };
 
@@ -406,9 +406,10 @@ const bannerStyle: CSSProperties = {
 };
 
 const bannerEyebrowStyle: CSSProperties = {
-  fontSize: "10.5px",
+  fontSize: "var(--type-micro-size)",
   fontWeight: 600,
-  letterSpacing: "0.24em",
+  letterSpacing: "var(--type-micro-track)",
+  lineHeight: "var(--type-micro-lh)",
   textTransform: "uppercase",
   opacity: 0.85,
   marginBottom: "14px",
@@ -417,7 +418,7 @@ const bannerEyebrowStyle: CSSProperties = {
 const bannerBodyStyle: CSSProperties = {
   fontSize: "clamp(18px, 2.2vw, 26px)",
   lineHeight: 1.35,
-  letterSpacing: "-0.02em",
+  letterSpacing: "-0.022em",
   fontWeight: 600,
   fontVariationSettings: "'wdth' 112",
 };

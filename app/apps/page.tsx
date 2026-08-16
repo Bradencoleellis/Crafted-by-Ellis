@@ -127,15 +127,15 @@ const neutralIconStyle: CSSProperties = {
 };
 
 const statusStyle: CSSProperties = {
-  fontSize: "10.5px",
+  fontSize: "var(--type-micro-size)",
   fontWeight: 600,
-  letterSpacing: "0.2em",
+  letterSpacing: "var(--type-micro-track)",
   textTransform: "uppercase",
 };
 
 const rowBodyStyle: CSSProperties = {
-  fontSize: "15px",
-  lineHeight: 1.66,
+  fontSize: "16px",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
   maxWidth: "560px",
 };

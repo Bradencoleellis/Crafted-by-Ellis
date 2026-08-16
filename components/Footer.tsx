@@ -20,7 +20,7 @@ export default function Footer() {
             <div style={{ marginBottom: "18px" }}>
               <EllisLogo size={28} href="/" onLight={false} />
             </div>
-            <p style={{ fontSize: "14px", color: "var(--color-text-tertiary)", lineHeight: 1.65, maxWidth: "260px" }}>
+            <p style={{ fontSize: "14px", color: "var(--color-text-tertiary)", lineHeight: 1.6, maxWidth: "260px" }}>
               A studio making apps and games with care. Built in New Zealand.
             </p>
           </div>

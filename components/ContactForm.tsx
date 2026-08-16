@@ -164,9 +164,9 @@ export default function ContactForm() {
 
 const labelStyle: CSSProperties = {
   display: "block",
-  fontSize: "10.5px",
+  fontSize: "var(--type-micro-size)",
   fontWeight: 600,
-  letterSpacing: "0.2em",
+  letterSpacing: "var(--type-micro-track)",
   textTransform: "uppercase",
   color: "var(--ink-label)",
   marginBottom: "10px",
@@ -174,7 +174,7 @@ const labelStyle: CSSProperties = {
 
 const statusStyle: CSSProperties = {
   minHeight: "1.4em",
-  fontSize: "13.5px",
-  lineHeight: 1.55,
+  fontSize: "var(--type-label-size)",
+  lineHeight: 1.6,
   color: "var(--ink-body)",
 };

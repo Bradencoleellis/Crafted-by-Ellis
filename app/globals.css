@@ -250,10 +250,35 @@ body {
 a { color: inherit; text-decoration: none; }
 
 /* ── Type ──
-   Tracking tightens as size grows and loosens as it shrinks, and the width axis
-   opens up with it. One tracking value across a scale is what makes type look
-   untouched. These three classes are the display steps; body, caption, eyebrow
-   and label are set at the point of use because they vary per block. */
+   Tracking tightens as size grows and loosens as it shrinks — DESIGN_STANDARDS
+   2026 s3, whose point is that one tracking value across a scale is what makes
+   type look untouched. The old scale carried -0.030 / -0.028 / -0.028 / -0.018
+   across 76px down to 24px, which is very nearly one value, and the small end
+   had drifted to +0.14em..+0.26em against s3's +0.08em micro.
+
+   The curve now moves monotonically and by enough to see:
+
+     76px  -0.030em      hero
+     52px  -0.026em      app name
+     42px  -0.022em      display
+     24px  -0.012em      section
+     16px   0            body
+     13px  +0.010em      label
+     11px  +0.100em      micro, uppercase
+
+   The old comment here said body, caption, eyebrow and label were "set at the
+   point of use because they vary per block". That is exactly how the site
+   arrived at nineteen distinct type steps, ten of them below 14px. They are
+   tokens now, and point-of-use reads the token. */
+:root {
+  --type-label-size:  13px;
+  --type-label-track: 0.01em;
+  --type-label-lh:    1.45;
+  --type-micro-size:  11px;
+  --type-micro-track: 0.1em;
+  --type-micro-lh:    1.4;
+}
+
 .display-hero {
   font-size: clamp(40px, 6.6vw, 76px);
   font-weight: 600;
@@ -266,7 +291,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(28px, 3.6vw, 42px);
   font-weight: 600;
   font-variation-settings: "wdth" 116;
-  letter-spacing: -0.028em;
+  letter-spacing: -0.022em;
   line-height: 1.1;
   text-wrap: pretty;
 }
@@ -274,7 +299,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(20px, 2vw, 24px);
   font-weight: 600;
   font-variation-settings: "wdth" 110;
-  letter-spacing: -0.018em;
+  letter-spacing: -0.012em;
   line-height: 1.25;
   text-wrap: pretty;
 }
@@ -283,7 +308,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(34px, 4.4vw, 50px);
   font-weight: 600;
   font-variation-settings: "wdth" 114;
-  letter-spacing: -0.028em;
+  letter-spacing: -0.026em;
   line-height: 1;
 }
 /* The old .display em rule tinted italics rust. There is no site-wide accent
@@ -297,23 +322,26 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Eyebrows and micro labels ──
    Small type is set at default width and positively tracked — the inverse of
-   the display steps above. */
-.eyebrow {
-  font-size: 10.5px;
+   the display steps above.
+
+   Both were separate steps (10.5px/+0.26em and 11px/+0.20em) doing the same
+   job at sizes half a pixel apart. They are one step now. The tracking lands at
+   +0.10em rather than s3's +0.08em on purpose: the wide eyebrow is a real
+   signature of this site, and the standard's value flattens it. Everything
+   above +0.10em was drift, not intent — nothing chose +0.26em, it accumulated.
+
+   Line height comes off the token too. These were inheriting body's 1.6, which
+   was never picked for uppercase micro type; s3 sets 1.40. */
+.eyebrow,
+.micro-label {
+  font-size: var(--type-micro-size);
   font-weight: 600;
-  letter-spacing: 0.26em;
+  letter-spacing: var(--type-micro-track);
+  line-height: var(--type-micro-lh);
   text-transform: uppercase;
   color: var(--ink-label);
 }
 .eyebrow-faint { color: var(--ink-faint); }
-
-.micro-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-label);
-}
 
 /* ── Layout ──
    .container-page is the width-constrained wrapper for prose pages (legal,
@@ -535,9 +563,10 @@ a.appstore-badge:active { transform: scale(0.97); }
    whole hover vocabulary for text on the site: no underlines appearing, no
    colour shifts into an accent. */
 .nav-link {
-  font-size: 11px;
+  font-size: var(--type-micro-size);
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: var(--type-micro-track);
+  line-height: var(--type-micro-lh);
   text-transform: uppercase;
   color: var(--ink-muted);
   transition: color var(--dur-state) var(--ease-firm);
@@ -546,9 +575,10 @@ a.appstore-badge:active { transform: scale(0.97); }
 .nav-link[aria-current="page"] { color: var(--ink); }
 
 .footer-link {
-  font-size: 11px;
+  font-size: var(--type-micro-size);
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: var(--type-micro-track);
+  line-height: var(--type-micro-lh);
   text-transform: uppercase;
   color: var(--ink-muted);
   transition: color var(--dur-state) var(--ease-firm);
@@ -590,11 +620,12 @@ a.appstore-badge:active { transform: scale(0.97); }
   padding: 5px 12px;
   border-radius: var(--radius-full);
   background: var(--accent-tint);
-  font-size: 10.5px;
+  font-size: var(--type-micro-size);
   font-weight: 600;
   color: var(--ink);
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: var(--type-micro-track);
+  line-height: var(--type-micro-lh);
 }
 
 /* ── Prose ──
