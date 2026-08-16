@@ -30,3 +30,9 @@ yarn-error.log*
 .idea/
 *.swp
 *.swo
+.vercel
+.env*
+
+# Build artifacts — regenerated on every build, never committed
+tsconfig.tsbuildinfo
+next-env.d.ts
