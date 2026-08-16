@@ -48,8 +48,11 @@ export default function AppsPage() {
         <Reveal index={2} className="surface-card" style={{ ...rowStyle, background: "var(--surface)" }}>
           <div style={rowMainStyle}>
             <div style={lockupStyle}>
-              {/* Placeholder mark — replaced by the real Crafted Co icon when
-                  that app has a page of its own. */}
+              {/* Placeholder mark. The page now exists; what is still missing is
+                  the icon itself — the real one lives in the Crafted Co repo at
+                  brand/ and needs exporting into public/ before it can replace
+                  this. Until then a blank plate is more honest than a stand-in
+                  glyph pretending to be the brand. */}
               <div style={placeholderIconStyle} aria-hidden="true" />
               <div>
                 <div className="display-section" style={{ marginBottom: "4px" }}>
@@ -63,7 +66,10 @@ export default function AppsPage() {
               from ten years on the tools rather than from a spreadsheet.
             </p>
             <div style={actionRowStyle}>
-              <Link href="/contact" className="pill-outline">
+              <Link href="/craftedco" className="pill-dark">
+                View app
+              </Link>
+              <Link href="/craftedco#build" className="pill-outline">
                 Follow the build
               </Link>
             </div>
