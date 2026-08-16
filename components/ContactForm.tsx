@@ -2,34 +2,67 @@
 
 import { useState, type CSSProperties, type FormEvent } from "react";
 
-// NOTE: this form does not send anything. The submit handler simulates a send
-// with a timer and then reports success, which is how it arrived — the redesign
-// did not change the behaviour, only the styling. It needs a real endpoint
-// (a route handler plus a mail provider) before it can be trusted, because
-// right now every message typed into it is silently discarded.
+const EMPTY = {
+  name: "",
+  email: "",
+  subject: "General enquiry",
+  message: "",
+  // Honeypot. Hidden from people, tempting to bots. Never sent by a real user.
+  company: "",
+};
+
+/**
+ * The contact form. It posts to /api/contact, which sends the mail.
+ *
+ * This previously faked the send with a timer and always reported success, so
+ * messages were discarded while the sender was told they had arrived. The rule
+ * now: success is only shown when the endpoint confirms it. Any failure keeps
+ * the text the person typed in the fields and offers the direct email address,
+ * because the worst outcome is someone losing what they wrote.
+ */
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "General enquiry",
-    message: "",
-  });
+  const [formData, setFormData] = useState(EMPTY);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setStatus("sending");
+    if (status === "sending") return;
 
-    setTimeout(() => {
+    setStatus("sending");
+    setError(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setError(
+          typeof result.error === "string"
+            ? result.error
+            : "Something went wrong. Please email braden@craftedbyellis.com.",
+        );
+        setStatus("error");
+        return;
+      }
+
+      // Only clear the fields once the send is confirmed.
+      setFormData(EMPTY);
       setStatus("sent");
-      setTimeout(() => {
-        setFormData({ name: "", email: "", subject: "General enquiry", message: "" });
-        setStatus("idle");
-      }, 3000);
-    }, 1000);
+    } catch {
+      setError(
+        "Could not reach the server. Check your connection, or email braden@craftedbyellis.com.",
+      );
+      setStatus("error");
+    }
   };
 
-  const busy = status === "sending" || status === "sent";
+  const busy = status === "sending";
 
   return (
     <form onSubmit={handleSubmit} style={{ display: "grid", gap: "22px", maxWidth: "560px" }}>
@@ -98,16 +131,32 @@ export default function ContactForm() {
         />
       </div>
 
+      {/* Honeypot. Hidden from sighted users and from screen readers, and taken
+          out of the tab order, so no real person can fill it in by accident.
+          Not display:none — some bots skip those. */}
+      <div
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", overflow: "hidden" }}
+      >
+        <label htmlFor="company">Company (leave this empty)</label>
+        <input
+          id="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={formData.company}
+          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+        />
+      </div>
+
       <button type="submit" disabled={busy} className="btn-primary" style={{ opacity: busy ? 0.7 : 1 }}>
-        {status === "idle" && "Send message"}
-        {status === "sending" && "Sending…"}
-        {status === "sent" && "Message sent"}
-        {status === "error" && "Try again"}
+        {status === "sending" ? "Sending…" : status === "error" ? "Try again" : "Send message"}
       </button>
 
       {/* aria-live so the outcome is announced rather than only shown. */}
       <p role="status" aria-live="polite" style={statusStyle}>
-        {status === "sent" ? "Thanks — I will get back to you within 48 hours." : ""}
+        {status === "sent" && "Thanks — your message is on its way. I will get back to you within 48 hours."}
+        {status === "error" && error}
       </p>
     </form>
   );
