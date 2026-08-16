@@ -127,24 +127,43 @@
   --radius-full: 9999px;
 
   /* ── Elevation ──
-     Every shadow here is long, soft and heavily negative-spread: the light is
-     high and diffuse, so cards cast far without a hard edge. There are no tight
-     drop shadows anywhere in this system — a 2px offset shadow reads as Material
-     and dates a surface instantly. On a light ground the shadow does all the
-     separating work, which is why none of these cards carry a border. */
-  --shadow-card:    0 40px 80px -44px rgba(25, 24, 23, 0.38);
-  --shadow-accent:  0 40px 80px -38px var(--renew-accent-glow);
-  --shadow-feature: 0 28px 60px -40px rgba(25, 24, 23, 0.34);
-  --shadow-phone:   0 34px 70px -26px rgba(25, 24, 23, 0.34);
-  --shadow-rail:    0 34px 70px -30px rgba(25, 24, 23, 0.30);
-  --shadow-icon:    0 18px 40px -16px rgba(255, 132, 0, 0.50);
-  --shadow-riser:   0 -10px 40px -18px rgba(25, 24, 23, 0.40);  /* casts upward */
+     Two parts per level: a 1px contact shadow that sits the card on the page,
+     and one soft ambient cast. Both at low opacity. This is DESIGN_STANDARDS
+     2026 s2.3 — "a 1px hairline border plus a long, very soft, low-opacity
+     shadow" — which the site had drifted a long way from, and which the Refero
+     reference pass independently landed on: Things carries its whole catalogue
+     on a single restrained elevation rather than atmosphere.
 
-  /* Hover steps: one notch deeper and one notch nearer, never a different
-     shadow shape. */
-  --shadow-card-hover:    0 52px 96px -44px rgba(25, 24, 23, 0.46);
-  --shadow-accent-hover:  0 52px 96px -38px rgba(232, 111, 0, 0.55);
-  --shadow-feature-hover: 0 36px 72px -40px rgba(25, 24, 23, 0.40);
+     The previous scale (0 40px 80px -44px at 38%) was doing the job a hairline
+     should do. That was internally consistent — the old comment here argued
+     cards needed no border precisely because the shadow separated them — but
+     the premise dies with the big shadow. A tight shadow cannot separate a
+     #fbfbfa card from a #f4f3f0 ground on its own, so the hairline comes back
+     with it. Border and shadow are now defined per level, as s2.3 requires.
+
+     The device tokens are the exception in the other direction: a phone or
+     laptop is a physical object, and the primary reference (Mike Matas) shows
+     device renders "without decorative framing, shadows, or embellishment".
+     They get the least of anything here. */
+  --shadow-card:    0 1px 2px rgba(25, 24, 23, 0.07), 0 8px 24px -12px rgba(25, 24, 23, 0.13);
+  --shadow-accent:  0 1px 2px rgba(232, 111, 0, 0.14), 0 10px 28px -14px rgba(232, 111, 0, 0.30);
+  --shadow-feature: 0 1px 2px rgba(25, 24, 23, 0.06), 0 6px 18px -10px rgba(25, 24, 23, 0.10);
+  --shadow-phone:   0 2px 6px rgba(25, 24, 23, 0.10), 0 14px 34px -18px rgba(25, 24, 23, 0.18);
+  --shadow-rail:    0 1px 2px rgba(25, 24, 23, 0.06), 0 8px 22px -12px rgba(25, 24, 23, 0.12);
+  --shadow-icon:    0 2px 6px rgba(255, 132, 0, 0.18), 0 10px 24px -12px rgba(255, 132, 0, 0.28);
+  --shadow-riser:   0 -1px 2px rgba(25, 24, 23, 0.06), 0 -8px 22px -12px rgba(25, 24, 23, 0.14);
+
+  /* Border tokens, one per elevation level. s2.3: define both, or a card with
+     a tight shadow has nothing holding its edge. */
+  --border-card:    rgba(25, 24, 23, 0.10);
+  --border-feature: rgba(25, 24, 23, 0.08);
+
+  /* Hover steps: the ambient half grows, the contact shadow stays put. A card
+     lifting off the page keeps touching it — growing both reads as the whole
+     object inflating. */
+  --shadow-card-hover:    0 1px 2px rgba(25, 24, 23, 0.07), 0 14px 34px -14px rgba(25, 24, 23, 0.17);
+  --shadow-accent-hover:  0 1px 2px rgba(232, 111, 0, 0.14), 0 16px 38px -16px rgba(232, 111, 0, 0.38);
+  --shadow-feature-hover: 0 1px 2px rgba(25, 24, 23, 0.06), 0 10px 26px -12px rgba(25, 24, 23, 0.14);
 
   /* ── Motion ──
      Carried over unchanged from the previous system. Apple describes springs
@@ -373,17 +392,26 @@ a { color: inherit; text-decoration: none; }
 .shelf-card:hover { transform: translateY(-3px); }
 .shelf-card:active { transform: scale(0.99); transition-duration: var(--dur-press); }
 
+/* The accent card sits on its own saturated field, which separates it from the
+   page on its own — a hairline over orange would read as a drawn outline. Only
+   the neutral card, which is nearly the same value as the ground, needs one. */
 .shelf-card--accent { box-shadow: var(--shadow-accent); }
 .shelf-card--accent:hover { box-shadow: var(--shadow-accent-hover); }
-.shelf-card--neutral { box-shadow: var(--shadow-card); }
+.shelf-card--neutral {
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
+}
 .shelf-card--neutral:hover { box-shadow: var(--shadow-card-hover); }
 
 /* ── Surface card ──
-   Replaces the old .glass-card. There is no glass in this system and no
-   borders: on a light ground a hairline plus a shadow double-draws the edge,
-   and the shadow alone is the softer, more expensive-looking of the two. */
+   Replaces the old .glass-card; there is no glass in this system. It now
+   carries a hairline: the surface (#fbfbfa) is barely a step off the ground
+   (#f4f3f0), so with the tightened shadow of s2.3 there is not enough contrast
+   left to hold an edge. The old rule here rejected borders as double-drawing
+   the edge, which was true of the 60px shadow it was written for. */
 .surface-card {
   background: var(--color-surface);
+  border: 1px solid var(--border-feature);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-feature);
   transition: transform var(--dur-state) var(--ease-firm),
