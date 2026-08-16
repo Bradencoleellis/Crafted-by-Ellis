@@ -326,28 +326,6 @@ const plateRowStyle: CSSProperties = {
 };
 
 
-const markRowStyle: CSSProperties = {
-  marginTop: "auto",
-  display: "flex",
-  justifyContent: "center",
-  padding: "34px 0 clamp(40px, 6vw, 56px)",
-};
-
-const markStyle: CSSProperties = {
-  width: "150px",
-  height: "150px",
-  borderRadius: "var(--radius-2xl)",
-  background: "#f0efec",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  gap: "9px",
-  padding: "32px",
-  boxShadow: "0 24px 50px -26px rgba(25,24,23,.32)",
-};
-
-const markRow: CSSProperties = { display: "flex", gap: "6px", height: "16px" };
-
 const nextTileStyle: CSSProperties = {
   scrollSnapAlign: "start",
   flex: "none",

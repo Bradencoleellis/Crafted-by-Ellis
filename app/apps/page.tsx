@@ -48,12 +48,13 @@ export default function AppsPage() {
         <Reveal index={2} className="surface-card" style={{ ...rowStyle, background: "var(--surface)" }}>
           <div style={rowMainStyle}>
             <div style={lockupStyle}>
-              {/* Placeholder mark. The page now exists; what is still missing is
-                  the icon itself — the real one lives in the Crafted Co repo at
-                  brand/ and needs exporting into public/ before it can replace
-                  this. Until then a blank plate is more honest than a stand-in
-                  glyph pretending to be the brand. */}
-              <div style={placeholderIconStyle} aria-hidden="true" />
+              <Image
+                src="/CraftedCoIcon.png"
+                alt=""
+                width={64}
+                height={64}
+                style={neutralIconStyle}
+              />
               <div>
                 <div className="display-section" style={{ marginBottom: "4px" }}>
                   Crafted Co
@@ -110,12 +111,18 @@ const appIconStyle: CSSProperties = {
   flexShrink: 0,
 };
 
-const placeholderIconStyle: CSSProperties = {
+// Same plate as appIconStyle, but neutral. --shadow-icon is orange-tinted for
+// Renew+, and casting that under another app's mark would break the per-app
+// accent rule in the most literal way available.
+//
+// The source icon is square with no corner radius on purpose — iOS and Android
+// apply their own mask, so the brand export ships unrounded and the 16px radius
+// is added here for the web.
+const neutralIconStyle: CSSProperties = {
   width: "64px",
   height: "64px",
   borderRadius: "16px",
-  background: "#f0efec",
-  boxShadow: "0 18px 40px -22px rgba(25,24,23,.4)",
+  boxShadow: "var(--shadow-card)",
   flexShrink: 0,
 };
 
