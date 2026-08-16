@@ -28,6 +28,25 @@ const MAX_STAGGER = 6;
 const STEP_SECONDS = 0.09;
 
 /**
+ * Nearest ancestor that scrolls horizontally, or null. Used to redirect the
+ * observer off an element that can never intersect the viewport on its own.
+ */
+function horizontalScrollHost(node: HTMLElement): HTMLElement | null {
+  let parent = node.parentElement;
+  while (parent) {
+    const overflowX = getComputedStyle(parent).overflowX;
+    if (
+      (overflowX === "auto" || overflowX === "scroll") &&
+      parent.scrollWidth > parent.clientWidth
+    ) {
+      return parent;
+    }
+    parent = parent.parentElement;
+  }
+  return null;
+}
+
+/**
  * Reveals its child once, when it first enters the viewport, and then stops
  * watching it — the animation never replays on scroll-back.
  *
@@ -63,6 +82,13 @@ export default function Reveal({
       return;
     }
 
+    // A card inside a horizontal rail can sit entirely off to the right, where
+    // it never intersects the viewport — so it would stay at opacity 0 until
+    // the reader swiped it into view, and then fade in underneath their thumb.
+    // Watch the rail instead: the whole row reveals together when the row
+    // arrives, and the stagger still reads because the cards are side by side.
+    const target = horizontalScrollHost(node) ?? node;
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -77,7 +103,7 @@ export default function Reveal({
       { rootMargin: "0px 0px -12% 0px", threshold: 0.08 },
     );
 
-    io.observe(node);
+    io.observe(target);
     return () => io.disconnect();
   }, []);
 
